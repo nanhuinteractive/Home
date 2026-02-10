@@ -31,6 +31,8 @@
                         'blob': 'blob 10s infinite',
                         'fade-in': 'fadeIn 1.5s ease-out forwards',
                         'shimmer': 'shimmer 3s linear infinite',
+                        'float': 'float 8s ease-in-out infinite',
+                        'pulse-glow': 'pulseGlow 6s ease-in-out infinite',
                     },
                     keyframes: {
                         fadeInUp: {
@@ -50,6 +52,14 @@
                         shimmer: {
                             '0%': { backgroundPosition: '200% center' },
                             '100%': { backgroundPosition: '-200% center' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        },
+                        pulseGlow: {
+                            '0%, 100%': { opacity: '0.2', transform: 'scale(1)' },
+                            '50%': { opacity: '0.5', transform: 'scale(1.2)' },
                         }
                     }
                 }
@@ -141,10 +151,13 @@
         <div class="absolute inset-0 overflow-hidden pointer-events-none opacity-0 animate-fade-in">
             <div class="absolute top-[-20%] left-[-10%] w-[600px] h-[600px] bg-blue-900/10 rounded-full blur-[120px] animate-blob mix-blend-screen"></div>
             <div class="absolute bottom-[-20%] right-[-10%] w-[600px] h-[600px] bg-purple-900/10 rounded-full blur-[120px] animate-blob animation-delay-2000 mix-blend-screen"></div>
+            <!-- Center Breathing Aura -->
+            <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-zinc-700/10 rounded-full blur-[100px] animate-pulse-glow mix-blend-screen pointer-events-none"></div>
             <div class="absolute top-[30%] left-[40%] w-[400px] h-[400px] bg-amber-900/5 rounded-full blur-[100px] animate-blob animation-delay-4000 mix-blend-screen"></div>
         </div>
 
-        <div class="relative z-10 max-w-5xl mx-auto px-6 text-center">
+        <!-- Floating Content Container -->
+        <div class="relative z-10 max-w-5xl mx-auto px-6 text-center animate-float">
             <div class="inline-flex items-center space-x-2 text-zinc-400 text-[10px] md:text-xs uppercase tracking-[0.2em] mb-8 border border-white/10 px-4 py-2 rounded-full backdrop-blur-sm opacity-0 animate-fade-in-up">
                 <i data-lucide="globe" class="w-3 h-3"></i>
                 <span>USA • UK • Europe • Global</span>
