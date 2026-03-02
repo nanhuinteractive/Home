@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solace | Boutique Yoga & Pilates</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                        serif: ['Cormorant Garamond', 'serif'],
+                    },
+                    colors: {
+                        studio: {
+                            sand: '#f8f5f0',      // Warm, creamy background
+                            clay: '#c88671',      // Terracotta/Clay accent
+                            clayHover: '#b0705b',
+                            olive: '#8b9474',     // Soft green accent
+                            charcoal: '#33312e',  // Soft black for text
+                            stone: '#e6dfd3',     // Borders and secondary backgrounds
+                        }
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 1.5s ease-out forwards',
+                        'slide-up': 'slideUp 1s ease-out forwards',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body { background-color: #f8f5f0; color: #33312e; }
+        
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Delicate scrollbar */
+        ::-webkit-scrollbar { width: 5px; }
+        ::-webkit-scrollbar-track { background: #f8f5f0; }
+        ::-webkit-scrollbar-thumb { background: #e6dfd3; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #c88671; }
+    </style>
+</head>
+<body class="font-sans antialiased overflow-x-hidden selection:bg-studio-clay selection:text-white">
+
+    <!-- Announcement Bar -->
+    <div class="bg-studio-clay text-white py-2 px-6 text-center text-xs font-medium tracking-widest uppercase">
+        New Student Special: 2 Weeks of Unlimited Classes for $49. <a href="#pricing" class="underline ml-2 hover:text-studio-sand transition-colors">Buy Now</a>
+    </div>
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-500 bg-studio-sand/90 backdrop-blur-md py-5 border-b border-transparent">
+        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
+            
+            <!-- Mobile Menu Toggle -->
+            <button class="md:hidden text-studio-charcoal">
+                <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+
+            <!-- Logo -->
+            <div class="text-3xl font-serif tracking-widest text-studio-charcoal text-center md:text-left flex-1 md:flex-none">
+                SOLACE
+            </div>
+
+            <!-- Desktop Links -->
+            <div class="hidden md:flex space-x-10 items-center">
+                <a href="#classes" class="text-xs uppercase tracking-[0.15em] text-studio-charcoal/70 hover:text-studio-clay transition-colors font-medium">Classes</a>
+                <a href="#schedule" class="text-xs uppercase tracking-[0.15em] text-studio-charcoal/70 hover:text-studio-clay transition-colors font-medium">Schedule</a>
+                <a href="#pricing" class="text-xs uppercase tracking-[0.15em] text-studio-charcoal/70 hover:text-studio-clay transition-colors font-medium">Pricing</a>
+                <a href="#studio" class="text-xs uppercase tracking-[0.15em] text-studio-charcoal/70 hover:text-studio-clay transition-colors font-medium">The Studio</a>
+            </div>
+
+            <!-- Booking Button -->
+            <div class="hidden md:block">
+                <a href="#schedule" class="px-7 py-2.5 border border-studio-charcoal text-studio-charcoal text-xs uppercase tracking-[0.15em] hover:bg-studio-charcoal hover:text-white transition-all duration-300 font-medium">
+                    Book a Mat
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-[90vh] flex items-center pt-20 overflow-hidden">
+        <!-- Abstract background shape -->
+        <div class="absolute top-0 right-0 w-[60vw] h-[60vw] max-w-[800px] max-h-[800px] bg-studio-stone/40 rounded-full blur-3xl opacity-60 -translate-y-1/4 translate-x-1/4 z-0"></div>
+        
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10 w-full">
+            
+            <div class="animate-slide-up py-12 md:py-0 text-center lg:text-left order-2 lg:order-1">
+                <h1 class="text-5xl md:text-7xl font-serif leading-[1.1] mb-6 text-studio-charcoal">
+                    Find your center.<br>
+                    <span class="italic text-studio-clay">Move with purpose.</span>
+                </h1>
+                
+                <p class="text-studio-charcoal/70 text-lg md:text-xl font-light leading-relaxed mb-10 max-w-md mx-auto lg:mx-0">
+                    A boutique sanctuary for mindful movement. We offer heated Vinyasa, restorative Yin, and athletic Pilates in a beautifully designed, light-filled space.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-5">
+                    <a href="#schedule" class="w-full sm:w-auto px-8 py-4 bg-studio-charcoal text-white text-xs font-medium uppercase tracking-[0.15em] hover:bg-studio-clay transition-colors text-center shadow-xl shadow-studio-charcoal/10">
+                        View Schedule
+                    </a>
+                    <a href="#pricing" class="w-full sm:w-auto px-8 py-4 bg-white border border-studio-stone text-studio-charcoal text-xs font-medium uppercase tracking-[0.15em] hover:border-studio-clay hover:text-studio-clay transition-colors text-center">
+                        New Student Offer
+                    </a>
+                </div>
+            </div>
+
+            <!-- Hero Image Container with Arch Motif -->
+            <div class="relative animate-fade-in order-1 lg:order-2 flex justify-center lg:justify-end">
+                <div class="relative w-full max-w-md h-[500px] md:h-[600px] rounded-t-full overflow-hidden shadow-2xl">
+                    <img src="https://images.unsplash.com/photo-1599901860904-17e6ed7083a0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Yoga Pose" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-studio-charcoal/10"></div>
+                </div>
+                <!-- Floating geometric accent -->
+                <div class="absolute bottom-12 -left-6 md:-left-12 w-32 h-32 bg-studio-clay rounded-full mix-blend-multiply opacity-80 flex items-center justify-center animate-pulse" style="animation-duration: 4s;">
+                    <i data-lucide="sun" class="w-12 h-12 text-white opacity-50"></i>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- Visual Divider / Philosophy Quote -->
+    <section class="py-20 bg-studio-stone/30 px-6 text-center border-y border-studio-stone">
+        <div class="max-w-4xl mx-auto reveal">
+            <i data-lucide="flower-2" class="w-8 h-8 text-studio-clay mx-auto mb-6 stroke-1"></i>
+            <h2 class="text-3xl md:text-5xl font-serif text-studio-charcoal leading-snug mb-8">
+                "We believe movement is medicine. Our space is designed for you to disconnect from the noise and reconnect with your breath."
+            </h2>
+            <p class="text-xs uppercase tracking-widest text-studio-charcoal/60 font-medium">— Elena Rostova, Founder</p>
+        </div>
+    </section>
+
+    <!-- Class Types -->
+    <section id="classes" class="py-24 bg-studio-sand px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16 reveal">
+                <div>
+                    <h2 class="text-xs font-medium text-studio-clay uppercase tracking-widest mb-3">Our Offerings</h2>
+                    <h3 class="text-4xl md:text-5xl font-serif text-studio-charcoal">Mindful Movement</h3>
+                </div>
+                <p class="text-studio-charcoal/60 max-w-sm text-sm mt-6 md:mt-0 leading-relaxed font-light">
+                    From sweat-inducing flows to deep restorative stretching, find the class that serves your body today.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Class 1 -->
+                <div class="group cursor-pointer reveal">
+                    <div class="relative overflow-hidden h-80 mb-6 rounded-t-full">
+                        <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Vinyasa Yoga" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-studio-charcoal/20 group-hover:bg-transparent transition-colors duration-500"></div>
+                    </div>
+                    <div class="text-center px-4">
+                        <h4 class="text-2xl font-serif text-studio-charcoal mb-2">Vinyasa Flow</h4>
+                        <div class="flex justify-center items-center gap-4 text-[10px] uppercase tracking-widest text-studio-charcoal/50 mb-4 font-medium">
+                            <span>Heated</span> <span>|</span> <span>Dynamic</span>
+                        </div>
+                        <p class="text-studio-charcoal/70 text-sm font-light leading-relaxed mb-4">A dynamic, breath-to-movement practice designed to build heat, strength, and flexibility. Room heated to 90°F.</p>
+                        <span class="text-xs uppercase tracking-widest text-studio-clay font-medium group-hover:text-studio-charcoal transition-colors border-b border-transparent group-hover:border-studio-charcoal pb-1">Book Class</span>
+                    </div>
+                </div>
+
+                <!-- Class 2 -->
+                <div class="group cursor-pointer reveal" style="transition-delay: 100ms;">
+                    <div class="relative overflow-hidden h-80 mb-6 rounded-t-full">
+                        <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Pilates" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-studio-charcoal/20 group-hover:bg-transparent transition-colors duration-500"></div>
+                    </div>
+                    <div class="text-center px-4">
+                        <h4 class="text-2xl font-serif text-studio-charcoal mb-2">Mat Pilates</h4>
+                        <div class="flex justify-center items-center gap-4 text-[10px] uppercase tracking-widest text-studio-charcoal/50 mb-4 font-medium">
+                            <span>Core</span> <span>|</span> <span>Sculpt</span>
+                        </div>
+                        <p class="text-studio-charcoal/70 text-sm font-light leading-relaxed mb-4">A high-repetition, low-impact workout focusing on core strength, postural alignment, and muscle endurance.</p>
+                        <span class="text-xs uppercase tracking-widest text-studio-clay font-medium group-hover:text-studio-charcoal transition-colors border-b border-transparent group-hover:border-studio-charcoal pb-1">Book Class</span>
+                    </div>
+                </div>
+
+                <!-- Class 3 -->
+                <div class="group cursor-pointer reveal" style="transition-delay: 200ms;">
+                    <div class="relative overflow-hidden h-80 mb-6 rounded-t-full">
+                        <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Yin Yoga" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-studio-charcoal/20 group-hover:bg-transparent transition-colors duration-500"></div>
+                    </div>
+                    <div class="text-center px-4">
+                        <h4 class="text-2xl font-serif text-studio-charcoal mb-2">Yin & Restore</h4>
+                        <div class="flex justify-center items-center gap-4 text-[10px] uppercase tracking-widest text-studio-charcoal/50 mb-4 font-medium">
+                            <span>Unheated</span> <span>|</span> <span>Deep Release</span>
+                        </div>
+                        <p class="text-studio-charcoal/70 text-sm font-light leading-relaxed mb-4">Long-held, passive floor poses targeting the deep connective tissues. The perfect antidote to a busy life.</p>
+                        <span class="text-xs uppercase tracking-widest text-studio-clay font-medium group-hover:text-studio-charcoal transition-colors border-b border-transparent group-hover:border-studio-charcoal pb-1">Book Class</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Schedule (Mockup) -->
+    <section id="schedule" class="py-24 bg-white px-6">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-12 reveal">
+                <h3 class="text-4xl font-serif text-studio-charcoal mb-4">Upcoming Classes</h3>
+                <p class="text-studio-charcoal/60 font-light text-sm">Select a class to reserve your mat. Arrive 10 minutes early.</p>
+            </div>
+
+            <!-- Date Selector -->
+            <div class="flex justify-center gap-4 md:gap-8 mb-12 overflow-x-auto pb-4 reveal">
+                <div class="text-center cursor-pointer border-b-2 border-studio-clay pb-2 min-w-[60px]">
+                    <p class="text-xs uppercase tracking-widest text-studio-charcoal/50 mb-1">Today</p>
+                    <p class="font-serif text-2xl text-studio-charcoal">14</p>
+                </div>
+                <div class="text-center cursor-pointer border-b-2 border-transparent hover:border-studio-stone pb-2 min-w-[60px] opacity-60 hover:opacity-100 transition-all">
+                    <p class="text-xs uppercase tracking-widest text-studio-charcoal/50 mb-1">Tue</p>
+                    <p class="font-serif text-2xl text-studio-charcoal">15</p>
+                </div>
+                <div class="text-center cursor-pointer border-b-2 border-transparent hover:border-studio-stone pb-2 min-w-[60px] opacity-60 hover:opacity-100 transition-all">
+                    <p class="text-xs uppercase tracking-widest text-studio-charcoal/50 mb-1">Wed</p>
+                    <p class="font-serif text-2xl text-studio-charcoal">16</p>
+                </div>
+                <div class="text-center cursor-pointer border-b-2 border-transparent hover:border-studio-stone pb-2 min-w-[60px] opacity-60 hover:opacity-100 transition-all">
+                    <p class="text-xs uppercase tracking-widest text-studio-charcoal/50 mb-1">Thu</p>
+                    <p class="font-serif text-2xl text-studio-charcoal">17</p>
+                </div>
+            </div>
+
+            <!-- Class List -->
+            <div class="space-y-4 reveal">
+                <!-- Schedule Row 1 -->
+                <div class="flex flex-col md:flex-row items-start md:items-center justify-between p-6 bg-studio-sand border border-studio-stone/50 hover:border-studio-clay/30 transition-colors group">
+                    <div class="flex items-center gap-6 mb-4 md:mb-0 w-full md:w-auto">
+                        <div class="text-center w-20">
+                            <p class="font-serif text-xl text-studio-charcoal">7:00</p>
+                            <p class="text-[10px] uppercase tracking-widest text-studio-charcoal/50">AM</p>
+                        </div>
+                        <div class="hidden md:block w-px h-12 bg-studio-stone"></div>
+                        <div>
+                            <h4 class="text-lg font-serif text-studio-charcoal mb-1">Morning Vinyasa</h4>
+                            <p class="text-xs text-studio-charcoal/60 font-light">60 Min • Heated • Sarah M.</p>
+                        </div>
+                    </div>
+                    <button class="w-full md:w-auto px-6 py-2 bg-white border border-studio-stone text-xs uppercase tracking-widest text-studio-charcoal hover:bg-studio-charcoal hover:text-white hover:border-studio-charcoal transition-all">
+                        Reserve
+                    </button>
+                </div>
+
+                <!-- Schedule Row 2 -->
+                <div class="flex flex-col md:flex-row items-start md:items-center justify-between p-6 bg-studio-sand border border-studio-stone/50 hover:border-studio-clay/30 transition-colors group">
+                    <div class="flex items-center gap-6 mb-4 md:mb-0 w-full md:w-auto">
+                        <div class="text-center w-20">
+                            <p class="font-serif text-xl text-studio-charcoal">9:30</p>
+                            <p class="text-[10px] uppercase tracking-widest text-studio-charcoal/50">AM</p>
+                        </div>
+                        <div class="hidden md:block w-px h-12 bg-studio-stone"></div>
+                        <div>
+                            <h4 class="text-lg font-serif text-studio-charcoal mb-1">Mat Pilates Sculpt</h4>
+                            <p class="text-xs text-studio-charcoal/60 font-light">45 Min • Unheated • Jessica T.</p>
+                        </div>
+                    </div>
+                    <button class="w-full md:w-auto px-6 py-2 bg-white border border-studio-stone text-xs uppercase tracking-widest text-studio-charcoal hover:bg-studio-charcoal hover:text-white hover:border-studio-charcoal transition-all">
+                        Reserve
+                    </button>
+                </div>
+
+                <!-- Schedule Row 3 -->
+                <div class="flex flex-col md:flex-row items-start md:items-center justify-between p-6 bg-studio-sand border border-studio-stone/50 hover:border-studio-clay/30 transition-colors group">
+                    <div class="flex items-center gap-6 mb-4 md:mb-0 w-full md:w-auto">
+                        <div class="text-center w-20">
+                            <p class="font-serif text-xl text-studio-charcoal/50">12:00</p>
+                            <p class="text-[10px] uppercase tracking-widest text-studio-charcoal/50">PM</p>
+                        </div>
+                        <div class="hidden md:block w-px h-12 bg-studio-stone"></div>
+                        <div>
+                            <h4 class="text-lg font-serif text-studio-charcoal/50 mb-1">Express Power Flow</h4>
+                            <p class="text-xs text-studio-charcoal/40 font-light">45 Min • Heated • David K.</p>
+                        </div>
+                    </div>
+                    <button disabled class="w-full md:w-auto px-6 py-2 bg-studio-stone/30 text-xs uppercase tracking-widest text-studio-charcoal/40 cursor-not-allowed">
+                        Waitlist
+                    </button>
+                </div>
+            </div>
+            
+            <div class="text-center mt-10">
+                <a href="#" class="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-studio-charcoal/60 hover:text-studio-clay transition-colors font-medium">
+                    View Full Week Calendar <i data-lucide="arrow-right" class="w-3 h-3"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Memberships & Pricing -->
+    <section id="pricing" class="py-24 bg-studio-olive px-6 text-white relative overflow-hidden">
+        <!-- Botanical leaf graphic placeholder -->
+        <i data-lucide="leaf" class="absolute -right-10 -top-10 w-64 h-64 text-white/5 rotate-45 pointer-events-none"></i>
+        
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-xs font-medium text-studio-sand/70 uppercase tracking-widest mb-3">Join The Community</h2>
+                <h3 class="text-4xl md:text-5xl font-serif text-white">Memberships & Passes</h3>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                
+                <!-- Intro Offer -->
+                <div class="bg-white/10 p-10 border border-white/20 backdrop-blur-sm reveal hover:bg-white/15 transition-colors">
+                    <h4 class="text-xl font-serif mb-2">New Student Special</h4>
+                    <p class="text-sm text-studio-sand/70 font-light mb-6 h-10">The perfect way to experience everything Solace has to offer.</p>
+                    <div class="flex items-end gap-1 mb-8">
+                        <span class="text-5xl font-serif">$49</span>
+                        <span class="text-studio-sand/70 text-xs uppercase tracking-widest mb-2">/ 14 Days</span>
+                    </div>
+                    <ul class="space-y-4 mb-10 text-sm font-light text-studio-sand/90">
+                        <li class="flex items-start gap-3"><i data-lucide="check" class="w-4 h-4 text-studio-sand mt-0.5 shrink-0"></i> Unlimited classes</li>
+                        <li class="flex items-start gap-3"><i data-lucide="check" class="w-4 h-4 text-studio-sand mt-0.5 shrink-0"></i> Free mat rental</li>
+                        <li class="flex items-start gap-3"><i data-lucide="check" class="w-4 h-4 text-studio-sand mt-0.5 shrink-0"></i> 10% off retail boutique</li>
+                    </ul>
+                    <button class="w-full py-3 bg-white text-studio-olive text-xs font-bold uppercase tracking-widest hover:bg-studio-sand transition-colors">
+                        Purchase Intro
+                    </button>
+                </div>
+
+                <!-- Monthly Unlimited -->
+                <div class="bg-white p-10 shadow-2xl reveal transform md:-translate-y-4 text-studio-charcoal relative">
+                    <div class="absolute top-0 right-0 bg-studio-clay text-white text-[9px] uppercase tracking-[0.2em] font-medium px-3 py-1 m-4">Most Popular</div>
+                    <h4 class="text-xl font-serif mb-2">Unlimited Membership</h4>
+                    <p class="text-sm text-studio-charcoal/60 font-light mb-6 h-10">Make movement a consistent part of your daily ritual.</p>
+                    <div class="flex items-end gap-1 mb-8">
+                        <span class="text-5xl font-serif text-studio-charcoal">$160</span>
+                        <span class="text-studio-charcoal/50 text-xs uppercase tracking-widest mb-2">/ month</span>
+                    </div>
+                    <ul class="space-y-4 mb-10 text-sm font-light text-studio-charcoal/80">
+                        <li class="flex items-start gap-3"><i data-lucide="check" class="w-4 h-4 text-studio-clay mt-0.5 shrink-0"></i> Unlimited classes</li>
+                        <li class="flex items-start gap-3"><i data-lucide="check" class="w-4 h-4 text-studio-clay mt-0.5 shrink-0"></i> 2 free guest passes/month</li>
+                        <li class="flex items-start gap-3"><i data-lucide="check" class="w-4 h-4 text-studio-clay mt-0.5 shrink-0"></i> Priority waitlist</li>
+                        <li class="flex items-start gap-3"><i data-lucide="check" class="w-4 h-4 text-studio-clay mt-0.5 shrink-0"></i> 20% off workshops</li>
+                    </ul>
+                    <button class="w-full py-3 bg-studio-charcoal text-white text-xs font-bold uppercase tracking-widest hover:bg-studio-clay transition-colors">
+                        Become a Member
+                    </button>
+                </div>
+
+                <!-- Class Packs -->
+                <div class="bg-white/10 p-10 border border-white/20 backdrop-blur-sm reveal hover:bg-white/15 transition-colors">
+                    <h4 class="text-xl font-serif mb-2">10-Class Pack</h4>
+                    <p class="text-sm text-studio-sand/70 font-light mb-6 h-10">Flexible access for the busy practitioner. Valid for 6 months.</p>
+                    <div class="flex items-end gap-1 mb-8">
+                        <span class="text-5xl font-serif">$220</span>
+                        <span class="text-studio-sand/70 text-xs uppercase tracking-widest mb-2">/ pack</span>
+                    </div>
+                    <ul class="space-y-4 mb-10 text-sm font-light text-studio-sand/90">
+                        <li class="flex items-start gap-3"><i data-lucide="check" class="w-4 h-4 text-studio-sand mt-0.5 shrink-0"></i> Access to all regular classes</li>
+                        <li class="flex items-start gap-3"><i data-lucide="check" class="w-4 h-4 text-studio-sand mt-0.5 shrink-0"></i> Shareable with family</li>
+                        <li class="flex items-start gap-3"><i data-lucide="check" class="w-4 h-4 text-studio-sand mt-0.5 shrink-0"></i> $22 per class breakdown</li>
+                    </ul>
+                    <button class="w-full py-3 border border-white text-white text-xs font-bold uppercase tracking-widest hover:bg-white hover:text-studio-olive transition-colors">
+                        Buy Class Pack
+                    </button>
+                    <p class="text-[10px] text-center text-studio-sand/60 mt-4 uppercase tracking-widest">Drop-in rate: $28</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="studio" class="bg-studio-sand pt-24 pb-12 px-6 border-t border-studio-stone">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+            
+            <div class="lg:col-span-1">
+                <div class="text-3xl font-serif tracking-widest text-studio-charcoal mb-6">
+                    SOLACE
+                </div>
+                <p class="text-studio-charcoal/60 text-sm font-light mb-8 leading-relaxed">A sanctuary for mindful movement, breath, and community in the heart of the city.</p>
+                <form class="space-y-3">
+                    <p class="text-[10px] uppercase tracking-widest text-studio-charcoal font-medium">Sign up for our newsletter</p>
+                    <div class="flex border-b border-studio-charcoal/30 pb-2 focus-within:border-studio-clay transition-colors">
+                        <input type="email" placeholder="Email Address" class="w-full bg-transparent focus:outline-none text-sm placeholder-studio-charcoal/40 text-studio-charcoal font-light">
+                        <button type="button" class="text-studio-charcoal hover:text-studio-clay transition-colors">
+                            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <div>
+                <h4 class="text-studio-charcoal text-xs uppercase tracking-widest font-medium mb-6">The Studio</h4>
+                <ul class="space-y-3 text-sm font-light text-studio-charcoal/70">
+                    <li class="flex items-start gap-3">
+                        <i data-lucide="map-pin" class="w-4 h-4 text-studio-clay shrink-0"></i>
+                        <span>800 Wellness Ave, Suite B<br>Los Angeles, CA 90028</span>
+                    </li>
+                    <li class="flex items-center gap-3">
+                        <i data-lucide="phone" class="w-4 h-4 text-studio-clay shrink-0"></i>
+                        <span>(555) 123-YOGA</span>
+                    </li>
+                    <li class="flex items-center gap-3">
+                        <i data-lucide="mail" class="w-4 h-4 text-studio-clay shrink-0"></i>
+                        <span>hello@solacestudio.com</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="text-studio-charcoal text-xs uppercase tracking-widest font-medium mb-6">Explore</h4>
+                <ul class="space-y-3 text-sm font-light text-studio-charcoal/70">
+                    <li><a href="#" class="hover:text-studio-clay transition-colors">About Us</a></li>
+                    <li><a href="#" class="hover:text-studio-clay transition-colors">Our Instructors</a></li>
+                    <li><a href="#" class="hover:text-studio-clay transition-colors">Teacher Training</a></li>
+                    <li><a href="#" class="hover:text-studio-clay transition-colors">Workshops & Events</a></li>
+                    <li><a href="#" class="hover:text-studio-clay transition-colors">Private Sessions</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="text-studio-charcoal text-xs uppercase tracking-widest font-medium mb-6">Connect</h4>
+                <div class="flex gap-4 mb-6">
+                    <a href="#" class="w-10 h-10 rounded-full border border-studio-stone flex items-center justify-center text-studio-charcoal/70 hover:bg-studio-clay hover:text-white hover:border-studio-clay transition-all"><i data-lucide="instagram" class="w-4 h-4"></i></a>
+                    <a href="#" class="w-10 h-10 rounded-full border border-studio-stone flex items-center justify-center text-studio-charcoal/70 hover:bg-studio-clay hover:text-white hover:border-studio-clay transition-all"><i data-lucide="facebook" class="w-4 h-4"></i></a>
+                    <a href="#" class="w-10 h-10 rounded-full border border-studio-stone flex items-center justify-center text-studio-charcoal/70 hover:bg-studio-clay hover:text-white hover:border-studio-clay transition-all"><i data-lucide="spotify" class="w-4 h-4"></i></a>
+                </div>
+                <p class="text-xs text-studio-charcoal/50 font-light italic">Follow our Spotify for studio playlists.</p>
+            </div>
+
+        </div>
+
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center text-[10px] text-studio-charcoal/40 uppercase tracking-widest pt-8 border-t border-studio-stone gap-4">
+            <p>&copy; 2026 Solace Movement LLC.</p>
+            <div class="flex gap-6">
+                <a href="#" class="hover:text-studio-charcoal transition-colors">Studio Policies</a>
+                <a href="#" class="hover:text-studio-charcoal transition-colors">Waiver</a>
+                <a href="#" class="hover:text-studio-charcoal transition-colors">Privacy</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+        
+        // Sticky Navbar behavior
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('shadow-sm', 'border-studio-stone/50');
+                navbar.classList.remove('border-transparent');
+            } else {
+                navbar.classList.remove('shadow-sm', 'border-studio-stone/50');
+                navbar.classList.add('border-transparent');
+            }
+        });
+
+        // Scroll Reveal Animation
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+    </script>
+</body>
+</html>

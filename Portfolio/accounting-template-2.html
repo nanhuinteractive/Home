@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LedgerHQ | Modern Accounting for Growing Brands</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#ecfdf5',  // emerald-50
+                            100: '#d1fae5', // emerald-100
+                            500: '#10b981', // emerald-500
+                            600: '#059669', // emerald-600
+                            900: '#064e3b', // emerald-900
+                            dark: '#0f172a', // slate-900
+                            surface: '#f8fafc', // slate-50
+                        }
+                    },
+                    animation: {
+                        'slide-up': 'slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(40px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-15px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body { background-color: #ffffff; color: #0f172a; }
+        
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Dot pattern background */
+        .bg-pattern {
+            background-image: radial-gradient(#cbd5e1 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+    </style>
+</head>
+<body class="font-sans antialiased overflow-x-hidden selection:bg-brand-500 selection:text-white">
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 bg-white/80 backdrop-blur-lg border-b border-transparent py-4">
+        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
+            
+            <!-- Logo -->
+            <div class="text-2xl font-extrabold tracking-tight text-brand-dark flex items-center gap-2">
+                <div class="w-8 h-8 bg-brand-600 rounded-lg flex items-center justify-center text-white">
+                    <i data-lucide="layers" class="w-5 h-5"></i>
+                </div>
+                Ledger<span class="text-brand-600">HQ</span>
+            </div>
+
+            <!-- Desktop Links -->
+            <div class="hidden lg:flex space-x-8 items-center">
+                <a href="#how-it-works" class="text-sm font-bold text-slate-600 hover:text-brand-600 transition-colors">How it Works</a>
+                <a href="#services" class="text-sm font-bold text-slate-600 hover:text-brand-600 transition-colors">Services</a>
+                <a href="#pricing" class="text-sm font-bold text-slate-600 hover:text-brand-600 transition-colors">Pricing</a>
+                <a href="#integrations" class="text-sm font-bold text-slate-600 hover:text-brand-600 transition-colors">Integrations</a>
+            </div>
+
+            <!-- CTA Buttons -->
+            <div class="hidden lg:flex items-center space-x-4">
+                <a href="#" class="text-sm font-bold text-slate-600 hover:text-brand-dark transition-colors">Sign In</a>
+                <a href="#get-started" class="px-6 py-2.5 bg-brand-dark text-white text-sm font-bold rounded-xl hover:bg-brand-600 transition-all shadow-lg shadow-brand-dark/10">
+                    Get Started Free
+                </a>
+            </div>
+
+            <!-- Mobile Menu Toggle -->
+            <button class="lg:hidden text-brand-dark">
+                <i data-lucide="menu" class="w-7 h-7"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative pt-32 pb-20 lg:pt-40 lg:pb-32 px-6 overflow-hidden bg-pattern">
+        <!-- Abstract glowing blobs -->
+        <div class="absolute top-20 right-10 w-[500px] h-[500px] bg-brand-100 rounded-full blur-3xl opacity-60 z-0"></div>
+        <div class="absolute bottom-10 left-10 w-[400px] h-[400px] bg-blue-50 rounded-full blur-3xl opacity-60 z-0"></div>
+        
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center relative z-10">
+            
+            <div class="animate-slide-up text-center lg:text-left">
+                <div class="inline-flex items-center gap-2 px-4 py-2 bg-brand-50 text-brand-600 text-xs font-bold uppercase tracking-widest rounded-full mb-6 border border-brand-100 shadow-sm">
+                    <span class="relative flex h-2 w-2">
+                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-500 opacity-75"></span>
+                      <span class="relative inline-flex rounded-full h-2 w-2 bg-brand-600"></span>
+                    </span>
+                    The New Standard in Bookkeeping
+                </div>
+                
+                <h1 class="text-5xl lg:text-7xl font-extrabold text-brand-dark leading-[1.05] mb-6 tracking-tight">
+                    Your finances, <br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-600 to-teal-500">finally in focus.</span>
+                </h1>
+                
+                <p class="text-lg text-slate-600 mb-10 max-w-lg mx-auto lg:mx-0 leading-relaxed font-medium">
+                    LedgerHQ pairs expert human CPAs with powerful software to automate your bookkeeping, payroll, and taxes. Built for startups and growing brands.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+                    <a href="#get-started" class="w-full sm:w-auto px-8 py-4 bg-brand-600 text-white text-base font-bold rounded-xl hover:bg-brand-500 transition-all shadow-xl shadow-brand-500/20 text-center">
+                        Start Your Free Month
+                    </a>
+                    <a href="#how-it-works" class="w-full sm:w-auto px-8 py-4 bg-white border border-slate-200 text-brand-dark text-base font-bold rounded-xl hover:bg-slate-50 transition-all text-center flex items-center justify-center gap-2">
+                        <i data-lucide="play-circle" class="w-5 h-5 text-brand-600"></i> See How It Works
+                    </a>
+                </div>
+                <p class="text-xs text-slate-500 font-medium mt-4 lg:text-left text-center">No credit card required for consultation. Cancel anytime.</p>
+            </div>
+
+            <!-- SaaS/Tech Dashboard Mockup -->
+            <div class="relative animate-slide-up lg:pl-10 flex justify-center lg:justify-end" style="animation-delay: 0.2s;">
+                <div class="relative w-full max-w-lg bg-white p-2 rounded-3xl shadow-2xl border border-slate-100 animate-float">
+                    <!-- Faux browser bar -->
+                    <div class="flex gap-2 px-4 py-3 bg-slate-50 rounded-t-2xl border-b border-slate-100">
+                        <div class="w-3 h-3 rounded-full bg-red-400"></div>
+                        <div class="w-3 h-3 rounded-full bg-amber-400"></div>
+                        <div class="w-3 h-3 rounded-full bg-green-400"></div>
+                    </div>
+                    <!-- Faux app content -->
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-6">
+                            <div>
+                                <h3 class="font-bold text-slate-800">Net Profit</h3>
+                                <p class="text-3xl font-extrabold text-brand-600 mt-1">$42,500<span class="text-sm text-slate-400 font-medium">.00</span></p>
+                            </div>
+                            <div class="bg-brand-50 text-brand-600 px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1">
+                                <i data-lucide="trending-up" class="w-3 h-3"></i> +14.5%
+                            </div>
+                        </div>
+                        <!-- Faux chart bars -->
+                        <div class="flex items-end gap-3 h-32 mb-6">
+                            <div class="w-full bg-slate-100 rounded-t-sm h-[40%] relative"><div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-1 text-[10px] text-slate-400 font-bold">Jan</div></div>
+                            <div class="w-full bg-slate-100 rounded-t-sm h-[60%] relative"><div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-1 text-[10px] text-slate-400 font-bold">Feb</div></div>
+                            <div class="w-full bg-brand-500 rounded-t-sm h-[85%] relative shadow-[0_0_15px_rgba(16,185,129,0.3)]"><div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-1 text-[10px] text-brand-600 font-bold">Mar</div></div>
+                            <div class="w-full bg-slate-100 rounded-t-sm h-[50%] relative"><div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-1 text-[10px] text-slate-400 font-bold">Apr</div></div>
+                            <div class="w-full bg-slate-100 rounded-t-sm h-[70%] relative"><div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-1 text-[10px] text-slate-400 font-bold">May</div></div>
+                        </div>
+                        <div class="space-y-3">
+                            <div class="flex justify-between items-center p-3 bg-slate-50 rounded-xl">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-8 h-8 rounded-lg bg-blue-100 text-blue-600 flex items-center justify-center"><i data-lucide="file-text" class="w-4 h-4"></i></div>
+                                    <span class="text-sm font-bold text-slate-700">Tax Prep</span>
+                                </div>
+                                <span class="text-xs font-bold text-brand-600 bg-brand-50 px-2 py-1 rounded-md">On Track</span>
+                            </div>
+                            <div class="flex justify-between items-center p-3 bg-slate-50 rounded-xl">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-8 h-8 rounded-lg bg-purple-100 text-purple-600 flex items-center justify-center"><i data-lucide="users" class="w-4 h-4"></i></div>
+                                    <span class="text-sm font-bold text-slate-700">Payroll Run</span>
+                                </div>
+                                <span class="text-xs font-bold text-slate-500">Processed Today</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- Integrations Logos -->
+    <section id="integrations" class="py-10 bg-white border-y border-slate-100 px-6">
+        <div class="max-w-7xl mx-auto text-center reveal">
+            <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-6">Seamlessly connects with your stack</p>
+            <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16 text-lg md:text-xl font-extrabold text-slate-300">
+                <span class="hover:text-slate-800 transition-colors cursor-pointer flex items-center gap-2"><i data-lucide="box" class="w-6 h-6"></i> QuickBooks</span>
+                <span class="hover:text-slate-800 transition-colors cursor-pointer flex items-center gap-2"><i data-lucide="cloud" class="w-6 h-6"></i> Xero</span>
+                <span class="hover:text-slate-800 transition-colors cursor-pointer flex items-center gap-2"><i data-lucide="credit-card" class="w-6 h-6"></i> Stripe</span>
+                <span class="hover:text-slate-800 transition-colors cursor-pointer flex items-center gap-2"><i data-lucide="shopping-cart" class="w-6 h-6"></i> Shopify</span>
+                <span class="hover:text-slate-800 transition-colors cursor-pointer flex items-center gap-2"><i data-lucide="users" class="w-6 h-6"></i> Gusto</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- How it Works (3 Steps) -->
+    <section id="how-it-works" class="py-24 bg-brand-surface px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-brand-600 font-bold uppercase tracking-widest text-xs mb-3">The Process</h2>
+                <h3 class="text-3xl md:text-5xl font-extrabold text-brand-dark mb-4">Accounting on Autopilot.</h3>
+                <p class="text-slate-600 text-lg max-w-2xl mx-auto font-medium">Stop hunting down receipts and reconciling spreadsheets. We handle the heavy lifting so you can focus on growing your business.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
+                <!-- Connecting Line (Desktop only) -->
+                <div class="hidden md:block absolute top-12 left-[15%] right-[15%] h-0.5 bg-slate-200 z-0 border-t-2 border-dashed border-slate-300"></div>
+
+                <!-- Step 1 -->
+                <div class="relative z-10 text-center reveal">
+                    <div class="w-24 h-24 mx-auto bg-white rounded-2xl shadow-xl flex items-center justify-center mb-6 border border-slate-100">
+                        <i data-lucide="plug" class="w-10 h-10 text-brand-600"></i>
+                    </div>
+                    <div class="w-8 h-8 mx-auto bg-brand-dark text-white rounded-full flex items-center justify-center font-bold text-sm -mt-10 mb-6 border-4 border-brand-surface relative z-20">1</div>
+                    <h4 class="text-xl font-bold text-brand-dark mb-3">Connect Your Accounts</h4>
+                    <p class="text-slate-600 font-medium text-sm leading-relaxed">Securely link your bank accounts, credit cards, and payment processors in one click.</p>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="relative z-10 text-center reveal" style="transition-delay: 100ms;">
+                    <div class="w-24 h-24 mx-auto bg-white rounded-2xl shadow-xl flex items-center justify-center mb-6 border border-slate-100">
+                        <i data-lucide="bot" class="w-10 h-10 text-brand-600"></i>
+                    </div>
+                    <div class="w-8 h-8 mx-auto bg-brand-dark text-white rounded-full flex items-center justify-center font-bold text-sm -mt-10 mb-6 border-4 border-brand-surface relative z-20">2</div>
+                    <h4 class="text-xl font-bold text-brand-dark mb-3">We Categorize & Reconcile</h4>
+                    <p class="text-slate-600 font-medium text-sm leading-relaxed">Your dedicated CPA team and our smart software categorize every transaction perfectly.</p>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="relative z-10 text-center reveal" style="transition-delay: 200ms;">
+                    <div class="w-24 h-24 mx-auto bg-white rounded-2xl shadow-xl flex items-center justify-center mb-6 border border-slate-100">
+                        <i data-lucide="pie-chart" class="w-10 h-10 text-brand-600"></i>
+                    </div>
+                    <div class="w-8 h-8 mx-auto bg-brand-dark text-white rounded-full flex items-center justify-center font-bold text-sm -mt-10 mb-6 border-4 border-brand-surface relative z-20">3</div>
+                    <h4 class="text-xl font-bold text-brand-dark mb-3">Receive Monthly Reports</h4>
+                    <p class="text-slate-600 font-medium text-sm leading-relaxed">Get crystal-clear financial statements, burn rate analysis, and tax-ready books every month.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services / Features Grid -->
+    <section id="services" class="py-24 bg-white px-6 border-t border-slate-100">
+        <div class="max-w-7xl mx-auto">
+            <div class="mb-16 reveal">
+                <h2 class="text-brand-600 font-bold uppercase tracking-widest text-xs mb-3">Everything You Need</h2>
+                <h3 class="text-3xl md:text-4xl font-extrabold text-brand-dark mb-6">More than just bookkeeping.</h3>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16">
+                
+                <div class="flex gap-6 reveal">
+                    <div class="w-14 h-14 shrink-0 bg-brand-50 rounded-xl flex items-center justify-center">
+                        <i data-lucide="book-open" class="w-7 h-7 text-brand-600"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-xl font-bold text-brand-dark mb-2">Expert Bookkeeping</h4>
+                        <p class="text-slate-600 text-sm leading-relaxed font-medium">Daily transaction categorization and monthly reconciliation so your books are always accurate and up-to-date.</p>
+                    </div>
+                </div>
+
+                <div class="flex gap-6 reveal" style="transition-delay: 100ms;">
+                    <div class="w-14 h-14 shrink-0 bg-brand-50 rounded-xl flex items-center justify-center">
+                        <i data-lucide="file-check-2" class="w-7 h-7 text-brand-600"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-xl font-bold text-brand-dark mb-2">Tax Prep & Filing</h4>
+                        <p class="text-slate-600 text-sm leading-relaxed font-medium">We handle your federal and state tax filings, maximizing your deductions and ensuring total compliance.</p>
+                    </div>
+                </div>
+
+                <div class="flex gap-6 reveal">
+                    <div class="w-14 h-14 shrink-0 bg-brand-50 rounded-xl flex items-center justify-center">
+                        <i data-lucide="users" class="w-7 h-7 text-brand-600"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-xl font-bold text-brand-dark mb-2">Payroll Management</h4>
+                        <p class="text-slate-600 text-sm leading-relaxed font-medium">Seamless payroll processing, contractor 1099s, and automated tax withholding for your entire team.</p>
+                    </div>
+                </div>
+
+                <div class="flex gap-6 reveal" style="transition-delay: 100ms;">
+                    <div class="w-14 h-14 shrink-0 bg-brand-50 rounded-xl flex items-center justify-center">
+                        <i data-lucide="line-chart" class="w-7 h-7 text-brand-600"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-xl font-bold text-brand-dark mb-2">Fractional CFO</h4>
+                        <p class="text-slate-600 text-sm leading-relaxed font-medium">Advanced cash flow forecasting, budgeting, and strategic financial advice to help you scale safely.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-24 bg-brand-dark px-6 relative overflow-hidden">
+        <!-- Abstract dark background elements -->
+        <div class="absolute top-0 right-0 w-[800px] h-[800px] bg-brand-900 rounded-full blur-[120px] opacity-50 -translate-y-1/2 translate-x-1/3"></div>
+
+        <div class="max-w-7xl mx-auto relative z-10">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-brand-500 font-bold uppercase tracking-widest text-xs mb-3">Transparent Pricing</h2>
+                <h3 class="text-3xl md:text-5xl font-extrabold text-white mb-4">Simple plans for growing teams.</h3>
+                <p class="text-slate-400 text-lg font-medium">Flat monthly fees. No hourly billing surprises.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center max-w-6xl mx-auto">
+                
+                <!-- Starter Tier -->
+                <div class="bg-slate-800/50 backdrop-blur-md border border-slate-700 rounded-3xl p-8 reveal">
+                    <h4 class="text-xl font-bold text-white mb-2">Starter</h4>
+                    <p class="text-slate-400 text-sm font-medium mb-6">Perfect for early-stage startups and solopreneurs.</p>
+                    <div class="flex items-end gap-1 mb-8">
+                        <span class="text-4xl font-extrabold text-white">$299</span>
+                        <span class="text-slate-400 text-sm font-bold mb-1">/mo</span>
+                    </div>
+                    <ul class="space-y-4 mb-8 text-sm font-medium text-slate-300">
+                        <li class="flex items-center gap-3"><i data-lucide="check" class="w-5 h-5 text-brand-500"></i> Up to $25k in monthly expenses</li>
+                        <li class="flex items-center gap-3"><i data-lucide="check" class="w-5 h-5 text-brand-500"></i> Monthly bookkeeping</li>
+                        <li class="flex items-center gap-3"><i data-lucide="check" class="w-5 h-5 text-brand-500"></i> Dedicated account manager</li>
+                        <li class="flex items-center gap-3 text-slate-500"><i data-lucide="minus" class="w-5 h-5"></i> Year-end tax filing (+$500)</li>
+                    </ul>
+                    <a href="#get-started" class="block w-full py-3 bg-slate-700 text-white font-bold rounded-xl hover:bg-slate-600 transition-colors text-center">Get Started</a>
+                </div>
+
+                <!-- Growth Tier (Highlighted) -->
+                <div class="bg-white rounded-3xl p-8 shadow-2xl reveal transform md:-translate-y-4 relative">
+                    <div class="absolute top-0 right-0 bg-brand-600 text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-bl-xl rounded-tr-3xl">Most Popular</div>
+                    
+                    <h4 class="text-xl font-bold text-brand-dark mb-2">Growth</h4>
+                    <p class="text-slate-500 text-sm font-medium mb-6">For established businesses looking to scale operations.</p>
+                    <div class="flex items-end gap-1 mb-8">
+                        <span class="text-5xl font-extrabold text-brand-dark">$499</span>
+                        <span class="text-slate-500 text-sm font-bold mb-2">/mo</span>
+                    </div>
+                    <ul class="space-y-4 mb-8 text-sm font-bold text-slate-700">
+                        <li class="flex items-center gap-3"><i data-lucide="check" class="w-5 h-5 text-brand-600"></i> Up to $100k in monthly expenses</li>
+                        <li class="flex items-center gap-3"><i data-lucide="check" class="w-5 h-5 text-brand-600"></i> Bi-weekly bookkeeping</li>
+                        <li class="flex items-center gap-3"><i data-lucide="check" class="w-5 h-5 text-brand-600"></i> Dedicated CPA access</li>
+                        <li class="flex items-center gap-3"><i data-lucide="check" class="w-5 h-5 text-brand-600"></i> Corporate Tax Filing included</li>
+                        <li class="flex items-center gap-3"><i data-lucide="check" class="w-5 h-5 text-brand-600"></i> Custom chart of accounts</li>
+                    </ul>
+                    <a href="#get-started" class="block w-full py-4 bg-brand-600 text-white font-bold rounded-xl hover:bg-brand-500 transition-colors shadow-lg shadow-brand-500/20 text-center">Start Free Trial</a>
+                </div>
+
+                <!-- Scale Tier -->
+                <div class="bg-slate-800/50 backdrop-blur-md border border-slate-700 rounded-3xl p-8 reveal">
+                    <h4 class="text-xl font-bold text-white mb-2">Scale</h4>
+                    <p class="text-slate-400 text-sm font-medium mb-6">Complete financial back-office and CFO advisory.</p>
+                    <div class="flex items-end gap-1 mb-8">
+                        <span class="text-4xl font-extrabold text-white">Custom</span>
+                    </div>
+                    <ul class="space-y-4 mb-8 text-sm font-medium text-slate-300">
+                        <li class="flex items-center gap-3"><i data-lucide="check" class="w-5 h-5 text-brand-500"></i> Unlimited monthly expenses</li>
+                        <li class="flex items-center gap-3"><i data-lucide="check" class="w-5 h-5 text-brand-500"></i> Weekly reconciliation</li>
+                        <li class="flex items-center gap-3"><i data-lucide="check" class="w-5 h-5 text-brand-500"></i> Fractional CFO sessions</li>
+                        <li class="flex items-center gap-3"><i data-lucide="check" class="w-5 h-5 text-brand-500"></i> Advanced cash flow forecasting</li>
+                    </ul>
+                    <a href="#get-started" class="block w-full py-3 bg-slate-700 text-white font-bold rounded-xl hover:bg-slate-600 transition-colors text-center">Talk to Sales</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Lead Capture / Onboarding -->
+    <section id="get-started" class="py-24 bg-brand-surface px-6">
+        <div class="max-w-4xl mx-auto bg-white rounded-3xl shadow-xl p-8 md:p-12 reveal border border-slate-100 relative overflow-hidden">
+            
+            <!-- Corner accent -->
+            <div class="absolute top-0 right-0 w-32 h-32 bg-brand-50 rounded-bl-full z-0"></div>
+
+            <div class="text-center mb-10 relative z-10">
+                <h2 class="text-3xl font-extrabold text-brand-dark mb-4">Get your free financial health check.</h2>
+                <p class="text-slate-600 font-medium max-w-xl mx-auto">
+                    Let's see where your books stand. Fill out the quick form below and a CPA will be in touch within 24 hours to schedule an introductory call.
+                </p>
+            </div>
+
+            <form class="space-y-6 relative z-10">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-sm font-bold text-slate-700 mb-2">First Name</label>
+                        <input type="text" placeholder="Jane" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition-all font-medium" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold text-slate-700 mb-2">Last Name</label>
+                        <input type="text" placeholder="Doe" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition-all font-medium" required>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-sm font-bold text-slate-700 mb-2">Work Email</label>
+                        <input type="email" placeholder="jane@company.com" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition-all font-medium" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold text-slate-700 mb-2">Company Name</label>
+                        <input type="text" placeholder="Acme Corp" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition-all font-medium" required>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-bold text-slate-700 mb-2">Estimated Monthly Expenses</label>
+                    <select class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition-all font-medium text-slate-700 appearance-none cursor-pointer">
+                        <option value="" disabled selected>Select an option...</option>
+                        <option>Under $10,000</option>
+                        <option>$10,000 - $50,000</option>
+                        <option>$50,000 - $250,000</option>
+                        <option>Over $250,000</option>
+                    </select>
+                </div>
+
+                <button type="button" class="w-full py-4 bg-brand-dark text-white font-bold rounded-xl hover:bg-brand-600 transition-all shadow-lg mt-4 text-base">
+                    Request Health Check
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white pt-16 pb-8 px-6 border-t border-slate-100">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-16">
+            
+            <div class="lg:col-span-2">
+                <div class="text-2xl font-extrabold tracking-tight text-brand-dark flex items-center gap-2 mb-6">
+                    <div class="w-8 h-8 bg-brand-600 rounded-lg flex items-center justify-center text-white">
+                        <i data-lucide="layers" class="w-5 h-5"></i>
+                    </div>
+                    Ledger<span class="text-brand-600">HQ</span>
+                </div>
+                <p class="text-sm text-slate-500 mb-6 max-w-sm font-medium leading-relaxed">
+                    Modern accounting and bookkeeping for fast-growing businesses. We combine powerful software with expert CPAs to give you total financial clarity.
+                </p>
+                <div class="flex gap-4">
+                    <a href="#" class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-500 hover:bg-brand-500 hover:text-white transition-colors"><i data-lucide="twitter" class="w-4 h-4"></i></a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-500 hover:bg-brand-500 hover:text-white transition-colors"><i data-lucide="linkedin" class="w-4 h-4"></i></a>
+                </div>
+            </div>
+
+            <div>
+                <h4 class="text-brand-dark font-bold mb-4 text-sm">Product</h4>
+                <ul class="space-y-3 text-sm font-medium text-slate-500">
+                    <li><a href="#" class="hover:text-brand-600 transition-colors">Features</a></li>
+                    <li><a href="#" class="hover:text-brand-600 transition-colors">Pricing</a></li>
+                    <li><a href="#" class="hover:text-brand-600 transition-colors">Integrations</a></li>
+                    <li><a href="#" class="hover:text-brand-600 transition-colors">Tax Calendar</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="text-brand-dark font-bold mb-4 text-sm">Company</h4>
+                <ul class="space-y-3 text-sm font-medium text-slate-500">
+                    <li><a href="#" class="hover:text-brand-600 transition-colors">About Us</a></li>
+                    <li><a href="#" class="hover:text-brand-600 transition-colors">Careers</a></li>
+                    <li><a href="#" class="hover:text-brand-600 transition-colors">Contact</a></li>
+                    <li><a href="#" class="hover:text-brand-600 transition-colors">Partner Program</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="text-brand-dark font-bold mb-4 text-sm">Resources</h4>
+                <ul class="space-y-3 text-sm font-medium text-slate-500">
+                    <li><a href="#" class="hover:text-brand-600 transition-colors">Blog</a></li>
+                    <li><a href="#" class="hover:text-brand-600 transition-colors">Startup Guides</a></li>
+                    <li><a href="#" class="hover:text-brand-600 transition-colors">Help Center</a></li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="max-w-7xl mx-auto border-t border-slate-100 pt-8 flex flex-col lg:flex-row justify-between items-center gap-4 text-sm font-medium text-slate-400">
+            <p>&copy; 2026 LedgerHQ Inc. All rights reserved.</p>
+            <div class="flex gap-6">
+                <a href="#" class="hover:text-slate-600 transition-colors">Privacy Policy</a>
+                <a href="#" class="hover:text-slate-600 transition-colors">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+        
+        // Sticky Navbar shadow on scroll
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 10) {
+                navbar.classList.add('shadow-sm', 'border-slate-200');
+                navbar.classList.remove('border-transparent');
+            } else {
+                navbar.classList.remove('shadow-sm', 'border-slate-200');
+                navbar.classList.add('border-transparent');
+            }
+        });
+
+        // Scroll Reveal Animation
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+    </script>
+</body>
+</html>

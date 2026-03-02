@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vita | Concierge Primary Care</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Manrope', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        vita: {
+                            dark: '#1c2421',      // Deep forest/charcoal
+                            sage: '#738c82',      // Muted sage green
+                            sageLight: '#eef2f0', // Very light sage tint
+                            cream: '#fcfbf9',     // Warm off-white
+                            muted: '#5e6a65',     // Grayish green for text
+                        }
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 1.2s ease-out forwards',
+                        'slide-up': 'slideUp 1s ease-out forwards',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body { background-color: #fcfbf9; }
+        
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Custom minimal scrollbar */
+        ::-webkit-scrollbar { width: 5px; }
+        ::-webkit-scrollbar-track { background: #fcfbf9; }
+        ::-webkit-scrollbar-thumb { background: #738c82; border-radius: 10px; }
+    </style>
+</head>
+<body class="text-vita-dark font-sans antialiased overflow-x-hidden selection:bg-vita-sage selection:text-white">
+
+    <!-- Minimalist Navigation -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 bg-vita-cream/90 backdrop-blur-md py-6 border-b border-transparent">
+        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
+            <!-- Logo -->
+            <div class="text-2xl font-serif tracking-widest text-vita-dark">
+                VITA.
+            </div>
+
+            <!-- Desktop Links -->
+            <div class="hidden md:flex space-x-10 items-center">
+                <a href="#approach" class="text-xs uppercase tracking-[0.15em] text-vita-muted hover:text-vita-dark transition-colors font-semibold">Our Approach</a>
+                <a href="#benefits" class="text-xs uppercase tracking-[0.15em] text-vita-muted hover:text-vita-dark transition-colors font-semibold">Membership</a>
+                <a href="#physician" class="text-xs uppercase tracking-[0.15em] text-vita-muted hover:text-vita-dark transition-colors font-semibold">The Physician</a>
+            </div>
+
+            <!-- CTA Button -->
+            <div class="hidden md:block">
+                <a href="#apply" class="px-7 py-3 bg-vita-dark text-white text-xs uppercase tracking-[0.15em] hover:bg-vita-sage transition-all duration-300 shadow-lg shadow-vita-dark/10 rounded-sm">
+                    Apply for Membership
+                </a>
+            </div>
+
+            <!-- Mobile Menu Toggle -->
+            <button class="md:hidden text-vita-dark">
+                <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center pt-24 pb-12 overflow-hidden px-6">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center w-full relative z-10">
+            
+            <div class="animate-slide-up order-2 lg:order-1">
+                <div class="inline-flex items-center gap-2 px-3 py-1.5 bg-vita-sageLight text-vita-sage text-xs font-bold uppercase tracking-widest rounded-sm mb-8 border border-vita-sage/20">
+                    Concierge Primary Care
+                </div>
+                
+                <h1 class="text-5xl md:text-6xl lg:text-7xl font-serif leading-[1.1] mb-6 text-vita-dark">
+                    Healthcare,<br>
+                    <span class="italic text-vita-sage">unhurried.</span>
+                </h1>
+                
+                <p class="text-vita-muted text-lg mb-10 leading-relaxed max-w-md">
+                    Direct access to your private physician, zero wait times, and a proactive approach to your longevity and wellness. Welcome to medicine the way it should be.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row gap-5">
+                    <a href="#apply" class="px-8 py-4 bg-vita-dark text-white text-xs font-bold uppercase tracking-widest text-center rounded-sm hover:bg-vita-sage transition-all shadow-xl shadow-vita-sage/20">
+                        Inquire About Membership
+                    </a>
+                    <a href="#approach" class="px-8 py-4 border border-vita-dark text-vita-dark text-xs font-bold uppercase tracking-widest text-center rounded-sm hover:bg-vita-dark hover:text-white transition-all">
+                        Discover The Vita Way
+                    </a>
+                </div>
+            </div>
+
+            <!-- Elegant Hero Image -->
+            <div class="relative animate-fade-in order-1 lg:order-2 h-[500px] lg:h-[700px]">
+                <!-- Aesthetic arch shape -->
+                <div class="absolute inset-0 bg-vita-sageLight rounded-t-full transform scale-95 translate-y-8"></div>
+                <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Minimalist Medical Office" class="relative z-10 w-full h-full object-cover rounded-t-full shadow-2xl border-8 border-vita-cream">
+                
+                <!-- Floating Info Card -->
+                <div class="absolute bottom-12 -left-8 bg-white p-6 rounded-sm shadow-xl z-20 border border-gray-100 hidden md:block">
+                    <p class="text-xs uppercase tracking-widest text-vita-muted mb-1">Current Status</p>
+                    <p class="font-bold text-vita-dark flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-emerald-500"></span> Accepting 10 New Patients
+                    </p>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- The Problem vs The Solution -->
+    <section id="approach" class="py-24 bg-vita-sageLight px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-3xl md:text-5xl font-serif text-vita-dark mb-6">A Paradigm Shift in Medicine</h2>
+                <p class="text-vita-muted max-w-2xl mx-auto text-lg leading-relaxed">
+                    The traditional healthcare system is designed for volume, not value. We have completely restructured the clinic model to put you back at the center of your care.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-16">
+                <!-- Standard Care -->
+                <div class="bg-white p-10 md:p-12 rounded-sm shadow-sm reveal border border-red-50">
+                    <h3 class="text-xs uppercase tracking-widest text-red-400 font-bold mb-6">Standard Primary Care</h3>
+                    <ul class="space-y-6">
+                        <li class="flex items-start gap-4 text-vita-muted">
+                            <i data-lucide="x" class="w-5 h-5 text-red-300 shrink-0 mt-0.5"></i>
+                            <p><strong>15-Minute Visits:</strong> Rushed appointments focused on treating symptoms rather than root causes.</p>
+                        </li>
+                        <li class="flex items-start gap-4 text-vita-muted">
+                            <i data-lucide="x" class="w-5 h-5 text-red-300 shrink-0 mt-0.5"></i>
+                            <p><strong>Weeks to be Seen:</strong> Long wait times to schedule appointments when you're actually sick.</p>
+                        </li>
+                        <li class="flex items-start gap-4 text-vita-muted">
+                            <i data-lucide="x" class="w-5 h-5 text-red-300 shrink-0 mt-0.5"></i>
+                            <p><strong>Gatekeepers:</strong> Navigating receptionists and automated phone trees to reach your doctor.</p>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Concierge Care -->
+                <div class="bg-vita-dark p-10 md:p-12 rounded-sm shadow-2xl reveal text-white relative overflow-hidden transform md:-translate-y-4">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-vita-sage rounded-full blur-3xl opacity-20"></div>
+                    <h3 class="text-xs uppercase tracking-widest text-vita-sage font-bold mb-6">The Vita Experience</h3>
+                    <ul class="space-y-6 relative z-10">
+                        <li class="flex items-start gap-4 text-gray-300">
+                            <i data-lucide="check" class="w-5 h-5 text-vita-sage shrink-0 mt-0.5"></i>
+                            <p><strong class="text-white">60-Minute Visits:</strong> Deep, comprehensive evaluations focusing on longevity and preventative health.</p>
+                        </li>
+                        <li class="flex items-start gap-4 text-gray-300">
+                            <i data-lucide="check" class="w-5 h-5 text-vita-sage shrink-0 mt-0.5"></i>
+                            <p><strong class="text-white">Same-Day Appointments:</strong> Guaranteed same-day or next-day visits when urgent needs arise.</p>
+                        </li>
+                        <li class="flex items-start gap-4 text-gray-300">
+                            <i data-lucide="check" class="w-5 h-5 text-vita-sage shrink-0 mt-0.5"></i>
+                            <p><strong class="text-white">Direct Access:</strong> Your physician's personal cell phone number for texts, calls, and telehealth.</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Membership Benefits / Features -->
+    <section id="benefits" class="py-24 bg-vita-cream px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16 reveal">
+                <div class="max-w-2xl">
+                    <h2 class="text-xs font-bold text-vita-sage uppercase tracking-widest mb-3">Comprehensive Wellness</h2>
+                    <h3 class="text-4xl font-serif text-vita-dark">Included in Your Membership</h3>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-y-12 gap-x-8">
+                <!-- Feature 1 -->
+                <div class="reveal group">
+                    <div class="w-12 h-12 border border-vita-sage/30 rounded-full flex items-center justify-center mb-6 text-vita-sage group-hover:bg-vita-sage group-hover:text-white transition-colors duration-300">
+                        <i data-lucide="activity" class="w-5 h-5"></i>
+                    </div>
+                    <h4 class="text-xl font-serif text-vita-dark mb-3">Advanced Biomarker Testing</h4>
+                    <p class="text-vita-muted text-sm leading-relaxed">Comprehensive annual blood panels going far beyond standard physicals, analyzing hormones, metabolic health, and inflammation markers.</p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="reveal group" style="transition-delay: 100ms;">
+                    <div class="w-12 h-12 border border-vita-sage/30 rounded-full flex items-center justify-center mb-6 text-vita-sage group-hover:bg-vita-sage group-hover:text-white transition-colors duration-300">
+                        <i data-lucide="smartphone" class="w-5 h-5"></i>
+                    </div>
+                    <h4 class="text-xl font-serif text-vita-dark mb-3">24/7 Telehealth Access</h4>
+                    <p class="text-vita-muted text-sm leading-relaxed">Skip the waiting room. Text or video call your doctor directly while traveling, after hours, or from the comfort of your home.</p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="reveal group" style="transition-delay: 200ms;">
+                    <div class="w-12 h-12 border border-vita-sage/30 rounded-full flex items-center justify-center mb-6 text-vita-sage group-hover:bg-vita-sage group-hover:text-white transition-colors duration-300">
+                        <i data-lucide="users" class="w-5 h-5"></i>
+                    </div>
+                    <h4 class="text-xl font-serif text-vita-dark mb-3">Specialist Coordination</h4>
+                    <p class="text-vita-muted text-sm leading-relaxed">When you need a specialist, we bypass the runaround. We expedite referrals to the city's top experts and coordinate your care directly.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Physician Bio -->
+    <section id="physician" class="py-24 bg-white px-6 border-y border-gray-100">
+        <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center reveal">
+            
+            <div class="relative">
+                <div class="absolute -inset-4 bg-vita-sageLight rounded-sm transform -rotate-2"></div>
+                <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Dr. Sarah Jenkins" class="relative rounded-sm shadow-xl w-full h-[500px] object-cover grayscale-[20%]">
+            </div>
+
+            <div>
+                <h2 class="text-xs font-bold text-vita-sage uppercase tracking-widest mb-3">Lead Physician & Founder</h2>
+                <h3 class="text-4xl font-serif text-vita-dark mb-6">Dr. Eleanor Vance, MD</h3>
+                
+                <div class="space-y-4 text-vita-muted leading-relaxed mb-8">
+                    <p>Board-certified in Internal Medicine and Lifestyle Medicine, Dr. Vance founded Vita to practice medicine the way it was intended—with empathy, time, and extreme attention to detail.</p>
+                    <p>After a decade in a high-volume hospital system, she realized that true health optimization cannot happen in 15-minute increments. By limiting her practice to just 300 patients (compared to the standard 2,500), she provides highly tailored, proactive care.</p>
+                </div>
+                
+                <ul class="space-y-3 mb-8 text-sm font-semibold text-vita-dark">
+                    <li class="flex items-center gap-3"><i data-lucide="graduation-cap" class="w-5 h-5 text-vita-sage"></i> Johns Hopkins University School of Medicine</li>
+                    <li class="flex items-center gap-3"><i data-lucide="award" class="w-5 h-5 text-vita-sage"></i> Board Certified Internal Medicine</li>
+                    <li class="flex items-center gap-3"><i data-lucide="heart" class="w-5 h-5 text-vita-sage"></i> Fellowship in Longevity & Precision Medicine</li>
+                </ul>
+
+                <img src="https://upload.wikimedia.org/wikipedia/commons/1/1d/Signature_placeholder.svg" alt="Signature" class="h-12 opacity-40">
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Application / Contact Form Section -->
+    <section id="apply" class="py-24 bg-vita-dark text-white px-6 relative overflow-hidden">
+        <!-- Aesthetic background -->
+        <div class="absolute top-0 right-0 w-1/2 h-full bg-vita-sage/10 transform skew-x-12 translate-x-1/4"></div>
+        
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-5 gap-16 relative z-10 reveal">
+            
+            <div class="lg:col-span-2 flex flex-col justify-center">
+                <h2 class="text-xs font-bold text-vita-sage uppercase tracking-widest mb-3">Limited Availability</h2>
+                <h3 class="text-4xl font-serif mb-6">Apply for Membership</h3>
+                <p class="text-gray-400 mb-8 leading-relaxed">To ensure unparalleled access and care, our patient panel is strictly capped. Please fill out the inquiry form to schedule a complimentary discovery call with Dr. Vance to ensure we are the right fit for your health goals.</p>
+                
+                <div class="bg-white/5 border border-white/10 p-6 rounded-sm backdrop-blur-sm">
+                    <h4 class="font-serif text-xl mb-2">Annual Membership</h4>
+                    <p class="text-3xl font-light mb-1">$3,600<span class="text-sm text-gray-400"> / year</span></p>
+                    <p class="text-xs text-vita-sage tracking-wider uppercase mb-4">Or $300 / month</p>
+                    <p class="text-xs text-gray-400">Membership fees are often HSA/FSA eligible. We do not bill insurance for the membership fee, but your insurance can still be used for labs, imaging, and specialists.</p>
+                </div>
+            </div>
+
+            <!-- Application Form -->
+            <div class="bg-white text-vita-dark p-10 lg:p-12 lg:col-span-3 rounded-sm shadow-2xl">
+                <h4 class="text-2xl font-serif mb-6 border-b border-gray-100 pb-4">Schedule a Discovery Call</h4>
+                
+                <form class="space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-vita-muted mb-2">First Name</label>
+                            <input type="text" class="w-full px-0 py-2 border-b border-gray-300 bg-transparent focus:outline-none focus:border-vita-sage transition-colors text-sm" required>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-vita-muted mb-2">Last Name</label>
+                            <input type="text" class="w-full px-0 py-2 border-b border-gray-300 bg-transparent focus:outline-none focus:border-vita-sage transition-colors text-sm" required>
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-vita-muted mb-2">Phone Number</label>
+                            <input type="tel" class="w-full px-0 py-2 border-b border-gray-300 bg-transparent focus:outline-none focus:border-vita-sage transition-colors text-sm" required>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-vita-muted mb-2">Email Address</label>
+                            <input type="email" class="w-full px-0 py-2 border-b border-gray-300 bg-transparent focus:outline-none focus:border-vita-sage transition-colors text-sm" required>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold uppercase tracking-wider text-vita-muted mb-2">Primary Health Goals (Optional)</label>
+                        <input type="text" placeholder="e.g., Longevity, Chronic Disease Management, Convenience" class="w-full px-0 py-2 border-b border-gray-300 bg-transparent focus:outline-none focus:border-vita-sage transition-colors text-sm placeholder-gray-300">
+                    </div>
+
+                    <button type="button" class="w-full mt-8 py-4 bg-vita-dark text-white text-xs uppercase tracking-widest font-bold hover:bg-vita-sage transition-colors duration-300 rounded-sm">
+                        Request Discovery Call
+                    </button>
+                    <p class="text-center text-[10px] text-gray-500 mt-4 uppercase tracking-wider">No commitment required for the initial consultation.</p>
+                </form>
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white pt-20 pb-10 px-6 border-t border-gray-200">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center text-sm mb-12">
+            <div class="text-3xl font-serif tracking-widest text-vita-dark mb-6 md:mb-0">
+                VITA.
+            </div>
+            <div class="flex gap-8 uppercase tracking-widest text-xs font-bold text-vita-muted">
+                <a href="#approach" class="hover:text-vita-dark transition-colors">Approach</a>
+                <a href="#benefits" class="hover:text-vita-dark transition-colors">Membership</a>
+                <a href="#" class="hover:text-vita-dark transition-colors">FAQ</a>
+                <a href="#" class="hover:text-vita-dark transition-colors">Member Login</a>
+            </div>
+        </div>
+        
+        <div class="max-w-7xl mx-auto border-t border-gray-100 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-400 leading-relaxed">
+            <div class="text-center md:text-left">
+                <p>100 Executive Drive, Suite 400 | Seattle, WA 98101</p>
+                <p class="mt-1">&copy; 2026 Vita Concierge Medicine. All rights reserved.</p>
+            </div>
+            <div class="flex items-center gap-6">
+                <a href="#" class="hover:text-vita-dark transition-colors">Privacy Policy</a>
+                <a href="#" class="hover:text-vita-dark transition-colors">HIPAA Notice</a>
+                <a href="#" class="hover:text-vita-dark transition-colors">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+        
+        // Sticky Navbar background color toggle on scroll
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('shadow-sm');
+                navbar.classList.remove('border-transparent');
+                navbar.classList.add('border-gray-200');
+            } else {
+                navbar.classList.remove('shadow-sm');
+                navbar.classList.add('border-transparent');
+                navbar.classList.remove('border-gray-200');
+            }
+        });
+
+        // Scroll Reveal Animation
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+    </script>
+</body>
+</html>

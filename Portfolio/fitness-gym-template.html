@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IRONCLAD | Elite Strength & Conditioning</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Oswald', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            volt: '#ccff00',      // High-energy neon/volt green
+                            voltHover: '#a3cc00', 
+                            dark: '#09090b',      // Zinc 950 (almost black)
+                            surface: '#18181b',   // Zinc 900
+                            muted: '#a1a1aa',     // Zinc 400
+                        }
+                    },
+                    animation: {
+                        'slide-up': 'slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+                    },
+                    keyframes: {
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(40px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body { background-color: #09090b; }
+        
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Skewed elements for that aggressive sports look */
+        .skew-box {
+            transform: skew(-10deg);
+        }
+        .unskew-content {
+            transform: skew(10deg);
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #09090b; }
+        ::-webkit-scrollbar-thumb { background: #3f3f46; }
+        ::-webkit-scrollbar-thumb:hover { background: #ccff00; }
+        
+        /* Gritty texture overlay for images */
+        .gritty-overlay {
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+        }
+    </style>
+</head>
+<body class="text-white font-sans antialiased overflow-x-hidden selection:bg-brand-volt selection:text-brand-dark">
+
+    <!-- Promo Banner -->
+    <div class="bg-brand-volt text-brand-dark py-2 px-6 text-center text-xs md:text-sm font-bold uppercase tracking-widest">
+        <span class="inline-block animate-pulse mr-2">⚡</span> Join this month and get your first 30 days free. <a href="#join" class="underline ml-1">Claim Offer</a>
+    </div>
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 bg-brand-dark/95 backdrop-blur-md border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            
+            <!-- Logo -->
+            <div class="text-3xl font-display font-bold tracking-widest text-white italic">
+                IRON<span class="text-brand-volt">CLAD</span>
+            </div>
+
+            <!-- Desktop Links -->
+            <div class="hidden md:flex space-x-8 items-center">
+                <a href="#facility" class="text-sm font-bold uppercase tracking-wider text-white hover:text-brand-volt transition-colors">Facility</a>
+                <a href="#classes" class="text-sm font-bold uppercase tracking-wider text-white hover:text-brand-volt transition-colors">Classes</a>
+                <a href="#memberships" class="text-sm font-bold uppercase tracking-wider text-white hover:text-brand-volt transition-colors">Memberships</a>
+                <a href="#trainers" class="text-sm font-bold uppercase tracking-wider text-white hover:text-brand-volt transition-colors">Coaches</a>
+            </div>
+
+            <!-- CTA -->
+            <div class="hidden md:block">
+                <a href="#free-pass" class="skew-box inline-block px-8 py-3 bg-brand-volt text-brand-dark font-display font-bold text-lg uppercase tracking-wider hover:bg-white transition-colors duration-300">
+                    <span class="inline-block unskew-content">Get Free Pass</span>
+                </a>
+            </div>
+
+            <!-- Mobile Menu Toggle -->
+            <button class="md:hidden text-brand-volt">
+                <i data-lucide="menu" class="w-8 h-8"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-[90vh] flex items-center pt-20 overflow-hidden bg-brand-dark">
+        <!-- Video/Image Background Placeholder -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80" alt="Gym Motivation" class="w-full h-full object-cover opacity-40 mix-blend-luminosity">
+            <div class="absolute inset-0 bg-gradient-to-r from-brand-dark via-brand-dark/80 to-transparent"></div>
+            <div class="absolute inset-0 gritty-overlay"></div>
+        </div>
+        
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 relative z-10 w-full">
+            
+            <div class="animate-slide-up pt-12 md:pt-0">
+                <div class="inline-flex items-center gap-2 px-3 py-1 bg-white/10 text-brand-volt text-xs font-bold uppercase tracking-widest mb-6 backdrop-blur-sm border border-white/10">
+                    <i data-lucide="map-pin" class="w-4 h-4"></i> 24/7 Access in Downtown
+                </div>
+                
+                <h1 class="text-6xl md:text-8xl lg:text-9xl font-display font-bold uppercase leading-[0.9] mb-6 tracking-tight text-white drop-shadow-2xl">
+                    Forged in <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-volt to-green-400">Iron.</span>
+                </h1>
+                
+                <p class="text-brand-muted text-lg md:text-xl font-medium mb-10 max-w-md leading-relaxed">
+                    More than a gym. We are an elite training facility dedicated to strength, conditioning, and unparalleled results. No excuses.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#free-pass" class="skew-box w-full sm:w-auto px-10 py-5 bg-brand-volt text-brand-dark font-display font-bold text-xl uppercase tracking-wider text-center hover:bg-white transition-colors">
+                        <span class="inline-block unskew-content">Claim 1-Day Pass</span>
+                    </a>
+                    <a href="#memberships" class="skew-box w-full sm:w-auto px-10 py-5 bg-transparent border-2 border-white text-white font-display font-bold text-xl uppercase tracking-wider text-center hover:bg-white/10 transition-colors">
+                        <span class="inline-block unskew-content">View Memberships</span>
+                    </a>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- Why Us / Equipment Marquee -->
+    <section class="py-12 bg-brand-volt text-brand-dark overflow-hidden border-y border-brand-volt">
+        <!-- CSS Marquee simulation -->
+        <div class="flex whitespace-nowrap opacity-90 font-display font-bold text-4xl uppercase tracking-widest overflow-hidden">
+            <div class="animate-[marquee_20s_linear_infinite] flex items-center gap-8">
+                <span>Rogue Fitness Equipment</span> <i data-lucide="zap" class="w-8 h-8 fill-current"></i>
+                <span>Eleiko Barbells</span> <i data-lucide="zap" class="w-8 h-8 fill-current"></i>
+                <span>70 Yards Turf</span> <i data-lucide="zap" class="w-8 h-8 fill-current"></i>
+                <span>Olympic Platforms</span> <i data-lucide="zap" class="w-8 h-8 fill-current"></i>
+                <span>Recovery Sauna</span> <i data-lucide="zap" class="w-8 h-8 fill-current"></i>
+                <span>Rogue Fitness Equipment</span> <i data-lucide="zap" class="w-8 h-8 fill-current"></i>
+            </div>
+        </div>
+    </section>
+    
+    <style>
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+    </style>
+
+    <!-- Programs / Classes -->
+    <section id="classes" class="py-24 bg-brand-dark px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16 reveal">
+                <div>
+                    <h2 class="text-brand-volt font-bold uppercase tracking-widest text-sm mb-2">Our Programs</h2>
+                    <h3 class="text-5xl font-display font-bold uppercase tracking-tight">Train With Purpose</h3>
+                </div>
+                <a href="#" class="mt-4 md:mt-0 text-sm font-bold uppercase tracking-wider text-white hover:text-brand-volt transition-colors border-b border-brand-volt pb-1">
+                    View Full Schedule
+                </a>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Class 1 -->
+                <div class="group relative h-[400px] overflow-hidden reveal bg-brand-surface">
+                    <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Strength" class="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:opacity-30 group-hover:scale-105 transition-all duration-700 mix-blend-luminosity">
+                    <div class="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/50 to-transparent"></div>
+                    
+                    <div class="absolute bottom-0 left-0 w-full p-8 transform transition-transform duration-500 group-hover:-translate-y-4">
+                        <div class="bg-brand-volt text-brand-dark text-[10px] font-bold uppercase tracking-widest px-2 py-1 inline-block mb-4">Strength</div>
+                        <h4 class="text-3xl font-display font-bold uppercase tracking-tight mb-2">Powerlifting</h4>
+                        <p class="text-brand-muted text-sm mb-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">Master the big three: Squat, Bench, Deadlift. Focus on absolute strength and technique.</p>
+                        <span class="text-white font-bold uppercase tracking-wider text-sm flex items-center gap-2">Explore <i data-lucide="arrow-right" class="w-4 h-4 text-brand-volt"></i></span>
+                    </div>
+                </div>
+
+                <!-- Class 2 -->
+                <div class="group relative h-[400px] overflow-hidden reveal bg-brand-surface" style="transition-delay: 100ms;">
+                    <img src="https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="HIIT" class="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:opacity-30 group-hover:scale-105 transition-all duration-700 mix-blend-luminosity">
+                    <div class="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/50 to-transparent"></div>
+                    
+                    <div class="absolute bottom-0 left-0 w-full p-8 transform transition-transform duration-500 group-hover:-translate-y-4">
+                        <div class="bg-brand-volt text-brand-dark text-[10px] font-bold uppercase tracking-widest px-2 py-1 inline-block mb-4">Conditioning</div>
+                        <h4 class="text-3xl font-display font-bold uppercase tracking-tight mb-2">Metcon X</h4>
+                        <p class="text-brand-muted text-sm mb-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">High-intensity interval training designed to burn fat and push your cardiovascular limits.</p>
+                        <span class="text-white font-bold uppercase tracking-wider text-sm flex items-center gap-2">Explore <i data-lucide="arrow-right" class="w-4 h-4 text-brand-volt"></i></span>
+                    </div>
+                </div>
+
+                <!-- Class 3 -->
+                <div class="group relative h-[400px] overflow-hidden reveal bg-brand-surface" style="transition-delay: 200ms;">
+                    <img src="https://images.unsplash.com/photo-1599058917212-d750089bc07e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Recovery" class="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:opacity-30 group-hover:scale-105 transition-all duration-700 mix-blend-luminosity">
+                    <div class="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/50 to-transparent"></div>
+                    
+                    <div class="absolute bottom-0 left-0 w-full p-8 transform transition-transform duration-500 group-hover:-translate-y-4">
+                        <div class="bg-brand-volt text-brand-dark text-[10px] font-bold uppercase tracking-widest px-2 py-1 inline-block mb-4">Recovery</div>
+                        <h4 class="text-3xl font-display font-bold uppercase tracking-tight mb-2">Mobility & Flow</h4>
+                        <p class="text-brand-muted text-sm mb-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">Active recovery sessions focusing on joint health, flexibility, and injury prevention.</p>
+                        <span class="text-white font-bold uppercase tracking-wider text-sm flex items-center gap-2">Explore <i data-lucide="arrow-right" class="w-4 h-4 text-brand-volt"></i></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing / Memberships -->
+    <section id="memberships" class="py-24 bg-brand-surface px-6 border-y border-white/5">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-brand-volt font-bold uppercase tracking-widest text-sm mb-2">Join The Ranks</h2>
+                <h3 class="text-5xl font-display font-bold uppercase tracking-tight">Memberships</h3>
+                <p class="text-brand-muted mt-4 font-medium">No hidden fees. No long-term contracts. Just pure iron.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto items-center">
+                
+                <!-- Open Gym Tier -->
+                <div class="bg-brand-dark p-8 border border-white/10 reveal hover:border-brand-volt/50 transition-colors">
+                    <h4 class="text-2xl font-display font-bold uppercase tracking-wider mb-2 text-white">Open Gym</h4>
+                    <div class="flex items-end gap-1 mb-6">
+                        <span class="text-5xl font-display font-bold text-white">$65</span>
+                        <span class="text-brand-muted font-bold mb-1">/mo</span>
+                    </div>
+                    <p class="text-brand-muted text-sm mb-8">For the experienced lifter who knows what they are doing.</p>
+                    
+                    <ul class="space-y-4 mb-8 text-sm font-medium text-gray-300">
+                        <li class="flex items-center gap-3"><i data-lucide="check" class="w-5 h-5 text-brand-volt"></i> 24/7 Facility Access</li>
+                        <li class="flex items-center gap-3"><i data-lucide="check" class="w-5 h-5 text-brand-volt"></i> Use of all equipment</li>
+                        <li class="flex items-center gap-3"><i data-lucide="check" class="w-5 h-5 text-brand-volt"></i> Sauna & Cold Plunge access</li>
+                        <li class="flex items-center gap-3 text-brand-muted"><i data-lucide="x" class="w-5 h-5"></i> No Group Classes</li>
+                    </ul>
+                    <a href="#join" class="skew-box block w-full py-4 border border-white/20 text-white font-display font-bold text-lg uppercase tracking-wider text-center hover:bg-white hover:text-brand-dark transition-colors">
+                        <span class="inline-block unskew-content">Select Plan</span>
+                    </a>
+                </div>
+
+                <!-- Unlimited / Popular Tier -->
+                <div class="bg-brand-volt p-8 reveal transform md:-translate-y-4 shadow-2xl relative">
+                    <div class="absolute top-0 right-0 bg-brand-dark text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1 transform translate-x-2 -translate-y-2">Most Popular</div>
+                    
+                    <h4 class="text-2xl font-display font-bold uppercase tracking-wider mb-2 text-brand-dark">All Access</h4>
+                    <div class="flex items-end gap-1 mb-6">
+                        <span class="text-6xl font-display font-bold text-brand-dark">$145</span>
+                        <span class="text-brand-dark/70 font-bold mb-2">/mo</span>
+                    </div>
+                    <p class="text-brand-dark/80 text-sm mb-8 font-bold">Everything you need to reach peak physical condition.</p>
+                    
+                    <ul class="space-y-4 mb-8 text-sm font-bold text-brand-dark">
+                        <li class="flex items-center gap-3"><i data-lucide="check" class="w-5 h-5 text-brand-dark"></i> 24/7 Facility Access</li>
+                        <li class="flex items-center gap-3"><i data-lucide="check" class="w-5 h-5 text-brand-dark"></i> Unlimited Group Classes</li>
+                        <li class="flex items-center gap-3"><i data-lucide="check" class="w-5 h-5 text-brand-dark"></i> Sauna & Cold Plunge access</li>
+                        <li class="flex items-center gap-3"><i data-lucide="check" class="w-5 h-5 text-brand-dark"></i> Monthly InBody Scan</li>
+                    </ul>
+                    <a href="#join" class="skew-box block w-full py-5 bg-brand-dark text-white font-display font-bold text-lg uppercase tracking-wider text-center hover:bg-brand-surface transition-colors shadow-xl">
+                        <span class="inline-block unskew-content">Select Plan</span>
+                    </a>
+                </div>
+
+                <!-- Personal Training Tier -->
+                <div class="bg-brand-dark p-8 border border-white/10 reveal hover:border-brand-volt/50 transition-colors">
+                    <h4 class="text-2xl font-display font-bold uppercase tracking-wider mb-2 text-white">Elite Coaching</h4>
+                    <div class="flex items-end gap-1 mb-6">
+                        <span class="text-5xl font-display font-bold text-white">$399</span>
+                        <span class="text-brand-muted font-bold mb-1">/mo</span>
+                    </div>
+                    <p class="text-brand-muted text-sm mb-8">Personalized programming and 1-on-1 coaching.</p>
+                    
+                    <ul class="space-y-4 mb-8 text-sm font-medium text-gray-300">
+                        <li class="flex items-center gap-3"><i data-lucide="check" class="w-5 h-5 text-brand-volt"></i> All Access Membership included</li>
+                        <li class="flex items-center gap-3"><i data-lucide="check" class="w-5 h-5 text-brand-volt"></i> 4x 1-on-1 Sessions per month</li>
+                        <li class="flex items-center gap-3"><i data-lucide="check" class="w-5 h-5 text-brand-volt"></i> Custom Nutrition Plan</li>
+                        <li class="flex items-center gap-3"><i data-lucide="check" class="w-5 h-5 text-brand-volt"></i> Weekly Check-ins</li>
+                    </ul>
+                    <a href="#join" class="skew-box block w-full py-4 border border-white/20 text-white font-display font-bold text-lg uppercase tracking-wider text-center hover:bg-white hover:text-brand-dark transition-colors">
+                        <span class="inline-block unskew-content">Select Plan</span>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Lead Capture Form (Free Pass) -->
+    <section id="free-pass" class="py-24 bg-brand-dark px-6 relative">
+        <!-- Grunge Background Graphic -->
+        <div class="absolute inset-0 opacity-20 pointer-events-none">
+            <div class="w-full h-full" style="background-image: repeating-linear-gradient(45deg, #09090b 25%, transparent 25%, transparent 75%, #09090b 75%, #09090b), repeating-linear-gradient(45deg, #09090b 25%, #18181b 25%, #18181b 75%, #09090b 75%, #09090b); background-position: 0 0, 10px 10px; background-size: 20px 20px;"></div>
+        </div>
+
+        <div class="max-w-5xl mx-auto bg-brand-surface border border-white/10 p-8 md:p-12 lg:p-16 grid grid-cols-1 lg:grid-cols-2 gap-12 relative z-10 reveal shadow-2xl">
+            
+            <div>
+                <h3 class="text-4xl md:text-5xl font-display font-bold uppercase tracking-tight text-white mb-4">Earn Your Place.</h3>
+                <h4 class="text-xl font-bold text-brand-volt mb-6">Claim your free 1-Day Trial Pass.</h4>
+                <p class="text-brand-muted mb-8 leading-relaxed">
+                    Come see the facility, hit a workout, and feel the energy. Fill out the form below and your digital pass will be instantly emailed to you.
+                </p>
+                
+                <div class="flex items-center gap-4 text-white font-bold mb-4">
+                    <i data-lucide="check-circle-2" class="w-6 h-6 text-brand-volt"></i> Local residents only
+                </div>
+                <div class="flex items-center gap-4 text-white font-bold">
+                    <i data-lucide="check-circle-2" class="w-6 h-6 text-brand-volt"></i> Must be 18+ with valid ID
+                </div>
+            </div>
+
+            <!-- The Form -->
+            <div class="bg-brand-dark p-8 border border-white/5">
+                <form class="space-y-5">
+                    <div>
+                        <input type="text" placeholder="FULL NAME" class="w-full bg-brand-surface border-b border-white/20 py-3 px-4 text-white placeholder-brand-muted focus:outline-none focus:border-brand-volt focus:bg-white/5 transition-all font-bold uppercase tracking-wider text-sm" required>
+                    </div>
+                    <div>
+                        <input type="email" placeholder="EMAIL ADDRESS" class="w-full bg-brand-surface border-b border-white/20 py-3 px-4 text-white placeholder-brand-muted focus:outline-none focus:border-brand-volt focus:bg-white/5 transition-all font-bold uppercase tracking-wider text-sm" required>
+                    </div>
+                    <div>
+                        <input type="tel" placeholder="PHONE NUMBER" class="w-full bg-brand-surface border-b border-white/20 py-3 px-4 text-white placeholder-brand-muted focus:outline-none focus:border-brand-volt focus:bg-white/5 transition-all font-bold uppercase tracking-wider text-sm" required>
+                    </div>
+                    <div>
+                        <select class="w-full bg-brand-surface border-b border-white/20 py-3 px-4 text-white focus:outline-none focus:border-brand-volt transition-all font-bold uppercase tracking-wider text-sm appearance-none cursor-pointer">
+                            <option value="" disabled selected class="text-brand-muted">PRIMARY GOAL</option>
+                            <option>Build Muscle / Strength</option>
+                            <option>Lose Weight / Conditioning</option>
+                            <option>General Fitness</option>
+                            <option>Powerlifting Prep</option>
+                        </select>
+                    </div>
+                    <button type="button" class="skew-box w-full mt-6 py-5 bg-brand-volt text-brand-dark font-display font-bold text-xl uppercase tracking-wider hover:bg-white transition-colors">
+                        <span class="inline-block unskew-content">Send My Pass</span>
+                    </button>
+                </form>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-brand-dark pt-16 pb-8 px-6 border-t border-white/10">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+            
+            <div class="lg:col-span-1">
+                <div class="text-3xl font-display font-bold tracking-widest text-white italic mb-4">
+                    IRON<span class="text-brand-volt">CLAD</span>
+                </div>
+                <p class="text-brand-muted text-sm font-medium mb-6">Elite strength and conditioning facility for those who refuse to be average.</p>
+                <div class="flex gap-4">
+                    <a href="#" class="w-10 h-10 bg-brand-surface flex items-center justify-center text-white hover:bg-brand-volt hover:text-brand-dark transition-colors"><i data-lucide="instagram" class="w-5 h-5"></i></a>
+                    <a href="#" class="w-10 h-10 bg-brand-surface flex items-center justify-center text-white hover:bg-brand-volt hover:text-brand-dark transition-colors"><i data-lucide="youtube" class="w-5 h-5"></i></a>
+                    <a href="#" class="w-10 h-10 bg-brand-surface flex items-center justify-center text-white hover:bg-brand-volt hover:text-brand-dark transition-colors"><i data-lucide="facebook" class="w-5 h-5"></i></a>
+                </div>
+            </div>
+
+            <div>
+                <h4 class="text-white font-display font-bold uppercase tracking-widest text-lg mb-4">Facility</h4>
+                <ul class="space-y-2 text-brand-muted font-bold text-sm uppercase tracking-wider">
+                    <li class="flex items-start gap-2"><i data-lucide="map-pin" class="w-4 h-4 text-brand-volt shrink-0 mt-0.5"></i> 500 Industrial Way<br>Warehouse District</li>
+                    <li class="flex items-center gap-2 mt-4"><i data-lucide="phone" class="w-4 h-4 text-brand-volt shrink-0"></i> (555) 000-IRON</li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="text-white font-display font-bold uppercase tracking-widest text-lg mb-4">Hours</h4>
+                <ul class="space-y-2 text-brand-muted font-bold text-sm uppercase tracking-wider">
+                    <li class="flex justify-between"><span>Members:</span><span class="text-brand-volt">24/7 Access</span></li>
+                    <li class="flex justify-between mt-2 border-t border-white/10 pt-2"><span>Staffed Hours:</span></li>
+                    <li class="flex justify-between"><span>Mon - Fri</span><span>6AM - 8PM</span></li>
+                    <li class="flex justify-between"><span>Sat - Sun</span><span>8AM - 4PM</span></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="text-white font-display font-bold uppercase tracking-widest text-lg mb-4">Links</h4>
+                <ul class="space-y-2 text-brand-muted font-bold text-sm uppercase tracking-wider">
+                    <li><a href="#" class="hover:text-brand-volt transition-colors">Class Schedule</a></li>
+                    <li><a href="#" class="hover:text-brand-volt transition-colors">Coaches</a></li>
+                    <li><a href="#" class="hover:text-brand-volt transition-colors">Member Login</a></li>
+                    <li><a href="#" class="hover:text-brand-volt transition-colors">Careers</a></li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="max-w-7xl mx-auto border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-bold text-brand-muted uppercase tracking-wider">
+            <p>&copy; 2026 Ironclad Barbell Club.</p>
+            <div class="flex gap-6">
+                <a href="#" class="hover:text-white transition-colors">Rules & Policies</a>
+                <a href="#" class="hover:text-white transition-colors">Liability Waiver</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+        
+        // Sticky Navbar background color toggle
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('bg-brand-dark/95', 'shadow-lg');
+                navbar.classList.remove('bg-brand-dark/0');
+            } else {
+                navbar.classList.remove('shadow-lg');
+            }
+        });
+
+        // Scroll Reveal Animation
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+    </script>
+</body>
+</html>
