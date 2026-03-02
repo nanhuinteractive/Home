@@ -79,6 +79,7 @@
             align-items: center;
             gap: 6px;
             border-bottom: 1px solid #333;
+            transition: background-color 0.3s ease;
         }
         .browser-dot { width: 10px; height: 10px; border-radius: 50%; }
         .browser-url {
@@ -90,6 +91,7 @@
             color: #666;
             font-family: monospace;
             margin-left: 8px;
+            transition: all 0.3s ease;
         }
 
         /* Filter active state */
@@ -102,17 +104,34 @@
         /* Portfolio Item Transition */
         .portfolio-item {
             transition: all 0.4s ease-in-out;
+            display: block;
         }
         .portfolio-item.hide {
             display: none;
             opacity: 0;
             transform: scale(0.95);
         }
+        
+        .portfolio-item:hover .browser-bar {
+            background: #222;
+        }
+        .portfolio-item:hover .browser-url {
+            color: #fbbf24;
+        }
+
+        /* Preview Iframe transitions */
+        #preview-iframe {
+            transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .device-btn.active {
+            background-color: #27272a; /* zinc-800 */
+            color: white;
+        }
     </style>
 </head>
 <body class="bg-black text-zinc-200 font-sans antialiased overflow-x-hidden">
 
-    <nav id="navbar" class="fixed w-full z-50 transition-all duration-500 bg-zinc-950/90 backdrop-blur-md py-4 border-b border-white/5">
+    <nav id="navbar" class="fixed w-full z-40 transition-all duration-500 bg-zinc-950/90 backdrop-blur-md py-4 border-b border-white/5">
         <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
             <a href="index.html" class="text-2xl font-serif tracking-wider text-white hover:text-amber-100 transition-colors">
                 NANHU<span class="text-zinc-500">.</span>
@@ -142,7 +161,7 @@
             <span class="text-xs font-bold text-amber-200/80 uppercase tracking-widest border border-amber-900/30 px-4 py-2 rounded-full mb-6 inline-block">Design Gallery</span>
             <h1 class="text-5xl md:text-7xl font-serif text-white mt-6 mb-6">Selected Works</h1>
             <p class="text-zinc-400 text-lg max-w-2xl mx-auto font-light">
-                Explore our digital masterpieces. Clean, fast, and conversion-focused websites crafted specifically for leading US industries.
+                Explore our digital masterpieces. Clean, fast, and conversion-focused websites crafted specifically for leading US industries. Click any project to view the live layout.
             </p>
         </div>
     </section>
@@ -164,255 +183,260 @@
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="portfolio-grid">
 
-                <div class="portfolio-item reveal group" data-category="dental">
-                    <div class="overflow-hidden border border-white/5 group-hover:border-white/20 transition-all duration-500">
-                        <div class="browser-bar"><div class="browser-dot bg-red-500"></div><div class="browser-dot bg-yellow-500"></div><div class="browser-dot bg-green-500"></div><div class="browser-url">scottsdalesmiles.com</div></div>
-                        <div class="bg-gradient-to-br from-blue-950 to-zinc-950 p-8 h-56 flex flex-col justify-between relative overflow-hidden">
-                            <div class="absolute top-0 right-0 w-32 h-32 bg-blue-500/10 rounded-full blur-2xl"></div>
-                            <div>
-                                <div class="text-xs text-blue-300/60 uppercase tracking-widest mb-2">Dental Clinic</div>
-                                <div class="text-2xl font-serif text-white">Scottsdale Smiles</div>
+                <a href="https://nanhuinteractive.github.io/Home/Portfolio/dental-template.html" onclick="openPreview(event, this.href, 'Lumina Dental')" class="portfolio-item reveal group cursor-pointer block" data-category="dental">
+                    <div class="overflow-hidden border border-white/5 group-hover:border-white/20 transition-all duration-500 shadow-lg group-hover:shadow-sky-900/20">
+                        <div class="browser-bar"><div class="browser-dot bg-red-500"></div><div class="browser-dot bg-yellow-500"></div><div class="browser-dot bg-green-500"></div><div class="browser-url">luminadental.com</div></div>
+                        <div class="bg-gradient-to-br from-sky-950 to-slate-950 p-8 h-56 flex flex-col justify-between relative overflow-hidden">
+                            <div class="absolute top-0 right-0 w-32 h-32 bg-sky-500/20 rounded-full blur-2xl"></div>
+                            <div class="relative z-10">
+                                <div class="text-xs text-sky-300/80 uppercase tracking-widest mb-2 flex items-center gap-2">Premium Cosmetic <i data-lucide="play-circle" class="w-3 h-3"></i></div>
+                                <div class="text-2xl font-serif text-white">Lumina Dental</div>
                             </div>
-                            <div class="flex gap-2">
-                                <span class="text-[10px] bg-blue-900/40 text-blue-300 px-2 py-1 rounded">Booking System</span>
+                            <div class="flex gap-2 relative z-10">
+                                <span class="text-[10px] bg-sky-900/40 border border-sky-500/30 text-sky-200 px-2 py-1 rounded">Live Demo</span>
                             </div>
                         </div>
                     </div>
-                </div>
+                </a>
 
-                <div class="portfolio-item reveal group" data-category="dental">
-                    <div class="overflow-hidden border border-white/5 group-hover:border-white/20 transition-all duration-500">
-                        <div class="browser-bar"><div class="browser-dot bg-red-500"></div><div class="browser-dot bg-yellow-500"></div><div class="browser-dot bg-green-500"></div><div class="browser-url">apexdentalcare.com</div></div>
-                        <div class="bg-gradient-to-br from-cyan-950 to-zinc-950 p-8 h-56 flex flex-col justify-between relative overflow-hidden">
+                <a href="https://nanhuinteractive.github.io/Home/Portfolio/dental-template-2.html" onclick="openPreview(event, this.href, 'Mint & Co. Dentistry')" class="portfolio-item reveal group cursor-pointer block" data-category="dental">
+                    <div class="overflow-hidden border border-white/5 group-hover:border-white/20 transition-all duration-500 shadow-lg group-hover:shadow-cyan-900/20">
+                        <div class="browser-bar"><div class="browser-dot bg-red-500"></div><div class="browser-dot bg-yellow-500"></div><div class="browser-dot bg-green-500"></div><div class="browser-url">mintcodental.com</div></div>
+                        <div class="bg-gradient-to-tl from-cyan-950 to-zinc-950 p-8 h-56 flex flex-col justify-between relative overflow-hidden">
                             <div class="absolute bottom-0 left-0 w-40 h-40 bg-cyan-500/10 rounded-full blur-2xl"></div>
-                            <div>
-                                <div class="text-xs text-cyan-300/60 uppercase tracking-widest mb-2">Cosmetic Dentistry</div>
-                                <div class="text-2xl font-serif text-white">Apex Dental Care</div>
+                            <div class="relative z-10">
+                                <div class="text-xs text-cyan-300/60 uppercase tracking-widest mb-2 flex items-center gap-2">Modern Dentistry <i data-lucide="play-circle" class="w-3 h-3"></i></div>
+                                <div class="text-2xl font-serif text-white">Mint & Co.</div>
                             </div>
-                            <div class="flex gap-2">
-                                <span class="text-[10px] bg-cyan-900/40 text-cyan-300 px-2 py-1 rounded">Lead Generation</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="portfolio-item reveal group" data-category="law">
-                    <div class="overflow-hidden border border-white/5 group-hover:border-white/20 transition-all duration-500">
-                        <div class="browser-bar"><div class="browser-dot bg-red-500"></div><div class="browser-dot bg-yellow-500"></div><div class="browser-dot bg-green-500"></div><div class="browser-url">nashlegalgrouppc.com</div></div>
-                        <div class="bg-gradient-to-br from-zinc-900 to-zinc-950 p-8 h-56 flex flex-col justify-between relative overflow-hidden border-b border-amber-900/20">
-                            <div class="absolute top-0 right-0 w-32 h-32 bg-amber-500/5 rounded-full blur-2xl"></div>
-                            <div>
-                                <div class="text-xs text-amber-300/60 uppercase tracking-widest mb-2">Corporate Law</div>
-                                <div class="text-2xl font-serif text-white">Nash Legal Group</div>
-                            </div>
-                            <div class="flex gap-2">
-                                <span class="text-[10px] bg-amber-900/30 text-amber-300 px-2 py-1 rounded">Consultation Form</span>
+                            <div class="flex gap-2 relative z-10">
+                                <span class="text-[10px] bg-cyan-900/40 border border-cyan-500/30 text-cyan-200 px-2 py-1 rounded">Live Demo</span>
                             </div>
                         </div>
                     </div>
-                </div>
+                </a>
 
-                <div class="portfolio-item reveal group" data-category="law">
-                    <div class="overflow-hidden border border-white/5 group-hover:border-white/20 transition-all duration-500">
-                        <div class="browser-bar"><div class="browser-dot bg-red-500"></div><div class="browser-dot bg-yellow-500"></div><div class="browser-dot bg-green-500"></div><div class="browser-url">justicepartners.com</div></div>
-                        <div class="bg-gradient-to-tl from-slate-900 to-zinc-950 p-8 h-56 flex flex-col justify-between relative overflow-hidden">
-                            <div class="absolute bottom-0 right-0 w-32 h-32 bg-slate-500/10 rounded-full blur-2xl"></div>
-                            <div>
-                                <div class="text-xs text-slate-400/60 uppercase tracking-widest mb-2">Personal Injury</div>
-                                <div class="text-2xl font-serif text-white">Justice Partners</div>
+                <a href="https://nanhuinteractive.github.io/Home/Portfolio/law-template.html" onclick="openPreview(event, this.href, 'Nash & Associates')" class="portfolio-item reveal group cursor-pointer block" data-category="law">
+                    <div class="overflow-hidden border border-white/5 group-hover:border-white/20 transition-all duration-500 shadow-lg group-hover:shadow-amber-900/20">
+                        <div class="browser-bar"><div class="browser-dot bg-red-500"></div><div class="browser-dot bg-yellow-500"></div><div class="browser-dot bg-green-500"></div><div class="browser-url">nashlegalgroup.com</div></div>
+                        <div class="bg-gradient-to-br from-slate-900 to-zinc-950 p-8 h-56 flex flex-col justify-between relative overflow-hidden border-b-2 border-amber-600/50">
+                            <div class="absolute top-0 right-0 w-40 h-40 bg-amber-600/10 rounded-full blur-2xl"></div>
+                            <div class="relative z-10">
+                                <div class="text-xs text-amber-500/80 uppercase tracking-widest mb-2 flex items-center gap-2">Premier Legal <i data-lucide="play-circle" class="w-3 h-3"></i></div>
+                                <div class="text-2xl font-serif text-white">Nash & Associates</div>
                             </div>
-                            <div class="flex gap-2">
-                                <span class="text-[10px] bg-slate-800 text-slate-300 px-2 py-1 rounded">SEO Optimized</span>
+                            <div class="flex gap-2 relative z-10">
+                                <span class="text-[10px] bg-amber-900/40 border border-amber-500/30 text-amber-200 px-2 py-1 rounded">Live Demo</span>
                             </div>
                         </div>
                     </div>
-                </div>
+                </a>
 
-                <div class="portfolio-item reveal group" data-category="realestate">
-                    <div class="overflow-hidden border border-white/5 group-hover:border-white/20 transition-all duration-500">
-                        <div class="browser-bar"><div class="browser-dot bg-red-500"></div><div class="browser-dot bg-yellow-500"></div><div class="browser-dot bg-green-500"></div><div class="browser-url">horizonrealty.com</div></div>
-                        <div class="bg-gradient-to-br from-emerald-950 to-zinc-950 p-8 h-56 flex flex-col justify-between relative overflow-hidden">
-                            <div class="absolute top-1/2 left-1/2 w-40 h-40 bg-emerald-500/10 rounded-full blur-3xl"></div>
-                            <div>
-                                <div class="text-xs text-emerald-300/60 uppercase tracking-widest mb-2">Real Estate Agency</div>
-                                <div class="text-2xl font-serif text-white">Horizon Realty</div>
+                <a href="https://nanhuinteractive.github.io/Home/Portfolio/law-template-2.html" onclick="openPreview(event, this.href, 'Sterling & Vance')" class="portfolio-item reveal group cursor-pointer block" data-category="law">
+                    <div class="overflow-hidden border border-white/5 group-hover:border-white/20 transition-all duration-500 shadow-lg group-hover:shadow-indigo-900/20">
+                        <div class="browser-bar"><div class="browser-dot bg-red-500"></div><div class="browser-dot bg-yellow-500"></div><div class="browser-dot bg-green-500"></div><div class="browser-url">sterlingvance.com</div></div>
+                        <div class="bg-gradient-to-r from-slate-900 to-indigo-950/40 p-8 h-56 flex flex-col justify-between relative overflow-hidden">
+                            <div class="absolute bottom-0 right-0 w-32 h-32 bg-indigo-500/10 rounded-full blur-2xl"></div>
+                            <div class="relative z-10">
+                                <div class="text-xs text-indigo-400/60 uppercase tracking-widest mb-2 flex items-center gap-2">Personal Injury <i data-lucide="play-circle" class="w-3 h-3"></i></div>
+                                <div class="text-2xl font-serif text-white">Sterling & Vance</div>
                             </div>
-                            <div class="flex gap-2">
-                                <span class="text-[10px] bg-emerald-900/40 text-emerald-300 px-2 py-1 rounded">Property Listings</span>
+                            <div class="flex gap-2 relative z-10">
+                                <span class="text-[10px] bg-indigo-900/40 border border-indigo-500/30 text-indigo-200 px-2 py-1 rounded">Live Demo</span>
                             </div>
                         </div>
                     </div>
-                </div>
+                </a>
 
-                <div class="portfolio-item reveal group" data-category="realestate">
-                    <div class="overflow-hidden border border-white/5 group-hover:border-white/20 transition-all duration-500">
-                        <div class="browser-bar"><div class="browser-dot bg-red-500"></div><div class="browser-dot bg-yellow-500"></div><div class="browser-dot bg-green-500"></div><div class="browser-url">luxeestates.com</div></div>
-                        <div class="bg-gradient-to-bl from-zinc-900 via-zinc-950 to-teal-950 p-8 h-56 flex flex-col justify-between relative overflow-hidden">
-                            <div>
-                                <div class="text-xs text-teal-300/60 uppercase tracking-widest mb-2">Luxury Brokers</div>
-                                <div class="text-2xl font-serif text-white">Luxe Estates</div>
-                            </div>
-                            <div class="flex gap-2">
-                                <span class="text-[10px] bg-teal-900/40 text-teal-300 px-2 py-1 rounded">Virtual Tours UI</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="portfolio-item reveal group" data-category="spa">
-                    <div class="overflow-hidden border border-white/5 group-hover:border-white/20 transition-all duration-500">
-                        <div class="browser-bar"><div class="browser-dot bg-red-500"></div><div class="browser-dot bg-yellow-500"></div><div class="browser-dot bg-green-500"></div><div class="browser-url">brightspa-phoenix.com</div></div>
-                        <div class="bg-gradient-to-br from-rose-950/40 to-zinc-950 p-8 h-56 flex flex-col justify-between relative overflow-hidden">
-                            <div class="absolute top-0 right-0 w-32 h-32 bg-rose-500/10 rounded-full blur-2xl"></div>
-                            <div>
-                                <div class="text-xs text-rose-300/60 uppercase tracking-widest mb-2">Wellness & Spa</div>
-                                <div class="text-2xl font-serif text-white">Bright Spa</div>
-                            </div>
-                            <div class="flex gap-2">
-                                <span class="text-[10px] bg-rose-900/30 text-rose-300 px-2 py-1 rounded">Service Menu</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="portfolio-item reveal group" data-category="spa">
-                    <div class="overflow-hidden border border-white/5 group-hover:border-white/20 transition-all duration-500">
-                        <div class="browser-bar"><div class="browser-dot bg-red-500"></div><div class="browser-dot bg-yellow-500"></div><div class="browser-dot bg-green-500"></div><div class="browser-url">aurasalon.com</div></div>
-                        <div class="bg-gradient-to-r from-zinc-950 to-fuchsia-950/30 p-8 h-56 flex flex-col justify-between relative overflow-hidden">
-                            <div>
-                                <div class="text-xs text-fuchsia-300/60 uppercase tracking-widest mb-2">Hair Salon</div>
-                                <div class="text-2xl font-serif text-white">Aura Salon</div>
-                            </div>
-                            <div class="flex gap-2">
-                                <span class="text-[10px] bg-fuchsia-900/30 text-fuchsia-300 px-2 py-1 rounded">Instagram Feed</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="portfolio-item reveal group" data-category="medical">
-                    <div class="overflow-hidden border border-white/5 group-hover:border-white/20 transition-all duration-500">
-                        <div class="browser-bar"><div class="browser-dot bg-red-500"></div><div class="browser-dot bg-yellow-500"></div><div class="browser-dot bg-green-500"></div><div class="browser-url">summithealth.org</div></div>
-                        <div class="bg-gradient-to-br from-indigo-950 to-zinc-950 p-8 h-56 flex flex-col justify-between relative overflow-hidden">
-                            <div class="absolute bottom-0 right-0 w-40 h-40 bg-indigo-500/10 rounded-full blur-3xl"></div>
-                            <div>
-                                <div class="text-xs text-indigo-300/60 uppercase tracking-widest mb-2">Family Practice</div>
-                                <div class="text-2xl font-serif text-white">Summit Health</div>
-                            </div>
-                            <div class="flex gap-2">
-                                <span class="text-[10px] bg-indigo-900/40 text-indigo-300 px-2 py-1 rounded">Patient Portal</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="portfolio-item reveal group" data-category="medical">
-                    <div class="overflow-hidden border border-white/5 group-hover:border-white/20 transition-all duration-500">
-                        <div class="browser-bar"><div class="browser-dot bg-red-500"></div><div class="browser-dot bg-yellow-500"></div><div class="browser-dot bg-green-500"></div><div class="browser-url">carefirstclinic.com</div></div>
-                        <div class="bg-gradient-to-tr from-sky-950 to-zinc-950 p-8 h-56 flex flex-col justify-between relative overflow-hidden">
-                            <div>
-                                <div class="text-xs text-sky-300/60 uppercase tracking-widest mb-2">Urgent Care</div>
-                                <div class="text-2xl font-serif text-white">CareFirst Clinic</div>
-                            </div>
-                            <div class="flex gap-2">
-                                <span class="text-[10px] bg-sky-900/40 text-sky-300 px-2 py-1 rounded">Wait Time UI</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="portfolio-item reveal group" data-category="restaurant">
-                    <div class="overflow-hidden border border-white/5 group-hover:border-white/20 transition-all duration-500">
-                        <div class="browser-bar"><div class="browser-dot bg-red-500"></div><div class="browser-dot bg-yellow-500"></div><div class="browser-dot bg-green-500"></div><div class="browser-url">therustictable.com</div></div>
-                        <div class="bg-gradient-to-br from-orange-950/40 to-zinc-950 p-8 h-56 flex flex-col justify-between relative overflow-hidden">
-                            <div class="absolute top-0 right-0 w-32 h-32 bg-orange-500/10 rounded-full blur-2xl"></div>
-                            <div>
-                                <div class="text-xs text-orange-300/60 uppercase tracking-widest mb-2">Fine Dining</div>
-                                <div class="text-2xl font-serif text-white">The Rustic Table</div>
-                            </div>
-                            <div class="flex gap-2">
-                                <span class="text-[10px] bg-orange-900/30 text-orange-300 px-2 py-1 rounded">Digital Menu</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="portfolio-item reveal group" data-category="restaurant">
-                    <div class="overflow-hidden border border-white/5 group-hover:border-white/20 transition-all duration-500">
-                        <div class="browser-bar"><div class="browser-dot bg-red-500"></div><div class="browser-dot bg-yellow-500"></div><div class="browser-dot bg-green-500"></div><div class="browser-url">sakurasushi.com</div></div>
-                        <div class="bg-gradient-to-l from-red-950/30 to-zinc-950 p-8 h-56 flex flex-col justify-between relative overflow-hidden">
-                            <div>
-                                <div class="text-xs text-red-300/60 uppercase tracking-widest mb-2">Sushi Bar</div>
-                                <div class="text-2xl font-serif text-white">Sakura Sushi</div>
-                            </div>
-                            <div class="flex gap-2">
-                                <span class="text-[10px] bg-red-900/30 text-red-300 px-2 py-1 rounded">Reservations</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="portfolio-item reveal group" data-category="fitness">
-                    <div class="overflow-hidden border border-white/5 group-hover:border-white/20 transition-all duration-500">
-                        <div class="browser-bar"><div class="browser-dot bg-red-500"></div><div class="browser-dot bg-yellow-500"></div><div class="browser-dot bg-green-500"></div><div class="browser-url">ironathletics.com</div></div>
-                        <div class="bg-zinc-900 p-8 h-56 flex flex-col justify-between relative overflow-hidden border-t border-zinc-700">
-                            <div>
-                                <div class="text-xs text-zinc-400 uppercase tracking-widest mb-2">Powerlifting Gym</div>
-                                <div class="text-2xl font-serif text-white">Iron Athletics</div>
-                            </div>
-                            <div class="flex gap-2">
-                                <span class="text-[10px] bg-zinc-800 text-zinc-300 px-2 py-1 rounded">Membership Forms</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="portfolio-item reveal group" data-category="fitness">
-                    <div class="overflow-hidden border border-white/5 group-hover:border-white/20 transition-all duration-500">
-                        <div class="browser-bar"><div class="browser-dot bg-red-500"></div><div class="browser-dot bg-yellow-500"></div><div class="browser-dot bg-green-500"></div><div class="browser-url">zenithyoga.com</div></div>
+                <a href="https://nanhuinteractive.github.io/Home/Portfolio/real-estate-template.html" onclick="openPreview(event, this.href, 'Aura Estates')" class="portfolio-item reveal group cursor-pointer block" data-category="realestate">
+                    <div class="overflow-hidden border border-white/5 group-hover:border-white/20 transition-all duration-500 shadow-lg group-hover:shadow-amber-700/20">
+                        <div class="browser-bar"><div class="browser-dot bg-red-500"></div><div class="browser-dot bg-yellow-500"></div><div class="browser-dot bg-green-500"></div><div class="browser-url">auraestates.com</div></div>
                         <div class="bg-gradient-to-br from-stone-900 to-zinc-950 p-8 h-56 flex flex-col justify-between relative overflow-hidden">
-                            <div class="absolute top-1/2 left-1/2 w-40 h-40 bg-stone-500/10 rounded-full blur-3xl"></div>
-                            <div>
-                                <div class="text-xs text-stone-400 uppercase tracking-widest mb-2">Yoga Studio</div>
-                                <div class="text-2xl font-serif text-white">Zenith Yoga</div>
+                            <div class="absolute top-1/2 left-1/2 w-48 h-48 bg-amber-700/10 rounded-full blur-3xl"></div>
+                            <div class="relative z-10">
+                                <div class="text-xs text-amber-600/80 uppercase tracking-widest mb-2 flex items-center gap-2">Luxury Brokerage <i data-lucide="play-circle" class="w-3 h-3"></i></div>
+                                <div class="text-2xl font-serif text-white">Aura Estates</div>
                             </div>
-                            <div class="flex gap-2">
-                                <span class="text-[10px] bg-stone-800 text-stone-300 px-2 py-1 rounded">Class Schedules</span>
+                            <div class="flex gap-2 relative z-10">
+                                <span class="text-[10px] bg-amber-900/40 border border-amber-600/30 text-amber-300 px-2 py-1 rounded">Live Demo</span>
                             </div>
                         </div>
                     </div>
-                </div>
+                </a>
 
-                <div class="portfolio-item reveal group" data-category="accounting">
-                    <div class="overflow-hidden border border-white/5 group-hover:border-white/20 transition-all duration-500">
-                        <div class="browser-bar"><div class="browser-dot bg-red-500"></div><div class="browser-dot bg-yellow-500"></div><div class="browser-dot bg-green-500"></div><div class="browser-url">ledgerandco.com</div></div>
-                        <div class="bg-gradient-to-br from-green-950/40 to-zinc-950 p-8 h-56 flex flex-col justify-between relative overflow-hidden">
-                            <div class="absolute top-0 right-0 w-32 h-32 bg-green-500/10 rounded-full blur-2xl"></div>
-                            <div>
-                                <div class="text-xs text-green-300/60 uppercase tracking-widest mb-2">CPA Firm</div>
-                                <div class="text-2xl font-serif text-white">Ledger & Co.</div>
+                <a href="https://nanhuinteractive.github.io/Home/Portfolio/real-estate-template-2.html" onclick="openPreview(event, this.href, 'Nexus Realty')" class="portfolio-item reveal group cursor-pointer block" data-category="realestate">
+                    <div class="overflow-hidden border border-white/5 group-hover:border-white/20 transition-all duration-500 shadow-lg group-hover:shadow-emerald-900/20">
+                        <div class="browser-bar"><div class="browser-dot bg-red-500"></div><div class="browser-dot bg-yellow-500"></div><div class="browser-dot bg-green-500"></div><div class="browser-url">nexusrealty.com</div></div>
+                        <div class="bg-gradient-to-bl from-emerald-950 to-zinc-950 p-8 h-56 flex flex-col justify-between relative overflow-hidden">
+                            <div class="absolute top-0 right-0 w-32 h-32 bg-emerald-500/10 rounded-full blur-2xl"></div>
+                            <div class="relative z-10">
+                                <div class="text-xs text-emerald-300/60 uppercase tracking-widest mb-2 flex items-center gap-2">Modern Urban Real Estate <i data-lucide="play-circle" class="w-3 h-3"></i></div>
+                                <div class="text-2xl font-serif text-white">Nexus Realty</div>
                             </div>
-                            <div class="flex gap-2">
-                                <span class="text-[10px] bg-green-900/30 text-green-300 px-2 py-1 rounded">Client Portal</span>
+                            <div class="flex gap-2 relative z-10">
+                                <span class="text-[10px] bg-emerald-900/40 border border-emerald-500/30 text-emerald-200 px-2 py-1 rounded">Live Demo</span>
                             </div>
                         </div>
                     </div>
-                </div>
+                </a>
 
-                <div class="portfolio-item reveal group" data-category="accounting">
-                    <div class="overflow-hidden border border-white/5 group-hover:border-white/20 transition-all duration-500">
-                        <div class="browser-bar"><div class="browser-dot bg-red-500"></div><div class="browser-dot bg-yellow-500"></div><div class="browser-dot bg-green-500"></div><div class="browser-url">apexfinancials.com</div></div>
-                        <div class="bg-gradient-to-bl from-zinc-900 via-zinc-950 to-slate-900 p-8 h-56 flex flex-col justify-between relative overflow-hidden border-r border-blue-900/20">
-                            <div>
-                                <div class="text-xs text-slate-400 uppercase tracking-widest mb-2">Financial Advisors</div>
-                                <div class="text-2xl font-serif text-white">Apex Financials</div>
+                <a href="https://nanhuinteractive.github.io/Home/Portfolio/beauty-spa-template.html" onclick="openPreview(event, this.href, 'Lumière Spa')" class="portfolio-item reveal group cursor-pointer block" data-category="spa">
+                    <div class="overflow-hidden border border-white/5 group-hover:border-white/20 transition-all duration-500 shadow-lg group-hover:shadow-rose-900/20">
+                        <div class="browser-bar"><div class="browser-dot bg-red-500"></div><div class="browser-dot bg-yellow-500"></div><div class="browser-dot bg-green-500"></div><div class="browser-url">lumierespa.com</div></div>
+                        <div class="bg-gradient-to-br from-[#2c2826] to-zinc-950 p-8 h-56 flex flex-col justify-between relative overflow-hidden border-l-2 border-[#8c7d77]">
+                            <div class="absolute top-0 right-0 w-40 h-40 bg-rose-900/10 rounded-full blur-2xl"></div>
+                            <div class="relative z-10">
+                                <div class="text-xs text-[#8c7d77] uppercase tracking-widest mb-2 flex items-center gap-2">Aesthetics & Wellness <i data-lucide="play-circle" class="w-3 h-3"></i></div>
+                                <div class="text-2xl font-serif text-[#faf8f5]">Lumière Spa</div>
                             </div>
-                            <div class="flex gap-2">
-                                <span class="text-[10px] bg-slate-800 text-slate-300 px-2 py-1 rounded">Trust Focused</span>
+                            <div class="flex gap-2 relative z-10">
+                                <span class="text-[10px] bg-stone-800/80 border border-stone-600/50 text-[#e3caca] px-2 py-1 rounded">Live Demo</span>
                             </div>
                         </div>
                     </div>
-                </div>
+                </a>
+
+                <a href="https://nanhuinteractive.github.io/Home/Portfolio/beauty-spa-template-2.html" onclick="openPreview(event, this.href, 'Aesthetica MedSpa')" class="portfolio-item reveal group cursor-pointer block" data-category="spa">
+                    <div class="overflow-hidden border border-white/5 group-hover:border-white/20 transition-all duration-500 shadow-lg group-hover:shadow-fuchsia-900/20">
+                        <div class="browser-bar"><div class="browser-dot bg-red-500"></div><div class="browser-dot bg-yellow-500"></div><div class="browser-dot bg-green-500"></div><div class="browser-url">aestheticamedspa.com</div></div>
+                        <div class="bg-gradient-to-r from-zinc-950 to-fuchsia-950/30 p-8 h-56 flex flex-col justify-between relative overflow-hidden border-b border-fuchsia-900/30">
+                            <div class="absolute bottom-0 left-0 w-32 h-32 bg-fuchsia-500/10 rounded-full blur-2xl"></div>
+                            <div class="relative z-10">
+                                <div class="text-xs text-fuchsia-300/60 uppercase tracking-widest mb-2 flex items-center gap-2">Modern Medical Spa <i data-lucide="play-circle" class="w-3 h-3"></i></div>
+                                <div class="text-2xl font-serif text-white">Aesthetica</div>
+                            </div>
+                            <div class="flex gap-2 relative z-10">
+                                <span class="text-[10px] bg-fuchsia-900/30 border border-fuchsia-500/30 text-fuchsia-200 px-2 py-1 rounded">Live Demo</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="https://nanhuinteractive.github.io/Home/Portfolio/medical-clinic-template.html" onclick="openPreview(event, this.href, 'St. Jude Medical Center')" class="portfolio-item reveal group cursor-pointer block" data-category="medical">
+                    <div class="overflow-hidden border border-white/5 group-hover:border-white/20 transition-all duration-500 shadow-lg group-hover:shadow-blue-900/20">
+                        <div class="browser-bar"><div class="browser-dot bg-red-500"></div><div class="browser-dot bg-yellow-500"></div><div class="browser-dot bg-green-500"></div><div class="browser-url">stjudemedical.org</div></div>
+                        <div class="bg-gradient-to-br from-blue-950 to-slate-950 p-8 h-56 flex flex-col justify-between relative overflow-hidden">
+                            <div class="absolute bottom-0 right-0 w-48 h-48 bg-teal-500/10 rounded-full blur-3xl"></div>
+                            <div class="relative z-10">
+                                <div class="text-xs text-teal-400/80 uppercase tracking-widest mb-2 flex items-center gap-2">Primary Care & Specialists <i data-lucide="play-circle" class="w-3 h-3"></i></div>
+                                <div class="text-2xl font-serif text-white">St. Jude Medical Center</div>
+                            </div>
+                            <div class="flex gap-2 relative z-10">
+                                <span class="text-[10px] bg-blue-900/60 border border-blue-500/30 text-blue-200 px-2 py-1 rounded">Live Demo</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="https://nanhuinteractive.github.io/Home/Portfolio/medical-clinic-template-2.html" onclick="openPreview(event, this.href, 'Vita Concierge Care')" class="portfolio-item reveal group cursor-pointer block" data-category="medical">
+                    <div class="overflow-hidden border border-white/5 group-hover:border-white/20 transition-all duration-500 shadow-lg group-hover:shadow-sky-900/20">
+                        <div class="browser-bar"><div class="browser-dot bg-red-500"></div><div class="browser-dot bg-yellow-500"></div><div class="browser-dot bg-green-500"></div><div class="browser-url">vitacare.com</div></div>
+                        <div class="bg-gradient-to-tr from-indigo-950 to-zinc-950 p-8 h-56 flex flex-col justify-between relative overflow-hidden">
+                            <div class="absolute top-0 right-0 w-32 h-32 bg-sky-500/10 rounded-full blur-2xl"></div>
+                            <div class="relative z-10">
+                                <div class="text-xs text-sky-300/60 uppercase tracking-widest mb-2 flex items-center gap-2">Concierge Primary Care <i data-lucide="play-circle" class="w-3 h-3"></i></div>
+                                <div class="text-2xl font-serif text-white">Vita Care</div>
+                            </div>
+                            <div class="flex gap-2 relative z-10">
+                                <span class="text-[10px] bg-indigo-900/40 border border-indigo-500/30 text-indigo-200 px-2 py-1 rounded">Live Demo</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="https://nanhuinteractive.github.io/Home/Portfolio/restaurant-template.html" onclick="openPreview(event, this.href, 'Ember & Oak')" class="portfolio-item reveal group cursor-pointer block" data-category="restaurant">
+                    <div class="overflow-hidden border border-white/5 group-hover:border-white/20 transition-all duration-500 shadow-lg group-hover:shadow-yellow-900/20">
+                        <div class="browser-bar"><div class="browser-dot bg-red-500"></div><div class="browser-dot bg-yellow-500"></div><div class="browser-dot bg-green-500"></div><div class="browser-url">emberandoak.com</div></div>
+                        <div class="bg-gradient-to-br from-[#0c0c0c] to-[#171717] p-8 h-56 flex flex-col justify-between relative overflow-hidden border border-white/5">
+                            <div class="absolute top-0 right-0 w-32 h-32 bg-[#c5a059]/10 rounded-full blur-2xl"></div>
+                            <div class="relative z-10">
+                                <div class="text-xs text-[#c5a059] uppercase tracking-widest mb-2 flex items-center gap-2">Wood-Fired Dining <i data-lucide="play-circle" class="w-3 h-3"></i></div>
+                                <div class="text-2xl font-serif text-white">Ember & Oak</div>
+                            </div>
+                            <div class="flex gap-2 relative z-10">
+                                <span class="text-[10px] bg-[#c5a059]/20 border border-[#c5a059]/40 text-[#d4b475] px-2 py-1 rounded">Live Demo</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="https://nanhuinteractive.github.io/Home/Portfolio/restaurant-template-2.html" onclick="openPreview(event, this.href, 'Nonna\'s Pizza Co.')" class="portfolio-item reveal group cursor-pointer block" data-category="restaurant">
+                    <div class="overflow-hidden border border-white/5 group-hover:border-white/20 transition-all duration-500 shadow-lg group-hover:shadow-orange-900/20">
+                        <div class="browser-bar"><div class="browser-dot bg-red-500"></div><div class="browser-dot bg-yellow-500"></div><div class="browser-dot bg-green-500"></div><div class="browser-url">nonnaspizza.com</div></div>
+                        <div class="bg-gradient-to-l from-orange-950/30 to-zinc-950 p-8 h-56 flex flex-col justify-between relative overflow-hidden">
+                            <div class="absolute top-1/2 left-1/2 w-48 h-48 bg-amber-500/5 rounded-full blur-3xl"></div>
+                            <div class="relative z-10">
+                                <div class="text-xs text-orange-300/60 uppercase tracking-widest mb-2 flex items-center gap-2">Artisan Pizza & Pasta <i data-lucide="play-circle" class="w-3 h-3"></i></div>
+                                <div class="text-2xl font-serif text-white">Nonna's Pizza</div>
+                            </div>
+                            <div class="flex gap-2 relative z-10">
+                                <span class="text-[10px] bg-orange-900/30 border border-orange-500/30 text-orange-200 px-2 py-1 rounded">Live Demo</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="https://nanhuinteractive.github.io/Home/Portfolio/fitness-gym-template.html" onclick="openPreview(event, this.href, 'IRONCLAD Barbell')" class="portfolio-item reveal group cursor-pointer block" data-category="fitness">
+                    <div class="overflow-hidden border border-white/5 group-hover:border-white/20 transition-all duration-500 shadow-lg group-hover:shadow-[#ccff00]/10">
+                        <div class="browser-bar"><div class="browser-dot bg-red-500"></div><div class="browser-dot bg-yellow-500"></div><div class="browser-dot bg-green-500"></div><div class="browser-url">ironcladbarbell.com</div></div>
+                        <div class="bg-[#09090b] p-8 h-56 flex flex-col justify-between relative overflow-hidden border-t-2 border-[#ccff00]">
+                            <div class="relative z-10">
+                                <div class="text-xs text-[#ccff00] uppercase tracking-widest mb-2 font-bold flex items-center gap-2">Elite Strength & Cond. <i data-lucide="play-circle" class="w-3 h-3"></i></div>
+                                <div class="text-2xl font-sans font-black italic text-white tracking-widest">IRONCLAD</div>
+                            </div>
+                            <div class="flex gap-2 relative z-10">
+                                <span class="text-[10px] bg-[#ccff00]/10 border border-[#ccff00]/40 text-[#ccff00] font-bold px-2 py-1 rounded">Live Demo</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="https://nanhuinteractive.github.io/Home/Portfolio/fitness-gym-template-2.html" onclick="openPreview(event, this.href, 'Solace Movement')" class="portfolio-item reveal group cursor-pointer block" data-category="fitness">
+                    <div class="overflow-hidden border border-white/5 group-hover:border-white/20 transition-all duration-500 shadow-lg group-hover:shadow-stone-900/30">
+                        <div class="browser-bar"><div class="browser-dot bg-red-500"></div><div class="browser-dot bg-yellow-500"></div><div class="browser-dot bg-green-500"></div><div class="browser-url">solacemovement.com</div></div>
+                        <div class="bg-gradient-to-br from-stone-900 to-zinc-950 p-8 h-56 flex flex-col justify-between relative overflow-hidden">
+                            <div class="absolute bottom-0 right-0 w-40 h-40 bg-stone-500/10 rounded-full blur-2xl"></div>
+                            <div class="relative z-10">
+                                <div class="text-xs text-stone-400 uppercase tracking-widest mb-2 flex items-center gap-2">Boutique Yoga & Pilates <i data-lucide="play-circle" class="w-3 h-3"></i></div>
+                                <div class="text-2xl font-serif text-white">Solace Movement</div>
+                            </div>
+                            <div class="flex gap-2 relative z-10">
+                                <span class="text-[10px] bg-stone-800 border border-stone-600/50 text-stone-300 px-2 py-1 rounded">Live Demo</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="https://nanhuinteractive.github.io/Home/Portfolio/accounting-template.html" onclick="openPreview(event, this.href, 'Harrison & Sterling')" class="portfolio-item reveal group cursor-pointer block" data-category="accounting">
+                    <div class="overflow-hidden border border-white/5 group-hover:border-white/20 transition-all duration-500 shadow-lg group-hover:shadow-blue-900/20">
+                        <div class="browser-bar"><div class="browser-dot bg-red-500"></div><div class="browser-dot bg-yellow-500"></div><div class="browser-dot bg-green-500"></div><div class="browser-url">harrisonsterling.com</div></div>
+                        <div class="bg-gradient-to-br from-slate-900 to-slate-950 p-8 h-56 flex flex-col justify-between relative overflow-hidden">
+                            <div class="absolute top-0 right-0 w-40 h-40 bg-blue-500/10 rounded-full blur-2xl"></div>
+                            <div class="relative z-10">
+                                <div class="text-xs text-blue-400/80 uppercase tracking-widest mb-2 flex items-center gap-2">Certified Public Accountants <i data-lucide="play-circle" class="w-3 h-3"></i></div>
+                                <div class="text-2xl font-serif text-white">Harrison & Sterling</div>
+                            </div>
+                            <div class="flex gap-2 relative z-10">
+                                <span class="text-[10px] bg-blue-900/40 border border-blue-500/30 text-blue-200 px-2 py-1 rounded">Live Demo</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="https://nanhuinteractive.github.io/Home/Portfolio/accounting-template-2.html" onclick="openPreview(event, this.href, 'LedgerHQ')" class="portfolio-item reveal group cursor-pointer block" data-category="accounting">
+                    <div class="overflow-hidden border border-white/5 group-hover:border-white/20 transition-all duration-500 shadow-lg group-hover:shadow-emerald-900/20">
+                        <div class="browser-bar"><div class="browser-dot bg-red-500"></div><div class="browser-dot bg-yellow-500"></div><div class="browser-dot bg-green-500"></div><div class="browser-url">ledgerhq.com</div></div>
+                        <div class="bg-gradient-to-bl from-zinc-900 via-zinc-950 to-emerald-950/40 p-8 h-56 flex flex-col justify-between relative overflow-hidden border-l border-emerald-900/30">
+                            <div class="absolute top-1/2 left-1/2 w-48 h-48 bg-emerald-500/5 rounded-full blur-3xl"></div>
+                            <div class="relative z-10">
+                                <div class="text-xs text-emerald-400/60 uppercase tracking-widest mb-2 flex items-center gap-2">Modern Accounting <i data-lucide="play-circle" class="w-3 h-3"></i></div>
+                                <div class="text-2xl font-serif text-white">LedgerHQ</div>
+                            </div>
+                            <div class="flex gap-2 relative z-10">
+                                <span class="text-[10px] bg-emerald-900/30 border border-emerald-500/30 text-emerald-300 px-2 py-1 rounded">Live Demo</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
 
             </div>
         </div>
@@ -440,6 +464,33 @@
         </div>
     </footer>
 
+    <div id="preview-modal" class="fixed inset-0 z-[100] hidden bg-black/95 backdrop-blur-md flex-col transition-opacity duration-300 opacity-0">
+        <div class="flex justify-between items-center p-4 bg-zinc-950 border-b border-white/10">
+            <div class="flex items-center gap-4">
+                <div class="text-white font-serif tracking-widest text-lg ml-2" id="preview-title">Live Preview</div>
+                <div class="hidden md:flex bg-zinc-900 rounded-full border border-white/5 p-1 ml-4">
+                    <button onclick="setDeviceMode('desktop')" id="btn-desktop" class="device-btn active px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider text-zinc-400 hover:text-white transition-colors flex items-center gap-2">
+                        <i data-lucide="monitor" class="w-4 h-4"></i> Desktop
+                    </button>
+                    <button onclick="setDeviceMode('mobile')" id="btn-mobile" class="device-btn px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider text-zinc-400 hover:text-white transition-colors flex items-center gap-2">
+                        <i data-lucide="smartphone" class="w-4 h-4"></i> Mobile
+                    </button>
+                </div>
+            </div>
+            <div class="flex items-center gap-4">
+                <a href="#" id="external-link" target="_blank" class="hidden md:flex text-zinc-400 hover:text-white transition-colors items-center gap-2 text-xs uppercase tracking-widest mr-4">
+                    Open in new tab <i data-lucide="external-link" class="w-4 h-4"></i>
+                </a>
+                <button onclick="closePreview()" class="text-white bg-zinc-800 hover:bg-red-600 transition-colors px-4 py-2 rounded flex items-center gap-2 text-xs uppercase tracking-widest font-bold">
+                    <i data-lucide="x" class="w-4 h-4"></i> Close
+                </button>
+            </div>
+        </div>
+        <div class="flex-1 w-full h-full p-0 md:p-6 flex justify-center items-center bg-zinc-900 overflow-hidden">
+            <iframe id="preview-iframe" src="" class="w-full h-full bg-white md:rounded-lg shadow-2xl border-0 md:border md:border-white/10 mx-auto"></iframe>
+        </div>
+    </div>
+
     <script>
         // Icons and Year
         lucide.createIcons();
@@ -463,7 +514,6 @@
 
         filterBtns.forEach(btn => {
             btn.addEventListener('click', () => {
-                // Update active state on buttons
                 filterBtns.forEach(b => {
                     b.classList.remove('active', 'bg-white', 'text-black', 'border-white');
                     b.classList.add('border-white/10', 'text-zinc-400');
@@ -474,11 +524,9 @@
 
                 const filterValue = btn.getAttribute('data-filter');
 
-                // Show/Hide items
                 portfolioItems.forEach(item => {
                     if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
                         item.classList.remove('hide');
-                        // Small delay to allow display:block to apply before animating opacity
                         setTimeout(() => {
                             item.style.opacity = '1';
                             item.style.transform = 'scale(1)';
@@ -486,7 +534,6 @@
                     } else {
                         item.style.opacity = '0';
                         item.style.transform = 'scale(0.95)';
-                        // Wait for transition to finish before hiding
                         setTimeout(() => {
                             item.classList.add('hide');
                         }, 400);
@@ -494,6 +541,67 @@
                 });
             });
         });
+
+        // --- LIVE PREVIEW MODAL LOGIC ---
+        const modal = document.getElementById('preview-modal');
+        const iframe = document.getElementById('preview-iframe');
+        const titleEl = document.getElementById('preview-title');
+        const extLink = document.getElementById('external-link');
+        const btnDesktop = document.getElementById('btn-desktop');
+        const btnMobile = document.getElementById('btn-mobile');
+
+        function openPreview(event, url, title) {
+            // Prevent navigating away from the portfolio page
+            event.preventDefault(); 
+            
+            iframe.src = url;
+            titleEl.textContent = title + " Preview";
+            extLink.href = url;
+            
+            // Default to desktop view on open
+            setDeviceMode('desktop');
+            
+            modal.classList.remove('hidden');
+            // Trigger reflow for animation
+            void modal.offsetWidth;
+            modal.classList.remove('opacity-0');
+            modal.classList.add('flex');
+            document.body.style.overflow = 'hidden'; // Stop background scrolling
+        }
+
+        function closePreview() {
+            modal.classList.add('opacity-0');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+                iframe.src = ''; // Clear iframe to stop media/loading
+                document.body.style.overflow = ''; // Restore background scrolling
+            }, 300);
+        }
+
+        function setDeviceMode(mode) {
+            if (mode === 'mobile') {
+                iframe.style.width = '375px'; // iPhone width
+                iframe.style.height = '812px';
+                iframe.style.maxHeight = '100%';
+                
+                btnMobile.classList.add('active');
+                btnMobile.classList.remove('text-zinc-400');
+                
+                btnDesktop.classList.remove('active');
+                btnDesktop.classList.add('text-zinc-400');
+            } else {
+                iframe.style.width = '100%';
+                iframe.style.height = '100%';
+                iframe.style.maxHeight = '100%';
+                
+                btnDesktop.classList.add('active');
+                btnDesktop.classList.remove('text-zinc-400');
+                
+                btnMobile.classList.remove('active');
+                btnMobile.classList.add('text-zinc-400');
+            }
+        }
     </script>
 </body>
 </html>
