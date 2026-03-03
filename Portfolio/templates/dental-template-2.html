@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mint & Co. | Modern Family Dentistry</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Outfit', 'sans-serif'] },
+                    colors: {
+                        mint: { 50: '#f0fdfa', 100: '#ccfbf1', 500: '#14b8a6', 600: '#0d9488', 900: '#134e4a' },
+                        stone: { 50: '#fafaf9', 100: '#f5f5f4', 800: '#292524' }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .reveal { opacity: 0; transform: translateY(20px); transition: all 0.6s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+    </style>
+</head>
+<body class="bg-stone-50 text-stone-800 font-sans antialiased">
+
+    <nav class="bg-white/90 backdrop-blur-lg py-4 px-6 sticky top-0 z-50 border-b border-mint-100">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="text-2xl font-bold text-mint-900 flex items-center gap-2">
+                <div class="w-8 h-8 bg-mint-100 text-mint-600 rounded-lg flex items-center justify-center">
+                    <i data-lucide="sparkles" class="w-5 h-5"></i>
+                </div>
+                Mint & Co.
+            </div>
+            <div class="hidden md:flex items-center gap-8 text-sm font-medium text-stone-600">
+                <a href="#" class="hover:text-mint-600 transition-colors">Services</a>
+                <a href="#" class="hover:text-mint-600 transition-colors">New Patients</a>
+                <a href="#" class="hover:text-mint-600 transition-colors">Insurances</a>
+            </div>
+            <button class="bg-mint-600 text-white px-6 py-2.5 rounded-full text-sm font-semibold hover:bg-mint-500 transition-all shadow-md shadow-mint-500/20">
+                Book Online
+            </button>
+        </div>
+    </nav>
+
+    <section class="py-20 px-6">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div class="reveal">
+                <span class="bg-mint-100 text-mint-900 px-4 py-1.5 rounded-full text-sm font-semibold mb-6 inline-block">
+                    👋 Welcome to the future of dentistry
+                </span>
+                <h1 class="text-5xl md:text-6xl font-bold leading-tight mb-6 text-stone-800">
+                    A dental visit you'll <span class="text-mint-600">actually</span> look forward to.
+                </h1>
+                <p class="text-lg text-stone-600 mb-8 max-w-md">
+                    No judgement, no lectures, no anxiety. Just transparent pricing, modern tech, and a comfortable environment for the whole family.
+                </p>
+                <div class="flex gap-4">
+                    <button class="bg-mint-600 text-white px-8 py-3.5 rounded-full font-semibold hover:bg-mint-500 transition-all shadow-lg flex items-center gap-2">
+                        View Live Availability <i data-lucide="calendar" class="w-4 h-4"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="relative reveal h-[450px] bg-white rounded-3xl border-2 border-mint-100 shadow-2xl overflow-hidden flex items-center justify-center">
+                 <div class="absolute inset-0 bg-gradient-to-br from-mint-50 to-stone-50"></div>
+                 <div class="relative text-center z-10 p-8">
+                     <i data-lucide="play-circle" class="w-16 h-16 text-mint-500 mx-auto mb-4 opacity-50"></i>
+                     <p class="text-mint-900 font-medium">Video/Image of Bright, Modern Clinic</p>
+                 </div>
+                 
+                 <div class="absolute top-6 right-6 bg-white p-3 rounded-2xl shadow-lg flex items-center gap-3">
+                     <div class="bg-green-100 p-2 rounded-full text-green-600"><i data-lucide="check" class="w-4 h-4"></i></div>
+                     <span class="text-sm font-bold text-stone-700">In-Network</span>
+                 </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-white py-10 border-y border-stone-200">
+        <div class="max-w-7xl mx-auto px-6 text-center reveal">
+            <p class="text-sm font-bold text-stone-400 uppercase tracking-widest mb-6">Proudly In-Network With Major Providers</p>
+            <div class="flex flex-wrap justify-center gap-8 md:gap-16 opacity-60 font-bold text-xl text-stone-800">
+                <span>Delta Dental</span>
+                <span>Cigna</span>
+                <span>MetLife</span>
+                <span>Aetna</span>
+                <span>BlueCross</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-stone-50 px-6">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-3xl font-bold text-center mb-16">Why we're different</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <div class="bg-white p-8 rounded-3xl shadow-sm reveal border border-stone-100">
+                    <div class="w-12 h-12 bg-mint-100 text-mint-600 rounded-2xl flex items-center justify-center mb-6">
+                        <i data-lucide="tv" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Entertainment & Comfort</h3>
+                    <p class="text-stone-600">Noise-canceling headphones, ceiling TVs with Netflix, and warm blankets in every treatment room.</p>
+                </div>
+
+                <div class="bg-white p-8 rounded-3xl shadow-sm reveal border border-stone-100" style="transition-delay: 100ms;">
+                    <div class="w-12 h-12 bg-mint-100 text-mint-600 rounded-2xl flex items-center justify-center mb-6">
+                        <i data-lucide="scan-line" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">No More Goop</h3>
+                    <p class="text-stone-600">We use advanced 3D intraoral scanners. No more uncomfortable, messy impressions for crowns or retainers.</p>
+                </div>
+
+                <div class="bg-white p-8 rounded-3xl shadow-sm reveal border border-stone-100" style="transition-delay: 200ms;">
+                    <div class="w-12 h-12 bg-mint-100 text-mint-600 rounded-2xl flex items-center justify-center mb-6">
+                        <i data-lucide="credit-card" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Transparent Pricing</h3>
+                    <p class="text-stone-600">We verify your insurance before you sit in the chair. You'll always know exactly what you owe, down to the penny.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <script>
+        lucide.createIcons();
+        const observer = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('active'); }); });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
