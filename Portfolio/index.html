@@ -1,0 +1,1086 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Work | Nanhu Interactive</title>
+    <meta name="description" content="View our portfolio of high-converting, luxury websites designed for US businesses across dental, law, real estate, medical, spa, restaurant, fitness and accounting.">
+    <link rel="icon" href="https://nitnapple.github.io/Ananya/nafavi.png" type="image/png">
+    <meta property="og:title" content="Our Work | Nanhu Interactive">
+    <meta property="og:description" content="16 live website projects across 8 US industries. High-converting, luxury design.">
+    <meta property="og:image" content="https://nitnapple.github.io/Ananya/nafavi.png">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 0.7s ease-out forwards',
+                        'blob': 'blob 10s infinite',
+                        'shimmer': 'shimmer 1.8s linear infinite',
+                    },
+                    keyframes: {
+                        fadeInUp: { '0%': { opacity: '0', transform: 'translateY(24px)' }, '100%': { opacity: '1', transform: 'translateY(0)' } },
+                        blob: { '0%': { transform: 'translate(0,0) scale(1)' }, '33%': { transform: 'translate(30px,-50px) scale(1.1)' }, '66%': { transform: 'translate(-20px,20px) scale(0.9)' }, '100%': { transform: 'translate(0,0) scale(1)' } },
+                        shimmer: { '0%': { backgroundPosition: '200% 0' }, '100%': { backgroundPosition: '-200% 0' } },
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #09090b; }
+        ::-webkit-scrollbar-thumb { background: #27272a; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #52525b; }
+
+        ::selection { background-color: rgba(251,191,36,0.2); color: #fbbf24; }
+
+        .reveal { opacity: 0; transform: translateY(28px); transition: all 0.75s cubic-bezier(0.5,0,0,1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        .reveal-delay-1 { transition-delay: 0.08s; }
+        .reveal-delay-2 { transition-delay: 0.16s; }
+        .reveal-delay-3 { transition-delay: 0.24s; }
+
+        /* Filter */
+        .filter-btn { transition: all 0.25s ease; border-bottom: 2px solid transparent; }
+        .filter-btn.active { color: #fff; border-bottom-color: #fbbf24; }
+
+        /* Card iframe preview */
+        .iframe-shell {
+            position: relative;
+            width: 100%;
+            height: 220px;
+            overflow: hidden;
+            background: #0f0f10;
+        }
+        .iframe-shell .browser-top {
+            position: absolute; top: 0; left: 0; right: 0; z-index: 3;
+            height: 30px; background: #1a1a1a;
+            display: flex; align-items: center; gap: 5px;
+            padding: 0 12px; border-bottom: 1px solid #2a2a2a;
+        }
+        .browser-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+        .browser-url-pill {
+            flex: 1; margin-left: 8px; background: #111;
+            border-radius: 3px; height: 14px;
+            display: flex; align-items: center; padding: 0 8px;
+            font-size: 9px; color: #555; font-family: monospace;
+            overflow: hidden; white-space: nowrap;
+            transition: color 0.3s;
+        }
+        .group:hover .browser-url-pill { color: #fbbf24; }
+
+        /* Scaled iframe */
+        .iframe-shell iframe {
+            position: absolute;
+            top: 30px; left: 0;
+            width: 1280px; height: 900px;
+            transform-origin: top left;
+            transform: scale(calc(100% / 1280));
+            border: none; pointer-events: none;
+            background: #fff;
+        }
+
+        /* Shimmer skeleton while loading */
+        .iframe-skeleton {
+            position: absolute; inset: 30px 0 0 0; z-index: 2;
+            background: linear-gradient(90deg, #111 25%, #1a1a1a 50%, #111 75%);
+            background-size: 200% 100%;
+            animation: shimmer 1.8s linear infinite;
+            transition: opacity 0.6s ease;
+        }
+        .iframe-shell.loaded .iframe-skeleton { opacity: 0; pointer-events: none; }
+
+        /* Hover overlay on card */
+        .card-overlay {
+            position: absolute; inset: 0; z-index: 4;
+            background: rgba(0,0,0,0);
+            display: flex; align-items: center; justify-content: center;
+            transition: background 0.3s;
+        }
+        .group:hover .card-overlay { background: rgba(0,0,0,0.55); }
+        .overlay-btn {
+            opacity: 0; transform: translateY(10px);
+            transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+            background: #fff; color: #09090b;
+            padding: 10px 24px; font-size: 0.68rem;
+            text-transform: uppercase; letter-spacing: 2px;
+            font-weight: 700; cursor: pointer; border: none;
+            display: flex; align-items: center; gap: 8px;
+        }
+        .group:hover .overlay-btn { opacity: 1; transform: translateY(0); }
+
+        /* Tags */
+        .tag-pill {
+            font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.6px;
+            padding: 3px 9px; border: 1px solid rgba(255,255,255,0.08);
+            color: #71717a; border-radius: 2px;
+            background: rgba(255,255,255,0.03);
+        }
+
+        /* Lightbox */
+        #lightbox {
+            position: fixed; inset: 0; z-index: 200;
+            background: rgba(0,0,0,0.97); backdrop-filter: blur(10px);
+            display: none; flex-direction: column;
+        }
+        #lightbox.open { display: flex; }
+        .lb-bar {
+            flex-shrink: 0; height: 56px;
+            background: #111; border-bottom: 1px solid rgba(255,255,255,0.07);
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 0 20px; gap: 12px;
+        }
+        .lb-pill {
+            background: #1a1a1a; border: 1px solid rgba(255,255,255,0.07);
+            border-radius: 100px; padding: 4px; display: flex; gap: 2px;
+        }
+        .lb-view-btn {
+            padding: 5px 14px; border-radius: 100px;
+            font-size: 0.65rem; text-transform: uppercase; letter-spacing: 1px;
+            color: #71717a; background: transparent; cursor: pointer;
+            border: none; display: flex; align-items: center; gap: 6px;
+            transition: all 0.2s; font-family: 'Inter', sans-serif; font-weight: 600;
+        }
+        .lb-view-btn.active { background: #27272a; color: #fff; }
+        .lb-action-btn {
+            padding: 7px 16px; border: 1px solid rgba(255,255,255,0.1);
+            background: transparent; color: #a1a1aa; cursor: pointer;
+            font-size: 0.65rem; text-transform: uppercase; letter-spacing: 1px;
+            font-family: 'Inter', sans-serif; display: flex; align-items: center; gap: 7px;
+            transition: all 0.2s; border-radius: 4px;
+        }
+        .lb-action-btn:hover { color: #fff; border-color: rgba(255,255,255,0.25); }
+        .lb-close-btn {
+            width: 34px; height: 34px; border: 1px solid rgba(255,255,255,0.1);
+            background: transparent; color: #a1a1aa; cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            border-radius: 4px; transition: all 0.2s;
+        }
+        .lb-close-btn:hover { background: #ef4444; color: #fff; border-color: #ef4444; }
+
+        /* Lightbox frame */
+        #lb-frame-container {
+            flex: 1; display: flex; align-items: center; justify-content: center;
+            padding: 20px; overflow: hidden; background: #0a0a0c;
+        }
+        #lb-frame-wrap {
+            background: #fff; height: 100%; overflow: hidden;
+            box-shadow: 0 40px 100px rgba(0,0,0,0.7);
+            transition: all 0.4s cubic-bezier(0.4,0,0.2,1);
+        }
+        #lb-frame-wrap.desktop { width: 100%; max-width: 1200px; border-radius: 8px; }
+        #lb-frame-wrap.mobile { width: 390px; border-radius: 40px; border: 7px solid #1a1a1a; box-shadow: 0 0 0 1px #333, 0 40px 100px rgba(0,0,0,0.7); }
+        #lb-iframe { width: 100%; height: 100%; border: none; display: block; }
+
+        /* Lightbox footer */
+        .lb-footer {
+            flex-shrink: 0; height: 50px; background: #111;
+            border-top: 1px solid rgba(255,255,255,0.07);
+            display: flex; align-items: center; justify-content: center; gap: 20px;
+        }
+        .lb-nav-btn {
+            padding: 6px 18px; border: 1px solid rgba(255,255,255,0.1);
+            background: transparent; color: #a1a1aa; cursor: pointer;
+            font-size: 0.65rem; text-transform: uppercase; letter-spacing: 1px;
+            font-family: 'Inter', sans-serif; display: flex; align-items: center; gap: 7px;
+            border-radius: 4px; transition: all 0.2s;
+        }
+        .lb-nav-btn:hover { color: #fff; border-color: rgba(255,255,255,0.25); }
+
+        /* Portfolio card */
+        .portfolio-card {
+            transition: all 0.4s ease;
+            cursor: pointer;
+        }
+        .portfolio-card.hide {
+            display: none;
+        }
+        .portfolio-card:hover .card-inner {
+            border-color: rgba(255,255,255,0.18);
+            transform: translateY(-3px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+        }
+        .card-inner {
+            border: 1px solid rgba(255,255,255,0.06);
+            transition: all 0.4s cubic-bezier(0.4,0,0.2,1);
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body class="bg-zinc-950 text-zinc-200 font-sans antialiased overflow-x-hidden">
+
+<!-- ── NAV ── -->
+<nav id="navbar" class="fixed w-full z-50 transition-all duration-500 bg-zinc-950/90 backdrop-blur-md border-b border-white/5 py-4">
+    <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
+        <a href="index.html" class="text-xl font-serif tracking-wider text-white hover:text-amber-100 transition-colors">
+            NANHU<span class="text-zinc-600">.</span>
+        </a>
+        <div class="hidden md:flex items-center gap-6">
+            <a href="index.html" class="flex items-center gap-2 text-xs uppercase tracking-[0.15em] text-zinc-500 hover:text-white transition-colors">
+                <i data-lucide="arrow-left" class="w-3 h-3"></i> Home
+            </a>
+            <a href="index.html#services" class="text-xs uppercase tracking-[0.15em] text-zinc-400 hover:text-white transition-colors">Pricing</a>
+            <a href="index.html#contact" class="px-6 py-2 border border-white/20 text-white text-xs uppercase tracking-[0.15em] hover:bg-white hover:text-black transition-all duration-300">
+                Start Project
+            </a>
+        </div>
+        <a href="index.html" class="md:hidden text-xs uppercase tracking-widest text-white border border-white/20 px-4 py-2">Back</a>
+    </div>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="relative pt-36 pb-16 bg-zinc-950 overflow-hidden">
+    <div class="absolute inset-0 pointer-events-none">
+        <div class="absolute top-[-10%] right-[-5%] w-[600px] h-[600px] bg-amber-900/8 rounded-full blur-[140px] animate-blob"></div>
+        <div class="absolute bottom-[-10%] left-[-5%] w-[400px] h-[400px] bg-zinc-800/20 rounded-full blur-[100px]"></div>
+    </div>
+    <div class="relative z-10 max-w-7xl mx-auto px-6">
+        <div class="grid md:grid-cols-2 gap-12 items-end">
+            <div class="animate-fade-in-up">
+                <span class="inline-flex items-center gap-2 text-xs text-amber-200/70 uppercase tracking-widest border border-amber-900/30 px-4 py-2 mb-6">
+                    <i data-lucide="grid" class="w-3 h-3"></i> Design Gallery
+                </span>
+                <h1 class="text-5xl md:text-6xl font-serif text-white leading-[1.08] mb-5">
+                    Selected<br><em class="text-zinc-500 not-italic font-light">Works</em>
+                </h1>
+                <p class="text-zinc-400 text-base leading-relaxed font-light max-w-lg">
+                    Sixteen live projects across eight US industries. Each site is built to convert visitors into paying clients — not just look pretty.
+                </p>
+            </div>
+            <!-- Stats bar -->
+            <div class="grid grid-cols-3 border border-white/6 animate-fade-in-up" style="animation-delay:0.15s">
+                <div class="p-6 border-r border-white/6">
+                    <div class="text-3xl font-serif text-white mb-1">16</div>
+                    <div class="text-[10px] uppercase tracking-widest text-zinc-600">Live Projects</div>
+                </div>
+                <div class="p-6 border-r border-white/6">
+                    <div class="text-3xl font-serif text-white mb-1">8</div>
+                    <div class="text-[10px] uppercase tracking-widest text-zinc-600">Industries</div>
+                </div>
+                <div class="p-6">
+                    <div class="text-3xl font-serif text-amber-400 mb-1">$0</div>
+                    <div class="text-[10px] uppercase tracking-widest text-zinc-600">For Mockup</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ── FILTERS ── -->
+<div class="sticky top-[61px] z-30 bg-zinc-950/95 backdrop-blur-md border-b border-white/5">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="flex items-center gap-0 overflow-x-auto scrollbar-hide py-0" id="filter-bar">
+            <button class="filter-btn active flex-shrink-0 px-5 py-4 text-xs uppercase tracking-wider text-zinc-400 hover:text-white bg-transparent border-0 cursor-pointer font-medium" data-filter="all">All (16)</button>
+            <button class="filter-btn flex-shrink-0 px-5 py-4 text-xs uppercase tracking-wider text-zinc-500 hover:text-white bg-transparent border-0 cursor-pointer" data-filter="dental">🦷 Dental</button>
+            <button class="filter-btn flex-shrink-0 px-5 py-4 text-xs uppercase tracking-wider text-zinc-500 hover:text-white bg-transparent border-0 cursor-pointer" data-filter="law">⚖️ Law</button>
+            <button class="filter-btn flex-shrink-0 px-5 py-4 text-xs uppercase tracking-wider text-zinc-500 hover:text-white bg-transparent border-0 cursor-pointer" data-filter="realestate">🏠 Real Estate</button>
+            <button class="filter-btn flex-shrink-0 px-5 py-4 text-xs uppercase tracking-wider text-zinc-500 hover:text-white bg-transparent border-0 cursor-pointer" data-filter="spa">💆 Spa & Beauty</button>
+            <button class="filter-btn flex-shrink-0 px-5 py-4 text-xs uppercase tracking-wider text-zinc-500 hover:text-white bg-transparent border-0 cursor-pointer" data-filter="medical">🏥 Medical</button>
+            <button class="filter-btn flex-shrink-0 px-5 py-4 text-xs uppercase tracking-wider text-zinc-500 hover:text-white bg-transparent border-0 cursor-pointer" data-filter="restaurant">🍕 Restaurant</button>
+            <button class="filter-btn flex-shrink-0 px-5 py-4 text-xs uppercase tracking-wider text-zinc-500 hover:text-white bg-transparent border-0 cursor-pointer" data-filter="fitness">🏋️ Fitness</button>
+            <button class="filter-btn flex-shrink-0 px-5 py-4 text-xs uppercase tracking-wider text-zinc-500 hover:text-white bg-transparent border-0 cursor-pointer" data-filter="accounting">📊 Accounting</button>
+        </div>
+    </div>
+</div>
+
+<!-- ── GRID ── -->
+<section class="py-10 bg-zinc-950 px-6">
+    <div class="max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="portfolio-grid">
+
+            <!-- 1. Lumina Dental -->
+            <div class="portfolio-card reveal group" data-category="dental"
+                data-url="https://nanhuinteractive.github.io/Home/Portfolio/dental-template.html"
+                data-title="Lumina Dental" data-domain="luminadental.com" data-index="0">
+                <div class="card-inner bg-zinc-900/40">
+                    <div class="iframe-shell" id="shell-0">
+                        <div class="browser-top">
+                            <div class="browser-dot bg-red-500"></div>
+                            <div class="browser-dot bg-yellow-500"></div>
+                            <div class="browser-dot bg-green-500"></div>
+                            <div class="browser-url-pill">luminadental.com</div>
+                        </div>
+                        <div class="iframe-skeleton"></div>
+                        <iframe src="https://nanhuinteractive.github.io/Home/Portfolio/dental-template.html"
+                            loading="lazy" scrolling="no" title="Lumina Dental"
+                            onload="shellLoaded('shell-0')"></iframe>
+                        <div class="card-overlay">
+                            <button class="overlay-btn">
+                                <i data-lucide="eye" class="w-3.5 h-3.5"></i> Live Preview
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <div class="flex items-start justify-between mb-3">
+                            <div>
+                                <div class="text-[10px] uppercase tracking-widest text-sky-400/80 mb-1 flex items-center gap-1.5">
+                                    🦷 Dental · Premium Cosmetic
+                                </div>
+                                <div class="text-lg font-serif text-white leading-tight">Lumina Dental</div>
+                                <div class="text-[11px] text-zinc-600 font-mono mt-0.5">luminadental.com</div>
+                            </div>
+                            <span class="text-xs text-zinc-400 mt-1">From <span class="text-white font-semibold">$999</span></span>
+                        </div>
+                        <p class="text-zinc-500 text-xs leading-relaxed mb-4 font-light">
+                            Spa-like cosmetic dentistry site with online booking, insurance info, and patient testimonials. Designed for Scottsdale's premium market.
+                        </p>
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="tag-pill">Online Booking</span>
+                            <span class="tag-pill">Patient Reviews</span>
+                            <span class="tag-pill">SEO Ready</span>
+                        </div>
+                    </div>
+                    <div class="px-5 pb-4 flex items-center justify-between border-t border-white/5 pt-4">
+                        <a href="https://nanhuinteractive.github.io/Home/Portfolio/dental-template.html" target="_blank"
+                           class="text-[11px] uppercase tracking-wider text-zinc-500 hover:text-white flex items-center gap-1.5 transition-colors" onclick="event.stopPropagation()">
+                            Open full <i data-lucide="external-link" class="w-3 h-3"></i>
+                        </a>
+                        <span class="text-[11px] uppercase tracking-wider text-amber-400 flex items-center gap-1.5">
+                            Click to preview <i data-lucide="arrow-right" class="w-3 h-3"></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. Mint & Co -->
+            <div class="portfolio-card reveal reveal-delay-1 group" data-category="dental"
+                data-url="https://nanhuinteractive.github.io/Home/Portfolio/dental-template-2.html"
+                data-title="Mint & Co. Dental" data-domain="mintcodental.com" data-index="1">
+                <div class="card-inner bg-zinc-900/40">
+                    <div class="iframe-shell" id="shell-1">
+                        <div class="browser-top">
+                            <div class="browser-dot bg-red-500"></div><div class="browser-dot bg-yellow-500"></div><div class="browser-dot bg-green-500"></div>
+                            <div class="browser-url-pill">mintcodental.com</div>
+                        </div>
+                        <div class="iframe-skeleton"></div>
+                        <iframe src="https://nanhuinteractive.github.io/Home/Portfolio/dental-template-2.html" loading="lazy" scrolling="no" title="Mint Dental" onload="shellLoaded('shell-1')"></iframe>
+                        <div class="card-overlay"><button class="overlay-btn"><i data-lucide="eye" class="w-3.5 h-3.5"></i> Live Preview</button></div>
+                    </div>
+                    <div class="p-5">
+                        <div class="flex items-start justify-between mb-3">
+                            <div>
+                                <div class="text-[10px] uppercase tracking-widest text-cyan-400/80 mb-1">🦷 Dental · Modern Family</div>
+                                <div class="text-lg font-serif text-white leading-tight">Mint & Co.</div>
+                                <div class="text-[11px] text-zinc-600 font-mono mt-0.5">mintcodental.com</div>
+                            </div>
+                            <span class="text-xs text-zinc-400 mt-1">From <span class="text-white font-semibold">$999</span></span>
+                        </div>
+                        <p class="text-zinc-500 text-xs leading-relaxed mb-4 font-light">Anxiety-free, modern family dentistry. Real-time scheduling, insurance verification upfront, and transparent pricing to eliminate patient hesitation.</p>
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="tag-pill">Live Scheduling</span>
+                            <span class="tag-pill">Insurance Lookup</span>
+                            <span class="tag-pill">Family Friendly</span>
+                        </div>
+                    </div>
+                    <div class="px-5 pb-4 flex items-center justify-between border-t border-white/5 pt-4">
+                        <a href="https://nanhuinteractive.github.io/Home/Portfolio/dental-template-2.html" target="_blank" class="text-[11px] uppercase tracking-wider text-zinc-500 hover:text-white flex items-center gap-1.5 transition-colors" onclick="event.stopPropagation()">Open full <i data-lucide="external-link" class="w-3 h-3"></i></a>
+                        <span class="text-[11px] uppercase tracking-wider text-amber-400 flex items-center gap-1.5">Click to preview <i data-lucide="arrow-right" class="w-3 h-3"></i></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. Nash & Associates -->
+            <div class="portfolio-card reveal reveal-delay-2 group" data-category="law"
+                data-url="https://nanhuinteractive.github.io/Home/Portfolio/law-template.html"
+                data-title="Nash & Associates" data-domain="nashlegalgroup.com" data-index="2">
+                <div class="card-inner bg-zinc-900/40">
+                    <div class="iframe-shell" id="shell-2">
+                        <div class="browser-top">
+                            <div class="browser-dot bg-red-500"></div><div class="browser-dot bg-yellow-500"></div><div class="browser-dot bg-green-500"></div>
+                            <div class="browser-url-pill">nashlegalgroup.com</div>
+                        </div>
+                        <div class="iframe-skeleton"></div>
+                        <iframe src="https://nanhuinteractive.github.io/Home/Portfolio/law-template.html" loading="lazy" scrolling="no" title="Nash Law" onload="shellLoaded('shell-2')"></iframe>
+                        <div class="card-overlay"><button class="overlay-btn"><i data-lucide="eye" class="w-3.5 h-3.5"></i> Live Preview</button></div>
+                    </div>
+                    <div class="p-5">
+                        <div class="flex items-start justify-between mb-3">
+                            <div>
+                                <div class="text-[10px] uppercase tracking-widest text-amber-500/80 mb-1">⚖️ Law · Premier Litigation</div>
+                                <div class="text-lg font-serif text-white leading-tight">Nash & Associates</div>
+                                <div class="text-[11px] text-zinc-600 font-mono mt-0.5">nashlegalgroup.com</div>
+                            </div>
+                            <span class="text-xs text-zinc-400 mt-1">From <span class="text-white font-semibold">$1,299</span></span>
+                        </div>
+                        <p class="text-zinc-500 text-xs leading-relaxed mb-4 font-light">Authoritative law firm design that commands credibility. Confidential case evaluation form, practice area breakdown, and $50M+ results displayed prominently.</p>
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="tag-pill">Case Evaluation</span>
+                            <span class="tag-pill">Attorney Profiles</span>
+                            <span class="tag-pill">Trust Signals</span>
+                        </div>
+                    </div>
+                    <div class="px-5 pb-4 flex items-center justify-between border-t border-white/5 pt-4">
+                        <a href="https://nanhuinteractive.github.io/Home/Portfolio/law-template.html" target="_blank" class="text-[11px] uppercase tracking-wider text-zinc-500 hover:text-white flex items-center gap-1.5 transition-colors" onclick="event.stopPropagation()">Open full <i data-lucide="external-link" class="w-3 h-3"></i></a>
+                        <span class="text-[11px] uppercase tracking-wider text-amber-400 flex items-center gap-1.5">Click to preview <i data-lucide="arrow-right" class="w-3 h-3"></i></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4. Sterling & Vance -->
+            <div class="portfolio-card reveal group" data-category="law"
+                data-url="https://nanhuinteractive.github.io/Home/Portfolio/law-template-2.html"
+                data-title="Sterling & Vance" data-domain="sterlingvance.com" data-index="3">
+                <div class="card-inner bg-zinc-900/40">
+                    <div class="iframe-shell" id="shell-3">
+                        <div class="browser-top">
+                            <div class="browser-dot bg-red-500"></div><div class="browser-dot bg-yellow-500"></div><div class="browser-dot bg-green-500"></div>
+                            <div class="browser-url-pill">sterlingvance.com</div>
+                        </div>
+                        <div class="iframe-skeleton"></div>
+                        <iframe src="https://nanhuinteractive.github.io/Home/Portfolio/law-template-2.html" loading="lazy" scrolling="no" title="Sterling Vance" onload="shellLoaded('shell-3')"></iframe>
+                        <div class="card-overlay"><button class="overlay-btn"><i data-lucide="eye" class="w-3.5 h-3.5"></i> Live Preview</button></div>
+                    </div>
+                    <div class="p-5">
+                        <div class="flex items-start justify-between mb-3">
+                            <div>
+                                <div class="text-[10px] uppercase tracking-widest text-indigo-400/80 mb-1">⚖️ Law · Personal Injury</div>
+                                <div class="text-lg font-serif text-white leading-tight">Sterling & Vance</div>
+                                <div class="text-[11px] text-zinc-600 font-mono mt-0.5">sterlingvance.com</div>
+                            </div>
+                            <span class="text-xs text-zinc-400 mt-1">From <span class="text-white font-semibold">$1,299</span></span>
+                        </div>
+                        <p class="text-zinc-500 text-xs leading-relaxed mb-4 font-light">Personal injury firm built for maximum conversions. Urgency-driven copy, bold case results display, and a high-converting intake form above the fold.</p>
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="tag-pill">Lead Capture</span>
+                            <span class="tag-pill">Case Results</span>
+                            <span class="tag-pill">High Converting</span>
+                        </div>
+                    </div>
+                    <div class="px-5 pb-4 flex items-center justify-between border-t border-white/5 pt-4">
+                        <a href="https://nanhuinteractive.github.io/Home/Portfolio/law-template-2.html" target="_blank" class="text-[11px] uppercase tracking-wider text-zinc-500 hover:text-white flex items-center gap-1.5 transition-colors" onclick="event.stopPropagation()">Open full <i data-lucide="external-link" class="w-3 h-3"></i></a>
+                        <span class="text-[11px] uppercase tracking-wider text-amber-400 flex items-center gap-1.5">Click to preview <i data-lucide="arrow-right" class="w-3 h-3"></i></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 5. Aura Estates -->
+            <div class="portfolio-card reveal reveal-delay-1 group" data-category="realestate"
+                data-url="https://nanhuinteractive.github.io/Home/Portfolio/real-estate-template.html"
+                data-title="Aura Estates" data-domain="auraestates.com" data-index="4">
+                <div class="card-inner bg-zinc-900/40">
+                    <div class="iframe-shell" id="shell-4">
+                        <div class="browser-top">
+                            <div class="browser-dot bg-red-500"></div><div class="browser-dot bg-yellow-500"></div><div class="browser-dot bg-green-500"></div>
+                            <div class="browser-url-pill">auraestates.com</div>
+                        </div>
+                        <div class="iframe-skeleton"></div>
+                        <iframe src="https://nanhuinteractive.github.io/Home/Portfolio/real-estate-template.html" loading="lazy" scrolling="no" title="Aura Estates" onload="shellLoaded('shell-4')"></iframe>
+                        <div class="card-overlay"><button class="overlay-btn"><i data-lucide="eye" class="w-3.5 h-3.5"></i> Live Preview</button></div>
+                    </div>
+                    <div class="p-5">
+                        <div class="flex items-start justify-between mb-3">
+                            <div>
+                                <div class="text-[10px] uppercase tracking-widest text-rose-400/80 mb-1">🏠 Real Estate · Luxury Brokerage</div>
+                                <div class="text-lg font-serif text-white leading-tight">Aura Estates</div>
+                                <div class="text-[11px] text-zinc-600 font-mono mt-0.5">auraestates.com</div>
+                            </div>
+                            <span class="text-xs text-zinc-400 mt-1">From <span class="text-white font-semibold">$1,299</span></span>
+                        </div>
+                        <p class="text-zinc-500 text-xs leading-relaxed mb-4 font-light">Magazine-quality luxury brokerage site. Property showcase, agent profiles, and buyer/seller consultation funnel for high-net-worth clients.</p>
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="tag-pill">Property Listings</span>
+                            <span class="tag-pill">Agent Profile</span>
+                            <span class="tag-pill">Luxury Aesthetic</span>
+                        </div>
+                    </div>
+                    <div class="px-5 pb-4 flex items-center justify-between border-t border-white/5 pt-4">
+                        <a href="https://nanhuinteractive.github.io/Home/Portfolio/real-estate-template.html" target="_blank" class="text-[11px] uppercase tracking-wider text-zinc-500 hover:text-white flex items-center gap-1.5 transition-colors" onclick="event.stopPropagation()">Open full <i data-lucide="external-link" class="w-3 h-3"></i></a>
+                        <span class="text-[11px] uppercase tracking-wider text-amber-400 flex items-center gap-1.5">Click to preview <i data-lucide="arrow-right" class="w-3 h-3"></i></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 6. Nexus Realty -->
+            <div class="portfolio-card reveal reveal-delay-2 group" data-category="realestate"
+                data-url="https://nanhuinteractive.github.io/Home/Portfolio/real-estate-template-2.html"
+                data-title="Nexus Realty" data-domain="nexusrealty.com" data-index="5">
+                <div class="card-inner bg-zinc-900/40">
+                    <div class="iframe-shell" id="shell-5">
+                        <div class="browser-top">
+                            <div class="browser-dot bg-red-500"></div><div class="browser-dot bg-yellow-500"></div><div class="browser-dot bg-green-500"></div>
+                            <div class="browser-url-pill">nexusrealty.com</div>
+                        </div>
+                        <div class="iframe-skeleton"></div>
+                        <iframe src="https://nanhuinteractive.github.io/Home/Portfolio/real-estate-template-2.html" loading="lazy" scrolling="no" title="Nexus Realty" onload="shellLoaded('shell-5')"></iframe>
+                        <div class="card-overlay"><button class="overlay-btn"><i data-lucide="eye" class="w-3.5 h-3.5"></i> Live Preview</button></div>
+                    </div>
+                    <div class="p-5">
+                        <div class="flex items-start justify-between mb-3">
+                            <div>
+                                <div class="text-[10px] uppercase tracking-widest text-violet-400/80 mb-1">🏠 Real Estate · Modern Urban</div>
+                                <div class="text-lg font-serif text-white leading-tight">Nexus Realty</div>
+                                <div class="text-[11px] text-zinc-600 font-mono mt-0.5">nexusrealty.com</div>
+                            </div>
+                            <span class="text-xs text-zinc-400 mt-1">From <span class="text-white font-semibold">$1,299</span></span>
+                        </div>
+                        <p class="text-zinc-500 text-xs leading-relaxed mb-4 font-light">Data-forward urban real estate agency. Neighborhood guides, market stats, and a search-first interface to attract buyers and motivated sellers.</p>
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="tag-pill">Search Filter</span>
+                            <span class="tag-pill">Market Stats</span>
+                            <span class="tag-pill">Neighborhood Guides</span>
+                        </div>
+                    </div>
+                    <div class="px-5 pb-4 flex items-center justify-between border-t border-white/5 pt-4">
+                        <a href="https://nanhuinteractive.github.io/Home/Portfolio/real-estate-template-2.html" target="_blank" class="text-[11px] uppercase tracking-wider text-zinc-500 hover:text-white flex items-center gap-1.5 transition-colors" onclick="event.stopPropagation()">Open full <i data-lucide="external-link" class="w-3 h-3"></i></a>
+                        <span class="text-[11px] uppercase tracking-wider text-amber-400 flex items-center gap-1.5">Click to preview <i data-lucide="arrow-right" class="w-3 h-3"></i></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 7. Lumière Spa -->
+            <div class="portfolio-card reveal group" data-category="spa"
+                data-url="https://nanhuinteractive.github.io/Home/Portfolio/beauty-spa-template.html"
+                data-title="Lumière Spa" data-domain="lumierespa.com" data-index="6">
+                <div class="card-inner bg-zinc-900/40">
+                    <div class="iframe-shell" id="shell-6">
+                        <div class="browser-top">
+                            <div class="browser-dot bg-red-500"></div><div class="browser-dot bg-yellow-500"></div><div class="browser-dot bg-green-500"></div>
+                            <div class="browser-url-pill">lumierespa.com</div>
+                        </div>
+                        <div class="iframe-skeleton"></div>
+                        <iframe src="https://nanhuinteractive.github.io/Home/Portfolio/beauty-spa-template.html" loading="lazy" scrolling="no" title="Lumiere Spa" onload="shellLoaded('shell-6')"></iframe>
+                        <div class="card-overlay"><button class="overlay-btn"><i data-lucide="eye" class="w-3.5 h-3.5"></i> Live Preview</button></div>
+                    </div>
+                    <div class="p-5">
+                        <div class="flex items-start justify-between mb-3">
+                            <div>
+                                <div class="text-[10px] uppercase tracking-widest text-pink-400/80 mb-1">💆 Spa & Beauty · Luxury Wellness</div>
+                                <div class="text-lg font-serif text-white leading-tight">Lumière Spa</div>
+                                <div class="text-[11px] text-zinc-600 font-mono mt-0.5">lumierespa.com</div>
+                            </div>
+                            <span class="text-xs text-zinc-400 mt-1">From <span class="text-white font-semibold">$999</span></span>
+                        </div>
+                        <p class="text-zinc-500 text-xs leading-relaxed mb-4 font-light">Soft luxury spa aesthetic with online booking, treatment menu, before/after gallery, and gift card purchase — a complete revenue machine.</p>
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="tag-pill">Online Booking</span>
+                            <span class="tag-pill">Gift Cards</span>
+                            <span class="tag-pill">Before & After</span>
+                        </div>
+                    </div>
+                    <div class="px-5 pb-4 flex items-center justify-between border-t border-white/5 pt-4">
+                        <a href="https://nanhuinteractive.github.io/Home/Portfolio/beauty-spa-template.html" target="_blank" class="text-[11px] uppercase tracking-wider text-zinc-500 hover:text-white flex items-center gap-1.5 transition-colors" onclick="event.stopPropagation()">Open full <i data-lucide="external-link" class="w-3 h-3"></i></a>
+                        <span class="text-[11px] uppercase tracking-wider text-amber-400 flex items-center gap-1.5">Click to preview <i data-lucide="arrow-right" class="w-3 h-3"></i></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 8. Aesthetica -->
+            <div class="portfolio-card reveal reveal-delay-1 group" data-category="spa"
+                data-url="https://nanhuinteractive.github.io/Home/Portfolio/beauty-spa-template-2.html"
+                data-title="Aesthetica Med Spa" data-domain="aestheticamedspa.com" data-index="7">
+                <div class="card-inner bg-zinc-900/40">
+                    <div class="iframe-shell" id="shell-7">
+                        <div class="browser-top">
+                            <div class="browser-dot bg-red-500"></div><div class="browser-dot bg-yellow-500"></div><div class="browser-dot bg-green-500"></div>
+                            <div class="browser-url-pill">aestheticamedspa.com</div>
+                        </div>
+                        <div class="iframe-skeleton"></div>
+                        <iframe src="https://nanhuinteractive.github.io/Home/Portfolio/beauty-spa-template-2.html" loading="lazy" scrolling="no" title="Aesthetica" onload="shellLoaded('shell-7')"></iframe>
+                        <div class="card-overlay"><button class="overlay-btn"><i data-lucide="eye" class="w-3.5 h-3.5"></i> Live Preview</button></div>
+                    </div>
+                    <div class="p-5">
+                        <div class="flex items-start justify-between mb-3">
+                            <div>
+                                <div class="text-[10px] uppercase tracking-widest text-fuchsia-400/80 mb-1">💆 Spa & Beauty · Med Spa</div>
+                                <div class="text-lg font-serif text-white leading-tight">Aesthetica</div>
+                                <div class="text-[11px] text-zinc-600 font-mono mt-0.5">aestheticamedspa.com</div>
+                            </div>
+                            <span class="text-xs text-zinc-400 mt-1">From <span class="text-white font-semibold">$999</span></span>
+                        </div>
+                        <p class="text-zinc-500 text-xs leading-relaxed mb-4 font-light">Clinical yet approachable med spa. Botox, fillers, laser treatments — with before/after results, transparent pricing, and an instant booking CTA.</p>
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="tag-pill">Botox / Fillers</span>
+                            <span class="tag-pill">Transparent Pricing</span>
+                            <span class="tag-pill">Instant Book</span>
+                        </div>
+                    </div>
+                    <div class="px-5 pb-4 flex items-center justify-between border-t border-white/5 pt-4">
+                        <a href="https://nanhuinteractive.github.io/Home/Portfolio/beauty-spa-template-2.html" target="_blank" class="text-[11px] uppercase tracking-wider text-zinc-500 hover:text-white flex items-center gap-1.5 transition-colors" onclick="event.stopPropagation()">Open full <i data-lucide="external-link" class="w-3 h-3"></i></a>
+                        <span class="text-[11px] uppercase tracking-wider text-amber-400 flex items-center gap-1.5">Click to preview <i data-lucide="arrow-right" class="w-3 h-3"></i></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 9. St. Jude Medical -->
+            <div class="portfolio-card reveal reveal-delay-2 group" data-category="medical"
+                data-url="https://nanhuinteractive.github.io/Home/Portfolio/medical-clinic-template.html"
+                data-title="St. Jude Medical Center" data-domain="stjudemedical.org" data-index="8">
+                <div class="card-inner bg-zinc-900/40">
+                    <div class="iframe-shell" id="shell-8">
+                        <div class="browser-top">
+                            <div class="browser-dot bg-red-500"></div><div class="browser-dot bg-yellow-500"></div><div class="browser-dot bg-green-500"></div>
+                            <div class="browser-url-pill">stjudemedical.org</div>
+                        </div>
+                        <div class="iframe-skeleton"></div>
+                        <iframe src="https://nanhuinteractive.github.io/Home/Portfolio/medical-clinic-template.html" loading="lazy" scrolling="no" title="St Jude Medical" onload="shellLoaded('shell-8')"></iframe>
+                        <div class="card-overlay"><button class="overlay-btn"><i data-lucide="eye" class="w-3.5 h-3.5"></i> Live Preview</button></div>
+                    </div>
+                    <div class="p-5">
+                        <div class="flex items-start justify-between mb-3">
+                            <div>
+                                <div class="text-[10px] uppercase tracking-widest text-teal-400/80 mb-1">🏥 Medical · Primary Care</div>
+                                <div class="text-lg font-serif text-white leading-tight">St. Jude Medical</div>
+                                <div class="text-[11px] text-zinc-600 font-mono mt-0.5">stjudemedical.org</div>
+                            </div>
+                            <span class="text-xs text-zinc-400 mt-1">From <span class="text-white font-semibold">$1,299</span></span>
+                        </div>
+                        <p class="text-zinc-500 text-xs leading-relaxed mb-4 font-light">Full-service clinic with patient portal, insurance lookup, online scheduling, and physician directory. Built for trust and frictionless appointment booking.</p>
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="tag-pill">Patient Portal</span>
+                            <span class="tag-pill">Insurance Lookup</span>
+                            <span class="tag-pill">Online Scheduling</span>
+                        </div>
+                    </div>
+                    <div class="px-5 pb-4 flex items-center justify-between border-t border-white/5 pt-4">
+                        <a href="https://nanhuinteractive.github.io/Home/Portfolio/medical-clinic-template.html" target="_blank" class="text-[11px] uppercase tracking-wider text-zinc-500 hover:text-white flex items-center gap-1.5 transition-colors" onclick="event.stopPropagation()">Open full <i data-lucide="external-link" class="w-3 h-3"></i></a>
+                        <span class="text-[11px] uppercase tracking-wider text-amber-400 flex items-center gap-1.5">Click to preview <i data-lucide="arrow-right" class="w-3 h-3"></i></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 10. Vita Care -->
+            <div class="portfolio-card reveal group" data-category="medical"
+                data-url="https://nanhuinteractive.github.io/Home/Portfolio/medical-clinic-template-2.html"
+                data-title="Vita Care" data-domain="vitacare.com" data-index="9">
+                <div class="card-inner bg-zinc-900/40">
+                    <div class="iframe-shell" id="shell-9">
+                        <div class="browser-top">
+                            <div class="browser-dot bg-red-500"></div><div class="browser-dot bg-yellow-500"></div><div class="browser-dot bg-green-500"></div>
+                            <div class="browser-url-pill">vitacare.com</div>
+                        </div>
+                        <div class="iframe-skeleton"></div>
+                        <iframe src="https://nanhuinteractive.github.io/Home/Portfolio/medical-clinic-template-2.html" loading="lazy" scrolling="no" title="Vita Care" onload="shellLoaded('shell-9')"></iframe>
+                        <div class="card-overlay"><button class="overlay-btn"><i data-lucide="eye" class="w-3.5 h-3.5"></i> Live Preview</button></div>
+                    </div>
+                    <div class="p-5">
+                        <div class="flex items-start justify-between mb-3">
+                            <div>
+                                <div class="text-[10px] uppercase tracking-widest text-green-400/80 mb-1">🏥 Medical · Concierge Care</div>
+                                <div class="text-lg font-serif text-white leading-tight">Vita Care</div>
+                                <div class="text-[11px] text-zinc-600 font-mono mt-0.5">vitacare.com</div>
+                            </div>
+                            <span class="text-xs text-zinc-400 mt-1">From <span class="text-white font-semibold">$1,299</span></span>
+                        </div>
+                        <p class="text-zinc-500 text-xs leading-relaxed mb-4 font-light">Premium membership-model concierge clinic. Pricing tiers, same-day appointment promise, and direct physician communication to justify the premium cost.</p>
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="tag-pill">Membership Tiers</span>
+                            <span class="tag-pill">Same-Day Appt</span>
+                            <span class="tag-pill">Premium Feel</span>
+                        </div>
+                    </div>
+                    <div class="px-5 pb-4 flex items-center justify-between border-t border-white/5 pt-4">
+                        <a href="https://nanhuinteractive.github.io/Home/Portfolio/medical-clinic-template-2.html" target="_blank" class="text-[11px] uppercase tracking-wider text-zinc-500 hover:text-white flex items-center gap-1.5 transition-colors" onclick="event.stopPropagation()">Open full <i data-lucide="external-link" class="w-3 h-3"></i></a>
+                        <span class="text-[11px] uppercase tracking-wider text-amber-400 flex items-center gap-1.5">Click to preview <i data-lucide="arrow-right" class="w-3 h-3"></i></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 11. Ember & Oak -->
+            <div class="portfolio-card reveal reveal-delay-1 group" data-category="restaurant"
+                data-url="https://nanhuinteractive.github.io/Home/Portfolio/restaurant-template.html"
+                data-title="Ember & Oak" data-domain="emberandoak.com" data-index="10">
+                <div class="card-inner bg-zinc-900/40">
+                    <div class="iframe-shell" id="shell-10">
+                        <div class="browser-top">
+                            <div class="browser-dot bg-red-500"></div><div class="browser-dot bg-yellow-500"></div><div class="browser-dot bg-green-500"></div>
+                            <div class="browser-url-pill">emberandoak.com</div>
+                        </div>
+                        <div class="iframe-skeleton"></div>
+                        <iframe src="https://nanhuinteractive.github.io/Home/Portfolio/restaurant-template.html" loading="lazy" scrolling="no" title="Ember Oak" onload="shellLoaded('shell-10')"></iframe>
+                        <div class="card-overlay"><button class="overlay-btn"><i data-lucide="eye" class="w-3.5 h-3.5"></i> Live Preview</button></div>
+                    </div>
+                    <div class="p-5">
+                        <div class="flex items-start justify-between mb-3">
+                            <div>
+                                <div class="text-[10px] uppercase tracking-widest text-orange-400/80 mb-1">🍕 Restaurant · Fine Dining</div>
+                                <div class="text-lg font-serif text-white leading-tight">Ember & Oak</div>
+                                <div class="text-[11px] text-zinc-600 font-mono mt-0.5">emberandoak.com</div>
+                            </div>
+                            <span class="text-xs text-zinc-400 mt-1">From <span class="text-white font-semibold">$999</span></span>
+                        </div>
+                        <p class="text-zinc-500 text-xs leading-relaxed mb-4 font-light">Moody, atmospheric wood-fired dining experience. Digital menu, table reservation system, private event inquiry, and a food photography showcase.</p>
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="tag-pill">Reservations</span>
+                            <span class="tag-pill">Digital Menu</span>
+                            <span class="tag-pill">Private Events</span>
+                        </div>
+                    </div>
+                    <div class="px-5 pb-4 flex items-center justify-between border-t border-white/5 pt-4">
+                        <a href="https://nanhuinteractive.github.io/Home/Portfolio/restaurant-template.html" target="_blank" class="text-[11px] uppercase tracking-wider text-zinc-500 hover:text-white flex items-center gap-1.5 transition-colors" onclick="event.stopPropagation()">Open full <i data-lucide="external-link" class="w-3 h-3"></i></a>
+                        <span class="text-[11px] uppercase tracking-wider text-amber-400 flex items-center gap-1.5">Click to preview <i data-lucide="arrow-right" class="w-3 h-3"></i></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 12. Nonna's Pizza -->
+            <div class="portfolio-card reveal reveal-delay-2 group" data-category="restaurant"
+                data-url="https://nanhuinteractive.github.io/Home/Portfolio/restaurant-template-2.html"
+                data-title="Nonna's Pizza" data-domain="nonnaspizza.com" data-index="11">
+                <div class="card-inner bg-zinc-900/40">
+                    <div class="iframe-shell" id="shell-11">
+                        <div class="browser-top">
+                            <div class="browser-dot bg-red-500"></div><div class="browser-dot bg-yellow-500"></div><div class="browser-dot bg-green-500"></div>
+                            <div class="browser-url-pill">nonnaspizza.com</div>
+                        </div>
+                        <div class="iframe-skeleton"></div>
+                        <iframe src="https://nanhuinteractive.github.io/Home/Portfolio/restaurant-template-2.html" loading="lazy" scrolling="no" title="Nonnas Pizza" onload="shellLoaded('shell-11')"></iframe>
+                        <div class="card-overlay"><button class="overlay-btn"><i data-lucide="eye" class="w-3.5 h-3.5"></i> Live Preview</button></div>
+                    </div>
+                    <div class="p-5">
+                        <div class="flex items-start justify-between mb-3">
+                            <div>
+                                <div class="text-[10px] uppercase tracking-widest text-red-400/80 mb-1">🍕 Restaurant · Artisan Pizzeria</div>
+                                <div class="text-lg font-serif text-white leading-tight">Nonna's Pizza</div>
+                                <div class="text-[11px] text-zinc-600 font-mono mt-0.5">nonnaspizza.com</div>
+                            </div>
+                            <span class="text-xs text-zinc-400 mt-1">From <span class="text-white font-semibold">$999</span></span>
+                        </div>
+                        <p class="text-zinc-500 text-xs leading-relaxed mb-4 font-light">Warm, inviting Italian pizzeria with online ordering, daily specials push, loyalty sign-up, and a Google Reviews showcase to build local trust.</p>
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="tag-pill">Online Ordering</span>
+                            <span class="tag-pill">Daily Specials</span>
+                            <span class="tag-pill">Loyalty Program</span>
+                        </div>
+                    </div>
+                    <div class="px-5 pb-4 flex items-center justify-between border-t border-white/5 pt-4">
+                        <a href="https://nanhuinteractive.github.io/Home/Portfolio/restaurant-template-2.html" target="_blank" class="text-[11px] uppercase tracking-wider text-zinc-500 hover:text-white flex items-center gap-1.5 transition-colors" onclick="event.stopPropagation()">Open full <i data-lucide="external-link" class="w-3 h-3"></i></a>
+                        <span class="text-[11px] uppercase tracking-wider text-amber-400 flex items-center gap-1.5">Click to preview <i data-lucide="arrow-right" class="w-3 h-3"></i></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 13. IRONCLAD -->
+            <div class="portfolio-card reveal group" data-category="fitness"
+                data-url="https://nanhuinteractive.github.io/Home/Portfolio/fitness-gym-template.html"
+                data-title="IRONCLAD Barbell" data-domain="ironcladbarbell.com" data-index="12">
+                <div class="card-inner bg-zinc-900/40">
+                    <div class="iframe-shell" id="shell-12">
+                        <div class="browser-top">
+                            <div class="browser-dot bg-red-500"></div><div class="browser-dot bg-yellow-500"></div><div class="browser-dot bg-green-500"></div>
+                            <div class="browser-url-pill">ironcladbarbell.com</div>
+                        </div>
+                        <div class="iframe-skeleton"></div>
+                        <iframe src="https://nanhuinteractive.github.io/Home/Portfolio/fitness-gym-template.html" loading="lazy" scrolling="no" title="IRONCLAD" onload="shellLoaded('shell-12')"></iframe>
+                        <div class="card-overlay"><button class="overlay-btn"><i data-lucide="eye" class="w-3.5 h-3.5"></i> Live Preview</button></div>
+                    </div>
+                    <div class="p-5">
+                        <div class="flex items-start justify-between mb-3">
+                            <div>
+                                <div class="text-[10px] uppercase tracking-widest text-lime-400/80 mb-1">🏋️ Fitness · Elite Strength</div>
+                                <div class="text-lg font-serif text-white leading-tight tracking-widest font-black italic">IRONCLAD</div>
+                                <div class="text-[11px] text-zinc-600 font-mono mt-0.5">ironcladbarbell.com</div>
+                            </div>
+                            <span class="text-xs text-zinc-400 mt-1">From <span class="text-white font-semibold">$999</span></span>
+                        </div>
+                        <p class="text-zinc-500 text-xs leading-relaxed mb-4 font-light">High-energy strength gym with membership tiers, class schedule, transformation stories, and a free trial CTA to eliminate sign-up friction.</p>
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="tag-pill">Membership Tiers</span>
+                            <span class="tag-pill">Class Schedule</span>
+                            <span class="tag-pill">Free Trial CTA</span>
+                        </div>
+                    </div>
+                    <div class="px-5 pb-4 flex items-center justify-between border-t border-white/5 pt-4">
+                        <a href="https://nanhuinteractive.github.io/Home/Portfolio/fitness-gym-template.html" target="_blank" class="text-[11px] uppercase tracking-wider text-zinc-500 hover:text-white flex items-center gap-1.5 transition-colors" onclick="event.stopPropagation()">Open full <i data-lucide="external-link" class="w-3 h-3"></i></a>
+                        <span class="text-[11px] uppercase tracking-wider text-amber-400 flex items-center gap-1.5">Click to preview <i data-lucide="arrow-right" class="w-3 h-3"></i></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 14. Solace Movement -->
+            <div class="portfolio-card reveal reveal-delay-1 group" data-category="fitness"
+                data-url="https://nanhuinteractive.github.io/Home/Portfolio/fitness-gym-template-2.html"
+                data-title="Solace Movement" data-domain="solacemovement.com" data-index="13">
+                <div class="card-inner bg-zinc-900/40">
+                    <div class="iframe-shell" id="shell-13">
+                        <div class="browser-top">
+                            <div class="browser-dot bg-red-500"></div><div class="browser-dot bg-yellow-500"></div><div class="browser-dot bg-green-500"></div>
+                            <div class="browser-url-pill">solacemovement.com</div>
+                        </div>
+                        <div class="iframe-skeleton"></div>
+                        <iframe src="https://nanhuinteractive.github.io/Home/Portfolio/fitness-gym-template-2.html" loading="lazy" scrolling="no" title="Solace Movement" onload="shellLoaded('shell-13')"></iframe>
+                        <div class="card-overlay"><button class="overlay-btn"><i data-lucide="eye" class="w-3.5 h-3.5"></i> Live Preview</button></div>
+                    </div>
+                    <div class="p-5">
+                        <div class="flex items-start justify-between mb-3">
+                            <div>
+                                <div class="text-[10px] uppercase tracking-widest text-stone-400/80 mb-1">🏋️ Fitness · Yoga & Pilates</div>
+                                <div class="text-lg font-serif text-white leading-tight">Solace Movement</div>
+                                <div class="text-[11px] text-zinc-600 font-mono mt-0.5">solacemovement.com</div>
+                            </div>
+                            <span class="text-xs text-zinc-400 mt-1">From <span class="text-white font-semibold">$999</span></span>
+                        </div>
+                        <p class="text-zinc-500 text-xs leading-relaxed mb-4 font-light">Soft editorial boutique yoga studio. Class booking, instructor profiles, retreat packages, and a first-class-free offer to lower barrier to entry.</p>
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="tag-pill">Class Booking</span>
+                            <span class="tag-pill">Instructor Profiles</span>
+                            <span class="tag-pill">Retreats</span>
+                        </div>
+                    </div>
+                    <div class="px-5 pb-4 flex items-center justify-between border-t border-white/5 pt-4">
+                        <a href="https://nanhuinteractive.github.io/Home/Portfolio/fitness-gym-template-2.html" target="_blank" class="text-[11px] uppercase tracking-wider text-zinc-500 hover:text-white flex items-center gap-1.5 transition-colors" onclick="event.stopPropagation()">Open full <i data-lucide="external-link" class="w-3 h-3"></i></a>
+                        <span class="text-[11px] uppercase tracking-wider text-amber-400 flex items-center gap-1.5">Click to preview <i data-lucide="arrow-right" class="w-3 h-3"></i></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 15. Harrison & Sterling -->
+            <div class="portfolio-card reveal reveal-delay-2 group" data-category="accounting"
+                data-url="https://nanhuinteractive.github.io/Home/Portfolio/accounting-template.html"
+                data-title="Harrison & Sterling" data-domain="harrisonsterling.com" data-index="14">
+                <div class="card-inner bg-zinc-900/40">
+                    <div class="iframe-shell" id="shell-14">
+                        <div class="browser-top">
+                            <div class="browser-dot bg-red-500"></div><div class="browser-dot bg-yellow-500"></div><div class="browser-dot bg-green-500"></div>
+                            <div class="browser-url-pill">harrisonsterling.com</div>
+                        </div>
+                        <div class="iframe-skeleton"></div>
+                        <iframe src="https://nanhuinteractive.github.io/Home/Portfolio/accounting-template.html" loading="lazy" scrolling="no" title="Harrison Sterling" onload="shellLoaded('shell-14')"></iframe>
+                        <div class="card-overlay"><button class="overlay-btn"><i data-lucide="eye" class="w-3.5 h-3.5"></i> Live Preview</button></div>
+                    </div>
+                    <div class="p-5">
+                        <div class="flex items-start justify-between mb-3">
+                            <div>
+                                <div class="text-[10px] uppercase tracking-widest text-blue-400/80 mb-1">📊 Accounting · Traditional CPA</div>
+                                <div class="text-lg font-serif text-white leading-tight">Harrison & Sterling</div>
+                                <div class="text-[11px] text-zinc-600 font-mono mt-0.5">harrisonsterling.com</div>
+                            </div>
+                            <span class="text-xs text-zinc-400 mt-1">From <span class="text-white font-semibold">$1,299</span></span>
+                        </div>
+                        <p class="text-zinc-500 text-xs leading-relaxed mb-4 font-light">Authoritative CPA firm for businesses and high-net-worth clients. Service tiers, tax calendar, team bios, and a consultation form that qualifies leads.</p>
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="tag-pill">Service Tiers</span>
+                            <span class="tag-pill">Team Profiles</span>
+                            <span class="tag-pill">Tax Calendar</span>
+                        </div>
+                    </div>
+                    <div class="px-5 pb-4 flex items-center justify-between border-t border-white/5 pt-4">
+                        <a href="https://nanhuinteractive.github.io/Home/Portfolio/accounting-template.html" target="_blank" class="text-[11px] uppercase tracking-wider text-zinc-500 hover:text-white flex items-center gap-1.5 transition-colors" onclick="event.stopPropagation()">Open full <i data-lucide="external-link" class="w-3 h-3"></i></a>
+                        <span class="text-[11px] uppercase tracking-wider text-amber-400 flex items-center gap-1.5">Click to preview <i data-lucide="arrow-right" class="w-3 h-3"></i></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 16. LedgerHQ -->
+            <div class="portfolio-card reveal group" data-category="accounting"
+                data-url="https://nanhuinteractive.github.io/Home/Portfolio/accounting-template-2.html"
+                data-title="LedgerHQ" data-domain="ledgerhq.com" data-index="15">
+                <div class="card-inner bg-zinc-900/40">
+                    <div class="iframe-shell" id="shell-15">
+                        <div class="browser-top">
+                            <div class="browser-dot bg-red-500"></div><div class="browser-dot bg-yellow-500"></div><div class="browser-dot bg-green-500"></div>
+                            <div class="browser-url-pill">ledgerhq.com</div>
+                        </div>
+                        <div class="iframe-skeleton"></div>
+                        <iframe src="https://nanhuinteractive.github.io/Home/Portfolio/accounting-template-2.html" loading="lazy" scrolling="no" title="LedgerHQ" onload="shellLoaded('shell-15')"></iframe>
+                        <div class="card-overlay"><button class="overlay-btn"><i data-lucide="eye" class="w-3.5 h-3.5"></i> Live Preview</button></div>
+                    </div>
+                    <div class="p-5">
+                        <div class="flex items-start justify-between mb-3">
+                            <div>
+                                <div class="text-[10px] uppercase tracking-widest text-emerald-400/80 mb-1">📊 Accounting · Modern Tech-Forward</div>
+                                <div class="text-lg font-serif text-white leading-tight">LedgerHQ</div>
+                                <div class="text-[11px] text-zinc-600 font-mono mt-0.5">ledgerhq.com</div>
+                            </div>
+                            <span class="text-xs text-zinc-400 mt-1">From <span class="text-white font-semibold">$1,299</span></span>
+                        </div>
+                        <p class="text-zinc-500 text-xs leading-relaxed mb-4 font-light">Tech-forward accounting for startups and SMBs. Pricing plans, CFO services, software integrations display, and a clean onboarding flow for modern businesses.</p>
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="tag-pill">Pricing Plans</span>
+                            <span class="tag-pill">CFO Services</span>
+                            <span class="tag-pill">Startup Focus</span>
+                        </div>
+                    </div>
+                    <div class="px-5 pb-4 flex items-center justify-between border-t border-white/5 pt-4">
+                        <a href="https://nanhuinteractive.github.io/Home/Portfolio/accounting-template-2.html" target="_blank" class="text-[11px] uppercase tracking-wider text-zinc-500 hover:text-white flex items-center gap-1.5 transition-colors" onclick="event.stopPropagation()">Open full <i data-lucide="external-link" class="w-3 h-3"></i></a>
+                        <span class="text-[11px] uppercase tracking-wider text-amber-400 flex items-center gap-1.5">Click to preview <i data-lucide="arrow-right" class="w-3 h-3"></i></span>
+                    </div>
+                </div>
+            </div>
+
+        </div><!-- /grid -->
+    </div>
+</section>
+
+<!-- ── CTA ── -->
+<section class="py-24 bg-zinc-900 px-6 border-t border-white/5 text-center">
+    <div class="max-w-2xl mx-auto reveal">
+        <div class="text-xs uppercase tracking-widest text-amber-400/70 mb-5">Get Your Free Design</div>
+        <h2 class="text-4xl font-serif text-white mb-5">See Your Business<br>Looking Like This</h2>
+        <p class="text-zinc-400 mb-8 font-light leading-relaxed">We'll build a free homepage mockup for your business in 48 hours. No payment, no commitment — just a real preview of what your site could look like.</p>
+        <a href="index.html#contact" class="inline-flex items-center gap-3 px-10 py-4 bg-white text-black text-xs uppercase tracking-widest font-bold hover:bg-amber-100 transition-all duration-300">
+            Request Free Mockup <i data-lucide="arrow-right" class="w-4 h-4"></i>
+        </a>
+        <p class="text-zinc-600 text-xs mt-4">Delivered in 48 hours · No credit card needed</p>
+    </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer class="bg-black py-8 px-6 border-t border-white/5">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center text-zinc-600 text-xs gap-4">
+        <p>© <span id="year"></span> Nanhu Interactive. All Rights Reserved.</p>
+        <div class="flex gap-6">
+            <span class="cursor-pointer hover:text-zinc-400 transition-colors">Privacy Policy</span>
+            <span class="cursor-pointer hover:text-zinc-400 transition-colors">Terms of Service</span>
+        </div>
+    </div>
+</footer>
+
+<!-- ── LIGHTBOX ── -->
+<div id="lightbox">
+    <div class="lb-bar">
+        <div class="flex items-center gap-4 min-w-0">
+            <div id="lb-title" class="text-white font-serif text-base truncate">—</div>
+            <div id="lb-domain" class="text-zinc-600 text-xs font-mono hidden md:block">—</div>
+        </div>
+        <div class="flex items-center gap-2 flex-shrink-0">
+            <div class="lb-pill">
+                <button class="lb-view-btn active" id="btn-desktop" onclick="setView('desktop')">
+                    <i data-lucide="monitor" class="w-3.5 h-3.5"></i><span class="hidden sm:inline">Desktop</span>
+                </button>
+                <button class="lb-view-btn" id="btn-mobile" onclick="setView('mobile')">
+                    <i data-lucide="smartphone" class="w-3.5 h-3.5"></i><span class="hidden sm:inline">Mobile</span>
+                </button>
+            </div>
+            <a id="lb-ext" href="#" target="_blank" class="lb-action-btn hidden md:flex">
+                <i data-lucide="external-link" class="w-3.5 h-3.5"></i> Open
+            </a>
+            <button class="lb-close-btn" onclick="closeLightbox()">
+                <i data-lucide="x" class="w-4 h-4"></i>
+            </button>
+        </div>
+    </div>
+
+    <div id="lb-frame-container">
+        <div id="lb-frame-wrap" class="desktop">
+            <iframe id="lb-iframe" src="" title="Portfolio Preview"></iframe>
+        </div>
+    </div>
+
+    <div class="lb-footer">
+        <button class="lb-nav-btn" onclick="navigate(-1)">
+            <i data-lucide="arrow-left" class="w-3 h-3"></i> Prev
+        </button>
+        <span id="lb-counter" class="text-zinc-600 text-xs font-mono">1 / 16</span>
+        <button class="lb-nav-btn" onclick="navigate(1)">
+            Next <i data-lucide="arrow-right" class="w-3 h-3"></i>
+        </button>
+        <a id="lb-ext2" href="#" target="_blank" class="text-amber-400 text-xs uppercase tracking-wider flex items-center gap-1.5 hover:text-amber-300 transition-colors ml-4">
+            Full page <i data-lucide="external-link" class="w-3 h-3"></i>
+        </a>
+    </div>
+</div>
+
+<script>
+    lucide.createIcons();
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Iframe scale
+    function fixScale() {
+        document.querySelectorAll('.iframe-shell').forEach(shell => {
+            const iframe = shell.querySelector('iframe');
+            if (!iframe) return;
+            const w = shell.offsetWidth;
+            const scale = w / 1280;
+            iframe.style.transform = `scale(${scale})`;
+            const frameH = (220 - 30) / scale;
+            iframe.style.height = frameH + 'px';
+        });
+    }
+    fixScale();
+    window.addEventListener('resize', fixScale);
+
+    function shellLoaded(id) {
+        const shell = document.getElementById(id);
+        if (shell) shell.classList.add('loaded');
+    }
+
+    // Scroll reveal
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+            if (e.isIntersecting) { e.target.classList.add('active'); revealObserver.unobserve(e.target); }
+        });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    // Filter
+    const allCards = Array.from(document.querySelectorAll('.portfolio-card'));
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            const f = btn.dataset.filter;
+            allCards.forEach(c => c.classList.toggle('hide', f !== 'all' && c.dataset.category !== f));
+            visibleCards = allCards.filter(c => !c.classList.contains('hide'));
+        });
+    });
+
+    // Lightbox
+    let visibleCards = [...allCards];
+    let currentIdx = 0;
+    let currentView = 'desktop';
+
+    allCards.forEach(card => {
+        card.addEventListener('click', () => {
+            visibleCards = allCards.filter(c => !c.classList.contains('hide'));
+            currentIdx = visibleCards.indexOf(card);
+            openLightbox(card);
+        });
+    });
+
+    function openLightbox(card) {
+        const url = card.dataset.url;
+        document.getElementById('lb-title').textContent = card.dataset.title;
+        document.getElementById('lb-domain').textContent = card.dataset.domain;
+        document.getElementById('lb-ext').href = url;
+        document.getElementById('lb-ext2').href = url;
+        document.getElementById('lb-iframe').src = url;
+        document.getElementById('lb-counter').textContent = `${currentIdx + 1} / ${visibleCards.length}`;
+        setView(currentView);
+        document.getElementById('lightbox').classList.add('open');
+        document.body.style.overflow = 'hidden';
+        lucide.createIcons();
+    }
+
+    function closeLightbox() {
+        document.getElementById('lightbox').classList.remove('open');
+        document.getElementById('lb-iframe').src = '';
+        document.body.style.overflow = '';
+    }
+
+    function setView(v) {
+        currentView = v;
+        document.getElementById('lb-frame-wrap').className = 'desktop' === v ? 'desktop' : 'mobile';
+        document.getElementById('btn-desktop').classList.toggle('active', v === 'desktop');
+        document.getElementById('btn-mobile').classList.toggle('active', v === 'mobile');
+        lucide.createIcons();
+    }
+
+    function navigate(dir) {
+        currentIdx = (currentIdx + dir + visibleCards.length) % visibleCards.length;
+        openLightbox(visibleCards[currentIdx]);
+    }
+
+    document.addEventListener('keydown', e => {
+        if (!document.getElementById('lightbox').classList.contains('open')) return;
+        if (e.key === 'Escape') closeLightbox();
+        if (e.key === 'ArrowRight') navigate(1);
+        if (e.key === 'ArrowLeft') navigate(-1);
+        if (e.key === 'd') setView('desktop');
+        if (e.key === 'm') setView('mobile');
+    });
+</script>
+</body>
+</html>
