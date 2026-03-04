@@ -1,0 +1,9 @@
+# robots.txt — Nanhu Interactive
+# https://nanhuinteractive.dev
+
+# Allow all search engine crawlers
+User-agent: *
+Allow: /
+
+# Point all crawlers directly to the sitemap
+Sitemap: https://nanhuinteractive.dev/sitemap.xml

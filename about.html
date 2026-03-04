@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Nanhu Interactive — Who We Are & Why We Build Websites for US Businesses</title>
+
+    <!-- PRIMARY SEO -->
+    <meta name="description" content="Nanhu Interactive is a lean web design studio building luxury, conversion-focused websites for US businesses. We deliver in 7 days starting at $599. Learn our story, values, and process.">
+    <meta name="keywords" content="about Nanhu Interactive, web design agency, website design for small business, US website design studio, affordable luxury websites">
+    <meta name="author" content="Nanhu Interactive">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://nanhuinteractive.dev/about.html">
+
+    <!-- OPEN GRAPH -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://nanhuinteractive.dev/about.html">
+    <meta property="og:title" content="About Nanhu Interactive — Digital Luxury Experience Studio">
+    <meta property="og:description" content="We build luxury websites for US small businesses. 7-day delivery. Starting at $599. Learn who we are.">
+    <meta property="og:image" content="https://nanhuinteractive.dev/og-image.jpg">
+    <meta property="og:site_name" content="Nanhu Interactive">
+    <meta property="og:locale" content="en_US">
+
+    <!-- TWITTER CARD -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="About Nanhu Interactive">
+    <meta name="twitter:description" content="Luxury websites for US businesses. 7-day delivery. Starting at $599.">
+    <meta name="twitter:image" content="https://nanhuinteractive.dev/og-image.jpg">
+
+    <!-- JSON-LD — Organization Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Nanhu Interactive",
+      "url": "https://nanhuinteractive.dev",
+      "logo": "https://nitnapple.github.io/Ananya/nafavi.png",
+      "description": "Luxury website design and AI voice receptionist services for US small businesses. Starting at $599.",
+      "email": "hello@nanhuinteractive.dev",
+      "telephone": "+14802555019",
+      "foundingDate": "2024",
+      "areaServed": ["US", "GB", "CA", "AU"],
+      "sameAs": [],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "customer service",
+        "email": "hello@nanhuinteractive.dev",
+        "telephone": "+14802555019",
+        "availableLanguage": "English",
+        "hoursAvailable": "Mo-Sa 09:00-18:00"
+      }
+    }
+    </script>
+
+    <!-- Breadcrumb -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://nanhuinteractive.dev/" },
+        { "@type": "ListItem", "position": 2, "name": "About", "item": "https://nanhuinteractive.dev/about.html" }
+      ]
+    }
+    </script>
+
+    <link rel="icon" href="https://nitnapple.github.io/Ananya/nafavi.png" type="image/png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter','sans-serif'], serif: ['Playfair Display','serif'] },
+                    animation: { 'fade-in-up': 'fadeInUp 0.8s ease-out forwards', 'fade-in': 'fadeIn 1.2s ease-out forwards' },
+                    keyframes: {
+                        fadeInUp: { '0%': { opacity:'0', transform:'translateY(20px)' }, '100%': { opacity:'1', transform:'translateY(0)' } },
+                        fadeIn:   { '0%': { opacity:'0' }, '100%': { opacity:'1' } }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #09090b; }
+        ::-webkit-scrollbar-thumb { background: #27272a; border-radius: 4px; }
+        ::selection { background-color: rgba(251,191,36,0.2); color: #fbbf24; }
+        .reveal { opacity:0; transform:translateY(28px); transition: all 0.8s cubic-bezier(0.5,0,0,1); }
+        .reveal.active { opacity:1; transform:translateY(0); }
+        .reveal-delay-100 { transition-delay:.1s; }
+        .reveal-delay-200 { transition-delay:.2s; }
+        .reveal-delay-300 { transition-delay:.3s; }
+        .page-hero-grain::after { content:''; position:absolute; inset:0; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E"); opacity:0.025; pointer-events:none; z-index:1; }
+        .value-card { transition: transform 0.35s cubic-bezier(0.25,0.46,0.45,0.94), border-color 0.3s; }
+        .value-card:hover { transform: translateY(-4px); }
+        .counter-num { font-variant-numeric: tabular-nums; }
+    </style>
+</head>
+<body class="bg-black text-zinc-200 font-sans antialiased overflow-x-hidden">
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed w-full z-50 bg-zinc-950/90 backdrop-blur-md border-b border-white/5 py-4">
+        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-serif tracking-wider text-white hover:text-amber-100 transition-colors">
+                NANHU<span class="text-zinc-500">.</span>
+            </a>
+            <div class="hidden md:flex space-x-8 items-center">
+                <a href="index.html" class="text-xs uppercase tracking-[0.15em] text-zinc-400 hover:text-white transition-colors relative group">
+                    Home<span class="absolute -bottom-2 left-0 w-0 h-[1px] bg-amber-200 transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                <a href="services.html" class="text-xs uppercase tracking-[0.15em] text-zinc-400 hover:text-white transition-colors relative group">
+                    Services<span class="absolute -bottom-2 left-0 w-0 h-[1px] bg-amber-200 transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                <a href="Portfolio/index.html" class="text-xs uppercase tracking-[0.15em] text-zinc-400 hover:text-white transition-colors relative group flex items-center gap-1.5">
+                    Portfolio<span class="text-[8px] bg-amber-400/20 text-amber-300 border border-amber-400/30 px-1.5 py-0.5 rounded-full font-bold tracking-wider">16</span>
+                    <span class="absolute -bottom-2 left-0 w-0 h-[1px] bg-amber-200 transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                <a href="about.html" class="text-xs uppercase tracking-[0.15em] text-white transition-colors relative group">
+                    About<span class="absolute -bottom-2 left-0 w-full h-[1px] bg-amber-200"></span>
+                </a>
+                <a href="contact.html" class="px-6 py-2 border border-white/20 text-white text-xs uppercase tracking-[0.15em] hover:bg-white hover:text-black transition-all duration-500">
+                    Start Project
+                </a>
+            </div>
+            <div class="md:hidden">
+                <button id="mobile-menu-btn" class="text-white focus:outline-none">
+                    <i data-lucide="menu" id="menu-icon" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-zinc-950/95 backdrop-blur-xl border-b border-white/10 p-6 flex flex-col space-y-4 shadow-2xl">
+            <a href="index.html" class="text-left text-lg font-serif text-white py-2 border-b border-white/5 block">Home</a>
+            <a href="services.html" class="text-left text-lg font-serif text-white py-2 border-b border-white/5 block">Services</a>
+            <a href="Portfolio/index.html" class="flex items-center justify-between text-lg font-serif text-white py-2 border-b border-white/5">
+                Portfolio <span class="text-[10px] bg-amber-400/20 text-amber-300 border border-amber-400/30 px-2 py-1 rounded-full font-bold">16 Live</span>
+            </a>
+            <a href="about.html" class="text-left text-lg font-serif text-amber-200 py-2 border-b border-white/5 block">About</a>
+            <a href="contact.html" class="text-left text-lg font-serif text-white py-2 block">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Page Hero -->
+    <section class="page-hero-grain relative pt-36 pb-24 bg-zinc-950 overflow-hidden">
+        <div class="absolute inset-0 pointer-events-none overflow-hidden">
+            <div class="absolute top-[-10%] right-0 w-[500px] h-[500px] bg-amber-900/7 rounded-full blur-[140px]"></div>
+            <div class="absolute bottom-0 left-0 w-[400px] h-[300px] bg-blue-900/5 rounded-full blur-[120px]"></div>
+        </div>
+        <div class="relative z-10 max-w-4xl mx-auto px-6">
+            <nav class="flex items-center gap-2 text-[11px] text-zinc-500 uppercase tracking-widest mb-8" aria-label="Breadcrumb">
+                <a href="index.html" class="hover:text-zinc-300 transition-colors">Home</a>
+                <span>/</span>
+                <span class="text-amber-300">About</span>
+            </nav>
+            <span class="text-xs font-bold text-amber-200/80 uppercase tracking-widest border border-amber-900/30 px-3 py-1 rounded-full opacity-0 animate-fade-in inline-block">Our Story</span>
+            <h1 class="text-5xl md:text-6xl font-serif text-white mt-6 mb-6 leading-tight opacity-0 animate-fade-in-up">
+                We Believe a<br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-white to-amber-200">Great Website Earns.</span>
+            </h1>
+            <p class="text-zinc-400 text-lg max-w-2xl leading-relaxed opacity-0 animate-fade-in-up">
+                Nanhu Interactive was built on a simple observation: US small businesses were being charged $5,000–$15,000 for websites that a skilled team could build in a week for a fraction of the price. We decided to change that.
+            </p>
+        </div>
+    </section>
+
+    <!-- Mission + Numbers -->
+    <section class="py-24 bg-zinc-900 px-6">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div class="reveal">
+                <h2 class="text-3xl md:text-4xl font-serif text-white mb-6">What We Actually Do</h2>
+                <p class="text-zinc-400 leading-relaxed mb-5">
+                    We design and build <strong class="text-white">high-converting websites</strong> for US small businesses — dental clinics, law firms, real estate agents, plumbers, electricians, HVAC companies, and cleaners. Every site is custom designed, mobile-first, and built specifically for your industry.
+                </p>
+                <p class="text-zinc-400 leading-relaxed mb-5">
+                    We also build <strong class="text-white">AI voice receptionists</strong> that answer your business phone 24/7 — booking appointments, answering FAQs, and capturing leads even when you're busy on the job.
+                </p>
+                <p class="text-zinc-400 leading-relaxed">
+                    Our clients are service businesses that want to look professional, rank on Google, and stop losing customers to competitors with better websites. We make that happen in 7 days or less.
+                </p>
+            </div>
+            <div class="reveal reveal-delay-200 grid grid-cols-2 gap-5">
+                <div class="p-7 bg-zinc-950 border border-white/5 text-center">
+                    <div class="text-4xl font-serif text-amber-200 mb-2 counter-num">16+</div>
+                    <div class="text-xs text-zinc-500 uppercase tracking-widest">Live Projects Delivered</div>
+                </div>
+                <div class="p-7 bg-zinc-950 border border-white/5 text-center">
+                    <div class="text-4xl font-serif text-amber-200 mb-2">7</div>
+                    <div class="text-xs text-zinc-500 uppercase tracking-widest">Day Average Delivery</div>
+                </div>
+                <div class="p-7 bg-zinc-950 border border-white/5 text-center">
+                    <div class="text-4xl font-serif text-amber-200 mb-2">8</div>
+                    <div class="text-xs text-zinc-500 uppercase tracking-widest">Industries Served</div>
+                </div>
+                <div class="p-7 bg-zinc-950 border border-white/5 text-center">
+                    <div class="text-4xl font-serif text-amber-200 mb-2">100%</div>
+                    <div class="text-xs text-zinc-500 uppercase tracking-widest">Satisfaction Rate</div>
+                </div>
+                <div class="p-7 bg-zinc-950 border border-white/5 text-center col-span-2">
+                    <div class="text-4xl font-serif text-amber-200 mb-2">$0</div>
+                    <div class="text-xs text-zinc-500 uppercase tracking-widest">Cost for Your Free Homepage Mockup</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values -->
+    <section class="py-24 bg-black px-6 border-t border-white/5">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-3xl md:text-4xl font-serif text-white mb-4">How We Work</h2>
+                <p class="text-zinc-500 text-sm max-w-xl mx-auto">Four principles that drive every project we take on.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="value-card reveal reveal-delay-100 p-7 border border-white/5 hover:border-amber-400/20 bg-zinc-950">
+                    <div class="w-12 h-12 bg-amber-900/20 border border-amber-800/30 flex items-center justify-center mb-5">
+                        <i data-lucide="eye" class="w-5 h-5 text-amber-300"></i>
+                    </div>
+                    <h3 class="text-white font-medium text-base mb-3">Free Mockup First</h3>
+                    <p class="text-zinc-500 text-xs leading-relaxed">You see exactly what your website will look like before you pay anything. No commitment until you love the design.</p>
+                </div>
+                <div class="value-card reveal reveal-delay-200 p-7 border border-white/5 hover:border-amber-400/20 bg-zinc-950">
+                    <div class="w-12 h-12 bg-amber-900/20 border border-amber-800/30 flex items-center justify-center mb-5">
+                        <i data-lucide="zap" class="w-5 h-5 text-amber-300"></i>
+                    </div>
+                    <h3 class="text-white font-medium text-base mb-3">Speed Without Compromise</h3>
+                    <p class="text-zinc-500 text-xs leading-relaxed">Every website delivered in 5–14 days. Speed is only possible because we've specialised deeply in service businesses.</p>
+                </div>
+                <div class="value-card reveal reveal-delay-300 p-7 border border-white/5 hover:border-amber-400/20 bg-zinc-950">
+                    <div class="w-12 h-12 bg-amber-900/20 border border-amber-800/30 flex items-center justify-center mb-5">
+                        <i data-lucide="trending-up" class="w-5 h-5 text-amber-300"></i>
+                    </div>
+                    <h3 class="text-white font-medium text-base mb-3">Built to Convert</h3>
+                    <p class="text-zinc-500 text-xs leading-relaxed">Beautiful design that also works. Every layout decision is made with one goal: turning visitors into paying customers.</p>
+                </div>
+                <div class="value-card reveal reveal-delay-300 p-7 border border-white/5 hover:border-amber-400/20 bg-zinc-950">
+                    <div class="w-12 h-12 bg-amber-900/20 border border-amber-800/30 flex items-center justify-center mb-5">
+                        <i data-lucide="heart" class="w-5 h-5 text-amber-300"></i>
+                    </div>
+                    <h3 class="text-white font-medium text-base mb-3">Long-Term Partnership</h3>
+                    <p class="text-zinc-500 text-xs leading-relaxed">We don't disappear after launch. Monthly maintenance clients get ongoing updates, priority support, and a team that knows their site.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Timeline -->
+    <section class="py-24 bg-zinc-950 px-6 border-t border-white/5">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-3xl md:text-4xl font-serif text-white mb-4">From First Message to Live Website</h2>
+                <p class="text-zinc-500 text-sm">Simple, transparent, and fast — every time.</p>
+            </div>
+            <div class="space-y-0">
+                <div class="reveal flex gap-8 items-start pb-12 relative">
+                    <div class="flex flex-col items-center flex-shrink-0">
+                        <div class="w-12 h-12 border border-white/10 flex items-center justify-center bg-zinc-950 z-10">
+                            <span class="text-zinc-400 font-serif">01</span>
+                        </div>
+                        <div class="w-[1px] flex-1 bg-white/5 mt-2 min-h-[60px]"></div>
+                    </div>
+                    <div class="pt-3">
+                        <h3 class="text-white font-medium mb-2">You Reach Out</h3>
+                        <p class="text-zinc-500 text-sm leading-relaxed">Fill out the contact form or email us directly. We respond within 4 hours, Mon–Sat.</p>
+                    </div>
+                </div>
+                <div class="reveal reveal-delay-100 flex gap-8 items-start pb-12 relative">
+                    <div class="flex flex-col items-center flex-shrink-0">
+                        <div class="w-12 h-12 border border-amber-200/20 flex items-center justify-center bg-zinc-950 z-10">
+                            <span class="text-amber-200/80 font-serif">02</span>
+                        </div>
+                        <div class="w-[1px] flex-1 bg-white/5 mt-2 min-h-[60px]"></div>
+                    </div>
+                    <div class="pt-3">
+                        <h3 class="text-white font-medium mb-2">Free Homepage Mockup — 48 Hours</h3>
+                        <p class="text-zinc-500 text-sm leading-relaxed">We design a real, working homepage for your business. No wireframes, no PDFs — you can click through it and see exactly what your site will look like. Completely free.</p>
+                    </div>
+                </div>
+                <div class="reveal reveal-delay-200 flex gap-8 items-start pb-12 relative">
+                    <div class="flex flex-col items-center flex-shrink-0">
+                        <div class="w-12 h-12 border border-white/10 flex items-center justify-center bg-zinc-950 z-10">
+                            <span class="text-zinc-400 font-serif">03</span>
+                        </div>
+                        <div class="w-[1px] flex-1 bg-white/5 mt-2 min-h-[60px]"></div>
+                    </div>
+                    <div class="pt-3">
+                        <h3 class="text-white font-medium mb-2">50% Deposit — We Start Immediately</h3>
+                        <p class="text-zinc-500 text-sm leading-relaxed">Approve the mockup, pay 50% via PayPal or Wise. We begin building the same day. Your project timeline is locked from this point.</p>
+                    </div>
+                </div>
+                <div class="reveal reveal-delay-300 flex gap-8 items-start">
+                    <div class="flex flex-col items-center flex-shrink-0">
+                        <div class="w-12 h-12 border border-emerald-200/20 flex items-center justify-center bg-zinc-950 z-10">
+                            <span class="text-emerald-300/80 font-serif">04</span>
+                        </div>
+                    </div>
+                    <div class="pt-3">
+                        <h3 class="text-white font-medium mb-2">Go Live — 5 to 14 Days</h3>
+                        <p class="text-zinc-500 text-sm leading-relaxed">Your complete website is delivered. Pay the remaining 50% on launch day when you receive the final files. Your business is live on Google.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Philosophy quote -->
+    <section class="py-24 bg-zinc-900 px-6 border-t border-white/5 text-center">
+        <div class="max-w-3xl mx-auto reveal">
+            <div class="w-24 h-[1px] bg-gradient-to-r from-transparent via-amber-200/40 to-transparent mx-auto mb-12"></div>
+            <p class="text-2xl md:text-3xl font-serif text-white leading-relaxed">
+                "We believe a website should not only look exceptional but also convert visitors into paying customers. Every project is designed with <span class="text-amber-100">precision</span>, <span class="text-amber-100">speed</span>, and <span class="text-amber-100">business growth</span> in mind."
+            </p>
+            <div class="w-24 h-[1px] bg-gradient-to-r from-transparent via-amber-200/40 to-transparent mx-auto mt-12 mb-8"></div>
+            <p class="text-zinc-500 text-xs uppercase tracking-widest">Nanhu Interactive — Our Core Philosophy</p>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-20 bg-black px-6 border-t border-white/5">
+        <div class="max-w-2xl mx-auto text-center reveal">
+            <h2 class="text-3xl md:text-4xl font-serif text-white mb-4">Ready to Work Together?</h2>
+            <p class="text-zinc-400 mb-8">Tell us about your business and we'll build a free homepage mockup within 48 hours. No payment, no commitment.</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="contact.html" class="inline-flex items-center justify-center gap-3 px-8 py-4 bg-white text-black text-xs uppercase tracking-widest font-bold hover:bg-amber-100 transition-all duration-300">
+                    Get Free Mockup <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </a>
+                <a href="services.html" class="inline-flex items-center justify-center gap-3 px-8 py-4 border border-white/20 text-white text-xs uppercase tracking-widest hover:border-amber-200/40 transition-all duration-300">
+                    View Services
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black border-t border-white/10 py-10 px-6">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+            <div>
+                <a href="index.html" class="text-xl font-serif text-white hover:text-amber-100 transition-colors">NANHU<span class="text-zinc-500">.</span></a>
+                <p class="text-zinc-600 text-xs mt-1">Luxury websites for US businesses · From $599</p>
+            </div>
+            <nav class="flex flex-wrap gap-6 text-xs text-zinc-500 uppercase tracking-widest">
+                <a href="index.html" class="hover:text-zinc-300 transition-colors">Home</a>
+                <a href="services.html" class="hover:text-zinc-300 transition-colors">Services</a>
+                <a href="about.html" class="text-amber-300">About</a>
+                <a href="contact.html" class="hover:text-zinc-300 transition-colors">Contact</a>
+                <a href="Portfolio/index.html" class="hover:text-zinc-300 transition-colors">Portfolio</a>
+            </nav>
+            <p class="text-zinc-700 text-xs">&copy; <span id="year"></span> Nanhu Interactive.</p>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+        document.getElementById('year').textContent = new Date().getFullYear();
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('active'); observer.unobserve(e.target); } });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+        let open = false;
+        menuBtn.addEventListener('click', () => {
+            open = !open;
+            mobileMenu.classList.toggle('hidden', !open);
+            menuIcon.setAttribute('data-lucide', open ? 'x' : 'menu');
+            lucide.createIcons();
+        });
+    </script>
+</body>
+</html>
